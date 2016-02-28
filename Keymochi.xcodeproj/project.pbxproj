@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */; };
+		90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53A9D1C834AFA002D1B94 /* ViewController.swift */; };
+		90D53AA11C834AFA002D1B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90D53A9F1C834AFA002D1B94 /* Main.storyboard */; };
+		90D53AA31C834AFA002D1B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D53AA21C834AFA002D1B94 /* Assets.xcassets */; };
+		90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */; };
+		90D53AB11C834AFA002D1B94 /* KeymochiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53AB01C834AFA002D1B94 /* KeymochiTests.swift */; };
+		90D53ABC1C834AFA002D1B94 /* KeymochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53ABB1C834AFA002D1B94 /* KeymochiUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90D53AAD1C834AFA002D1B94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D53A901C834AFA002D1B94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D53A971C834AFA002D1B94;
+			remoteInfo = Keymochi;
+		};
+		90D53AB81C834AFA002D1B94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D53A901C834AFA002D1B94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D53A971C834AFA002D1B94;
+			remoteInfo = Keymochi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		90D53A981C834AFA002D1B94 /* Keymochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keymochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		90D53A9D1C834AFA002D1B94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		90D53AA01C834AFA002D1B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		90D53AA21C834AFA002D1B94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		90D53AA51C834AFA002D1B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		90D53AA71C834AFA002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D53AAC1C834AFA002D1B94 /* KeymochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeymochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D53AB01C834AFA002D1B94 /* KeymochiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeymochiTests.swift; sourceTree = "<group>"; };
+		90D53AB21C834AFA002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeymochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D53ABB1C834AFA002D1B94 /* KeymochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeymochiUITests.swift; sourceTree = "<group>"; };
+		90D53ABD1C834AFA002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		90D53A951C834AFA002D1B94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AA91C834AFA002D1B94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AB41C834AFA002D1B94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		90D53A8F1C834AFA002D1B94 = {
+			isa = PBXGroup;
+			children = (
+				90D53A9A1C834AFA002D1B94 /* Keymochi */,
+				90D53AAF1C834AFA002D1B94 /* KeymochiTests */,
+				90D53ABA1C834AFA002D1B94 /* KeymochiUITests */,
+				90D53A991C834AFA002D1B94 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		90D53A991C834AFA002D1B94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90D53A981C834AFA002D1B94 /* Keymochi.app */,
+				90D53AAC1C834AFA002D1B94 /* KeymochiTests.xctest */,
+				90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90D53A9A1C834AFA002D1B94 /* Keymochi */ = {
+			isa = PBXGroup;
+			children = (
+				90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */,
+				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
+				90D53A9F1C834AFA002D1B94 /* Main.storyboard */,
+				90D53AA21C834AFA002D1B94 /* Assets.xcassets */,
+				90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */,
+				90D53AA71C834AFA002D1B94 /* Info.plist */,
+			);
+			path = Keymochi;
+			sourceTree = "<group>";
+		};
+		90D53AAF1C834AFA002D1B94 /* KeymochiTests */ = {
+			isa = PBXGroup;
+			children = (
+				90D53AB01C834AFA002D1B94 /* KeymochiTests.swift */,
+				90D53AB21C834AFA002D1B94 /* Info.plist */,
+			);
+			path = KeymochiTests;
+			sourceTree = "<group>";
+		};
+		90D53ABA1C834AFA002D1B94 /* KeymochiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90D53ABB1C834AFA002D1B94 /* KeymochiUITests.swift */,
+				90D53ABD1C834AFA002D1B94 /* Info.plist */,
+			);
+			path = KeymochiUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		90D53A971C834AFA002D1B94 /* Keymochi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D53AC01C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "Keymochi" */;
+			buildPhases = (
+				90D53A941C834AFA002D1B94 /* Sources */,
+				90D53A951C834AFA002D1B94 /* Frameworks */,
+				90D53A961C834AFA002D1B94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Keymochi;
+			productName = Keymochi;
+			productReference = 90D53A981C834AFA002D1B94 /* Keymochi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		90D53AAB1C834AFA002D1B94 /* KeymochiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D53AC31C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "KeymochiTests" */;
+			buildPhases = (
+				90D53AA81C834AFA002D1B94 /* Sources */,
+				90D53AA91C834AFA002D1B94 /* Frameworks */,
+				90D53AAA1C834AFA002D1B94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90D53AAE1C834AFA002D1B94 /* PBXTargetDependency */,
+			);
+			name = KeymochiTests;
+			productName = KeymochiTests;
+			productReference = 90D53AAC1C834AFA002D1B94 /* KeymochiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		90D53AB61C834AFA002D1B94 /* KeymochiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D53AC61C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "KeymochiUITests" */;
+			buildPhases = (
+				90D53AB31C834AFA002D1B94 /* Sources */,
+				90D53AB41C834AFA002D1B94 /* Frameworks */,
+				90D53AB51C834AFA002D1B94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90D53AB91C834AFA002D1B94 /* PBXTargetDependency */,
+			);
+			name = KeymochiUITests;
+			productName = KeymochiUITests;
+			productReference = 90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		90D53A901C834AFA002D1B94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Cornell Tech";
+				TargetAttributes = {
+					90D53A971C834AFA002D1B94 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LEMESW6GH;
+					};
+					90D53AAB1C834AFA002D1B94 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LEMESW6GH;
+						TestTargetID = 90D53A971C834AFA002D1B94;
+					};
+					90D53AB61C834AFA002D1B94 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LEMESW6GH;
+						TestTargetID = 90D53A971C834AFA002D1B94;
+					};
+				};
+			};
+			buildConfigurationList = 90D53A931C834AFA002D1B94 /* Build configuration list for PBXProject "Keymochi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 90D53A8F1C834AFA002D1B94;
+			productRefGroup = 90D53A991C834AFA002D1B94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				90D53A971C834AFA002D1B94 /* Keymochi */,
+				90D53AAB1C834AFA002D1B94 /* KeymochiTests */,
+				90D53AB61C834AFA002D1B94 /* KeymochiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		90D53A961C834AFA002D1B94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */,
+				90D53AA31C834AFA002D1B94 /* Assets.xcassets in Resources */,
+				90D53AA11C834AFA002D1B94 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AAA1C834AFA002D1B94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AB51C834AFA002D1B94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		90D53A941C834AFA002D1B94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */,
+				90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AA81C834AFA002D1B94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D53AB11C834AFA002D1B94 /* KeymochiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53AB31C834AFA002D1B94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D53ABC1C834AFA002D1B94 /* KeymochiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90D53AAE1C834AFA002D1B94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D53A971C834AFA002D1B94 /* Keymochi */;
+			targetProxy = 90D53AAD1C834AFA002D1B94 /* PBXContainerItemProxy */;
+		};
+		90D53AB91C834AFA002D1B94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D53A971C834AFA002D1B94 /* Keymochi */;
+			targetProxy = 90D53AB81C834AFA002D1B94 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		90D53A9F1C834AFA002D1B94 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90D53AA01C834AFA002D1B94 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90D53AA51C834AFA002D1B94 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		90D53ABE1C834AFA002D1B94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90D53ABF1C834AFA002D1B94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90D53AC11C834AFA002D1B94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Keymochi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		90D53AC21C834AFA002D1B94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Keymochi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		90D53AC41C834AFA002D1B94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KeymochiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keymochi.app/Keymochi";
+			};
+			name = Debug;
+		};
+		90D53AC51C834AFA002D1B94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KeymochiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keymochi.app/Keymochi";
+			};
+			name = Release;
+		};
+		90D53AC71C834AFA002D1B94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KeymochiUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Keymochi;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		90D53AC81C834AFA002D1B94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KeymochiUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Keymochi;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		90D53A931C834AFA002D1B94 /* Build configuration list for PBXProject "Keymochi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D53ABE1C834AFA002D1B94 /* Debug */,
+				90D53ABF1C834AFA002D1B94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90D53AC01C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "Keymochi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D53AC11C834AFA002D1B94 /* Debug */,
+				90D53AC21C834AFA002D1B94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		90D53AC31C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "KeymochiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D53AC41C834AFA002D1B94 /* Debug */,
+				90D53AC51C834AFA002D1B94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		90D53AC61C834AFA002D1B94 /* Build configuration list for PBXNativeTarget "KeymochiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D53AC71C834AFA002D1B94 /* Debug */,
+				90D53AC81C834AFA002D1B94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 90D53A901C834AFA002D1B94 /* Project object */;
+}
