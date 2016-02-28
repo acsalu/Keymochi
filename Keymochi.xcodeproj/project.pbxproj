@@ -14,6 +14,8 @@
 		90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */; };
 		90D53AB11C834AFA002D1B94 /* KeymochiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53AB01C834AFA002D1B94 /* KeymochiTests.swift */; };
 		90D53ABC1C834AFA002D1B94 /* KeymochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53ABB1C834AFA002D1B94 /* KeymochiUITests.swift */; };
+		90D53AD01C834B4D002D1B94 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53ACF1C834B4D002D1B94 /* KeyboardViewController.swift */; };
+		90D53AD41C834B4D002D1B94 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 90D53ACD1C834B4D002D1B94 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +33,28 @@
 			remoteGlobalIDString = 90D53A971C834AFA002D1B94;
 			remoteInfo = Keymochi;
 		};
+		90D53AD21C834B4D002D1B94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D53A901C834AFA002D1B94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D53ACC1C834B4D002D1B94;
+			remoteInfo = Keyboard;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		90D53AD81C834B4E002D1B94 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				90D53AD41C834B4D002D1B94 /* Keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		90D53A981C834AFA002D1B94 /* Keymochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keymochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +70,9 @@
 		90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeymochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D53ABB1C834AFA002D1B94 /* KeymochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeymochiUITests.swift; sourceTree = "<group>"; };
 		90D53ABD1C834AFA002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D53ACD1C834B4D002D1B94 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D53ACF1C834B4D002D1B94 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		90D53AD11C834B4D002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +97,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90D53ACA1C834B4D002D1B94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +113,7 @@
 				90D53A9A1C834AFA002D1B94 /* Keymochi */,
 				90D53AAF1C834AFA002D1B94 /* KeymochiTests */,
 				90D53ABA1C834AFA002D1B94 /* KeymochiUITests */,
+				90D53ACE1C834B4D002D1B94 /* Keyboard */,
 				90D53A991C834AFA002D1B94 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +124,7 @@
 				90D53A981C834AFA002D1B94 /* Keymochi.app */,
 				90D53AAC1C834AFA002D1B94 /* KeymochiTests.xctest */,
 				90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */,
+				90D53ACD1C834B4D002D1B94 /* Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +160,15 @@
 			path = KeymochiUITests;
 			sourceTree = "<group>";
 		};
+		90D53ACE1C834B4D002D1B94 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				90D53ACF1C834B4D002D1B94 /* KeyboardViewController.swift */,
+				90D53AD11C834B4D002D1B94 /* Info.plist */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +179,12 @@
 				90D53A941C834AFA002D1B94 /* Sources */,
 				90D53A951C834AFA002D1B94 /* Frameworks */,
 				90D53A961C834AFA002D1B94 /* Resources */,
+				90D53AD81C834B4E002D1B94 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				90D53AD31C834B4D002D1B94 /* PBXTargetDependency */,
 			);
 			name = Keymochi;
 			productName = Keymochi;
@@ -181,6 +227,23 @@
 			productReference = 90D53AB71C834AFA002D1B94 /* KeymochiUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		90D53ACC1C834B4D002D1B94 /* Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D53AD51C834B4E002D1B94 /* Build configuration list for PBXNativeTarget "Keyboard" */;
+			buildPhases = (
+				90D53AC91C834B4D002D1B94 /* Sources */,
+				90D53ACA1C834B4D002D1B94 /* Frameworks */,
+				90D53ACB1C834B4D002D1B94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Keyboard;
+			productName = Keyboard;
+			productReference = 90D53ACD1C834B4D002D1B94 /* Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +268,10 @@
 						DevelopmentTeam = 5LEMESW6GH;
 						TestTargetID = 90D53A971C834AFA002D1B94;
 					};
+					90D53ACC1C834B4D002D1B94 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LEMESW6GH;
+					};
 				};
 			};
 			buildConfigurationList = 90D53A931C834AFA002D1B94 /* Build configuration list for PBXProject "Keymochi" */;
@@ -223,6 +290,7 @@
 				90D53A971C834AFA002D1B94 /* Keymochi */,
 				90D53AAB1C834AFA002D1B94 /* KeymochiTests */,
 				90D53AB61C834AFA002D1B94 /* KeymochiUITests */,
+				90D53ACC1C834B4D002D1B94 /* Keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +314,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		90D53AB51C834AFA002D1B94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D53ACB1C834B4D002D1B94 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,6 +355,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90D53AC91C834B4D002D1B94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D53AD01C834B4D002D1B94 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -292,6 +375,11 @@
 			isa = PBXTargetDependency;
 			target = 90D53A971C834AFA002D1B94 /* Keymochi */;
 			targetProxy = 90D53AB81C834AFA002D1B94 /* PBXContainerItemProxy */;
+		};
+		90D53AD31C834B4D002D1B94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D53ACC1C834B4D002D1B94 /* Keyboard */;
+			targetProxy = 90D53AD21C834B4D002D1B94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -402,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Keymochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
@@ -413,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Keymochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
@@ -468,6 +558,28 @@
 			};
 			name = Release;
 		};
+		90D53AD61C834B4E002D1B94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		90D53AD71C834B4E002D1B94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -501,6 +613,14 @@
 			buildConfigurations = (
 				90D53AC71C834AFA002D1B94 /* Debug */,
 				90D53AC81C834AFA002D1B94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		90D53AD51C834B4E002D1B94 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D53AD61C834B4E002D1B94 /* Debug */,
+				90D53AD71C834B4E002D1B94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
