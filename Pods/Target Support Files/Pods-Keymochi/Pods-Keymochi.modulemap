@@ -1,0 +1,6 @@
+framework module Pods_Keymochi {
+  umbrella header "Pods-Keymochi-umbrella.h"
+
+  export *
+  module * { export * }
+}
