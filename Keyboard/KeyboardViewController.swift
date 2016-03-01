@@ -168,6 +168,12 @@ class KeyboardViewController: UIInputViewController {
     (even though it should really not be changing).
     */
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        UIPasteboard.generalPasteboard()
+    }
+    
     var constraintsAdded: Bool = false
     func setupLayout() {
         if !constraintsAdded {
@@ -362,6 +368,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func hidePopupDelay(sender: KeyboardKey) {
+        print("\(sender.text)")
         self.popupDelayTimer?.invalidate()
         
         if sender != self.keyWithDelayedPopup {
