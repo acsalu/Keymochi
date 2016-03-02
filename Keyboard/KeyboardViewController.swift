@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import RealmSwift
 
 let metrics: [String:Double] = [
     "topBanner": 30
@@ -168,10 +169,13 @@ class KeyboardViewController: UIInputViewController {
     (even though it should really not be changing).
     */
     
+    var realm: Realm?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIPasteboard.generalPasteboard()
+        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.edu.cornell.tech.keymochi")
+        let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
+        self.realm = try! Realm.init(path: realmPath!)
     }
     
     var constraintsAdded: Bool = false
@@ -360,7 +364,14 @@ class KeyboardViewController: UIInputViewController {
     var keyWithDelayedPopup: KeyboardKey?
     var popupDelayTimer: NSTimer?
     
+    var lastKeyEvent: KeyEvent?
+    
     func showPopup(sender: KeyboardKey) {
+        
+        lastKeyEvent = KeyEvent()
+        lastKeyEvent?.key = sender.text
+        lastKeyEvent?.downTime = CACurrentMediaTime()
+        
         if sender == self.keyWithDelayedPopup {
             self.popupDelayTimer?.invalidate()
         }
@@ -368,7 +379,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func hidePopupDelay(sender: KeyboardKey) {
-        print("\(sender.text)")
+        
+        lastKeyEvent?.upTime = CACurrentMediaTime()
+        try! realm?.write {
+            realm?.add(lastKeyEvent!)
+        }
+        
         self.popupDelayTimer?.invalidate()
         
         if sender != self.keyWithDelayedPopup {

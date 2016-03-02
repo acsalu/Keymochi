@@ -1,3 +1,18 @@
-PODFILE CHECKSUM: 09614912e95c790131624328707725bf58facb77
+PODS:
+  - Realm (0.98.3):
+    - Realm/Headers (= 0.98.3)
+  - Realm/Headers (0.98.3)
+  - RealmSwift (0.98.3):
+    - Realm (= 0.98.3)
+  - SwiftDate (3.0.6)
 
-COCOAPODS: 1.0.0.beta.4
+DEPENDENCIES:
+  - RealmSwift
+  - SwiftDate
+
+SPEC CHECKSUMS:
+  Realm: c6a7d00221a2d5177810a674aebd40c5e0b70b0f
+  RealmSwift: d6ecad6e4c2a645d6ac956c2c7e9efb375f39c31
+  SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
+
+COCOAPODS: 0.39.0
