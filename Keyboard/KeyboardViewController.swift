@@ -173,7 +173,7 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.edu.cornell.tech.keymochi")
+        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
         let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
         self.realm = try! Realm.init(path: realmPath!)
     }
