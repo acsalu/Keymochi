@@ -17,7 +17,10 @@ class DraftViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: "dismissKeyboardOnTap:")
+        let swipeDownRecognizer = UISwipeGestureRecognizer.init(target: self, action: "dismissKeyboardOnTap:")
+        swipeDownRecognizer.direction = .Down
         self.view.addGestureRecognizer(tapRecognizer)
+        self.view.addGestureRecognizer(swipeDownRecognizer)
     }
     
     func dismissKeyboardOnTap(sender: AnyObject) {
