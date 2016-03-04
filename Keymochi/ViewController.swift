@@ -19,16 +19,48 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.edu.cornell.tech.keymochi")
+        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
         let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
         self.realm = try! Realm.init(path: realmPath!)
      
         reloadData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        reloadData()
+    }
+    
     func reloadData() {
-        keyEvents = Array(realm.objects(KeyEvent))
+        let symbolKeyEvents = Array(realm.objects((SymbolKeyEvent)))
+        let backspaceKeyEvents = Array(realm.objects(BackspaceKeyEvent))
+        keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
+        
+        // Reverse chronological order
+        keyEvents.sortInPlace {
+            return $0.downTime > $1.downTime
+        }
         self.eventHistoryTableView.reloadData()
+    }
+    
+    @IBAction func removeAllData(sender: AnyObject) {
+        
+        let alertController = UIAlertController.init(title: "Delete Data", message: "Are you sure to delete all data?", preferredStyle: .Alert)
+        let actionDelete = UIAlertAction.init(title: "Delete", style: .Destructive) { alertAction -> Void in
+            self.realm.beginWrite()
+            self.realm.deleteAll()
+            try! self.realm.commitWrite()
+            self.reloadData()
+        }
+        
+        let actionCancel = UIAlertAction.init(title: "Cancel", style: .Cancel) { alertAction -> Void in
+            
+        }
+        
+        alertController.addAction(actionCancel)
+        alertController.addAction(actionDelete)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
     // MARK: - UITableViewDataSource methods
@@ -46,16 +78,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyEventCell", forIndexPath: indexPath)
         
-        let keyLabel      = cell.viewWithTag(100) as? UILabel
-        let durationLabel = cell.viewWithTag(101) as? UILabel
-        let downTimeLabel = cell.viewWithTag(102) as? UILabel
-        let upTimeLabel   = cell.viewWithTag(103) as? UILabel
+        let keyLabel      = cell.viewWithTag(100) as! UILabel
+        let durationLabel = cell.viewWithTag(101) as! UILabel
+        let downTimeLabel = cell.viewWithTag(102) as! UILabel
+        let upTimeLabel   = cell.viewWithTag(103) as! UILabel
         
-        keyLabel?.text = keyEvent.key!
-        downTimeLabel?.text = "\(keyEvent.downTime)"
-        upTimeLabel?.text = "\(keyEvent.upTime)"
+        if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
+            keyLabel.text = symbolKeyEvent.key!
+        } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
+            keyLabel.text = String(format: "← (%d)", backspaceKeyEvent.numberOfDeletions)
+        }
         
-        durationLabel?.text = String(format: "%.1f ms", (keyEvent.upTime - keyEvent.downTime) * 1000)
+        downTimeLabel.text = "\(keyEvent.downTime)"
+        upTimeLabel.text = "\(keyEvent.upTime)"
+        durationLabel.text = String(format: "%.1f ms", (keyEvent.upTime - keyEvent.downTime) * 1000)
         
         return cell
     }

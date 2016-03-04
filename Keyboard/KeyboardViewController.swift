@@ -169,11 +169,11 @@ class KeyboardViewController: UIInputViewController {
     (even though it should really not be changing).
     */
     
-    var realm: Realm?
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.edu.cornell.tech.keymochi")
+        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
         let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
         self.realm = try! Realm.init(path: realmPath!)
     }
@@ -368,9 +368,12 @@ class KeyboardViewController: UIInputViewController {
     
     func showPopup(sender: KeyboardKey) {
         
-        lastKeyEvent = KeyEvent()
-        lastKeyEvent?.key = sender.text
-        lastKeyEvent?.downTime = CACurrentMediaTime()
+        realm.beginWrite()
+        let keyEvent = SymbolKeyEvent()
+        keyEvent.key = sender.text
+        keyEvent.downTime = CACurrentMediaTime()
+        self.lastKeyEvent = keyEvent
+        try! realm.commitWrite()
         
         if sender == self.keyWithDelayedPopup {
             self.popupDelayTimer?.invalidate()
@@ -380,10 +383,10 @@ class KeyboardViewController: UIInputViewController {
     
     func hidePopupDelay(sender: KeyboardKey) {
         
+        realm.beginWrite()
         lastKeyEvent?.upTime = CACurrentMediaTime()
-        try! realm?.write {
-            realm?.add(lastKeyEvent!)
-        }
+        realm.add(lastKeyEvent!)
+        try! realm.commitWrite()
         
         self.popupDelayTimer?.invalidate()
         
@@ -545,10 +548,20 @@ class KeyboardViewController: UIInputViewController {
         self.backspaceRepeatTimer = nil
     }
     
+    var numberOfDeletions: Int!
     func backspaceDown(sender: KeyboardKey) {
+        
         self.cancelBackspaceTimers()
         
-        self.textDocumentProxy.deleteBackward()
+        numberOfDeletions = 0
+        
+        realm.beginWrite()
+        let keyEvent = BackspaceKeyEvent()
+        keyEvent.downTime = CACurrentMediaTime()
+        self.lastKeyEvent = keyEvent
+        try! realm.commitWrite()
+        
+        self.deleteBackwordIfPossible()
         self.setCapsIfNeeded()
         
         // trigger for subsequent deletes
@@ -556,6 +569,13 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func backspaceUp(sender: KeyboardKey) {
+        realm.beginWrite()
+        lastKeyEvent?.upTime = CACurrentMediaTime()
+        (lastKeyEvent as! BackspaceKeyEvent).numberOfDeletions = numberOfDeletions
+        realm.add(lastKeyEvent!)
+        try! realm.commitWrite()
+        
+        print("backspaceUp")
         self.cancelBackspaceTimers()
     }
     
@@ -567,8 +587,19 @@ class KeyboardViewController: UIInputViewController {
     func backspaceRepeatCallback() {
         self.playKeySound()
         
-        self.textDocumentProxy.deleteBackward()
+        self.deleteBackwordIfPossible()
         self.setCapsIfNeeded()
+    }
+    
+    func deleteBackwordIfPossible() {
+        
+        if let context = self.textDocumentProxy.documentContextBeforeInput {
+            print(context)
+            numberOfDeletions = numberOfDeletions + 1
+            self.textDocumentProxy.deleteBackward()
+        } else {
+            print("nil context")
+        }
     }
     
     func shiftDown(sender: KeyboardKey) {

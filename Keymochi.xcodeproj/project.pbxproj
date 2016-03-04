@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		69644BF1EEC0748E4F8524BE /* Pods_KeymochiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09EF6B44C59AC0DD631E1036 /* Pods_KeymochiTests.framework */; };
+		901DF4851C8925EE0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
+		901DF4861C89261D0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
+		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
 		90C5442E1C84F16F0038C7FE /* DefaultSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90C5441C1C84F16F0038C7FE /* DefaultSettings.xib */; };
 		90C5442F1C84F16F0038C7FE /* Catboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5441D1C84F16F0038C7FE /* Catboard.swift */; };
 		90C544301C84F16F0038C7FE /* CatboardBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */; };
@@ -88,6 +91,8 @@
 		69640B8AC77633321D61A2CA /* Pods_Keyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Keyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DC029B93664C2003AAC0B3 /* Pods_Keymochi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Keymochi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACE810CB583607E551B2298 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
+		901DF4841C8925EE0030E17C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		901DF48B1C8928400030E17C /* DraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
 		908CC48C14AF1EB88C3E3CD0 /* Pods-Keymochi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keymochi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Keymochi/Pods-Keymochi.debug.xcconfig"; sourceTree = "<group>"; };
 		90B7D0551C85248800BF87C0 /* Keymochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Keymochi.entitlements; sourceTree = "<group>"; };
 		90B7D0561C8524A600BF87C0 /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Keyboard.entitlements; sourceTree = "<group>"; };
@@ -193,6 +198,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		901DF48D1C8929400030E17C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
+				901DF48B1C8928400030E17C /* DraftViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		901DF48E1C8929480030E17C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90D96C9A1C877EC6004508E1 /* KeyEvent.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		901DF48F1C8929590030E17C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				901DF4841C8925EE0030E17C /* Constants.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		90C544401C84F1A80038C7FE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,8 +305,9 @@
 			children = (
 				90B7D0551C85248800BF87C0 /* Keymochi.entitlements */,
 				90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */,
-				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
-				90D96C9A1C877EC6004508E1 /* KeyEvent.swift */,
+				901DF48D1C8929400030E17C /* Controller */,
+				901DF48E1C8929480030E17C /* Model */,
+				901DF48F1C8929590030E17C /* Utility */,
 				90D53A9F1C834AFA002D1B94 /* Main.storyboard */,
 				90D53AA21C834AFA002D1B94 /* Assets.xcassets */,
 				90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */,
@@ -690,8 +721,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */,
+				901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */,
 				90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */,
 				90D96C9B1C877EC6004508E1 /* KeyEvent.swift in Sources */,
+				901DF4851C8925EE0030E17C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901DF4861C89261D0030E17C /* Constants.swift in Sources */,
 				90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */,
 				90C544321C84F16F0038C7FE /* DefaultSettings.swift in Sources */,
 				90C544301C84F16F0038C7FE /* CatboardBanner.swift in Sources */,
