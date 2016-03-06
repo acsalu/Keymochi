@@ -3,22 +3,21 @@ branches:
     only:
     - master
 osx_image: xcode7.2
-xcode_sdk: iphonesimulator9.2
+xcode_sdk: ${SDK}
 xcode_workspace: ${WORKSPACE}
 xcode_scheme: ${SCHEME}
-
-before_install:
-- brew update; brew upgrade --all
 
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 
 script:
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk iphonesimulator9.1 -destination platform='iOS Simulator',OS=9.1,name='iPhone 6s' dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk iphonesimulator9.1 -destination platform='iOS Simulator',OS=9.1,name='iPhone 6s' dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
+- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS={SDK_VERSION},name='iPhone 6s' dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
+- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS={SDK_VERSION},name='iPhone 6s' dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
 
 env:
     global:
     - WORKSPACE="Keymochi.xcworkspace"
     - SCHEME="Keymochi"
+    - SDK="iphonesimulator9.2"
+    - SDK_VERSION="9.2"
