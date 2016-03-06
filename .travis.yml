@@ -12,8 +12,8 @@ install:
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 
 script:
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS={SDK_VERSION},name='iPhone 6s' dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS={SDK_VERSION},name='iPhone 6s' dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
+- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS='${SDK_VERSION}',name='iPhone 6s' dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
+- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS='${SDK_VERSION}',name='iPhone 6s' dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
 
 env:
     global:
