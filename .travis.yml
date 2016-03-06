@@ -7,14 +7,6 @@ xcode_sdk: ${SDK}
 xcode_workspace: ${WORKSPACE}
 xcode_scheme: ${SCHEME}
 
-install:
-- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-- gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
-
-script:
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS='${SDK_VERSION}',name='iPhone 6s' dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination platform='iOS Simulator',OS='${SDK_VERSION}',name='iPhone 6s' dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
-
 env:
     global:
     - WORKSPACE="Keymochi.xcworkspace"
