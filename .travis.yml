@@ -3,9 +3,9 @@ branches:
     only:
     - master
 osx_image: xcode7.2
-xcode_sdk: $SDK
-xcode_workspace: $WORKSPACE
-xcode_scheme: $SCHEME
+xcode_sdk: iphoneos9.2
+xcode_workspace: Keymochi.xcworkspace
+xcode_scheme: Keymochi
 
 env:
     global:
