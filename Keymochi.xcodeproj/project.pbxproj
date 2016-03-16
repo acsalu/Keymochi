@@ -378,6 +378,7 @@
 				90D53AD81C834B4E002D1B94 /* Embed App Extensions */,
 				C8999E99E5EAAF184504DBE5 /* Embed Pods Frameworks */,
 				63F6DA50E13B103A39862003 /* Copy Pods Resources */,
+				90858A601C8F9F0300B32D58 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -637,6 +638,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		90858A601C8F9F0300B32D58 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8d688196db7c0af192ef2b479f9bbc7e072bf62 440d832e1dcd2fe88d9c34ebecfef35b07327b7c3876ad4abc81a1d88d79b38d";
 		};
 		9C1A036247590373766AA4E2 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
