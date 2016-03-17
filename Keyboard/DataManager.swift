@@ -51,37 +51,42 @@ class DataManager {
     }
     
     func dumpCurrentMotionSequences() {
-        dispatch_async(realmQueue) {
-            print("Dump current motion sequences in realm queue")
-            print("(\(SensorType.Acceleration)) \(self._accelerationDataSequence.motionDataPoints.count) data points")
-            print("(\(SensorType.Gyro)) \(self._gyroDataSequence.motionDataPoints.count) data points")
-            
-            let realm = try! Realm.init(path: self.realmPath)
-            realm.beginWrite()
-            
-            // Add data points
-            for dataPoint in self._accelerationDataSequence.motionDataPoints {
-                realm.add(dataPoint)
+        
+        if self._accelerationDataSequence.motionDataPoints.count > 0 &&
+            self._gyroDataSequence.motionDataPoints.count > 0 {
+        
+            dispatch_async(realmQueue) {
+                print("Dump current motion sequences in realm queue")
+                print("(\(SensorType.Acceleration)) \(self._accelerationDataSequence.motionDataPoints.count) data points")
+                print("(\(SensorType.Gyro)) \(self._gyroDataSequence.motionDataPoints.count) data points")
+                
+                let realm = try! Realm.init(path: self.realmPath)
+                realm.beginWrite()
+                
+                // Add data points
+                for dataPoint in self._accelerationDataSequence.motionDataPoints {
+                    realm.add(dataPoint)
+                }
+                
+                for dataPoint in self._accelerationDataSequence.motionDataPoints {
+                    realm.add(dataPoint)
+                }
+                
+                // Add sequences
+                realm.add(self._accelerationDataSequence)
+                realm.add(self._gyroDataSequence)
+                
+                // Add event
+                let motionDataCollection = MotionDataCollection()
+                motionDataCollection.accelerationDataSequence = self._accelerationDataSequence
+                motionDataCollection.gyroDataSequence = self._gyroDataSequence
+                realm.add(motionDataCollection)
+                
+                try! realm.commitWrite()
+                
+                self._accelerationDataSequence = MotionDataSequence.init(sensorType: .Acceleration)
+                self._gyroDataSequence = MotionDataSequence.init(sensorType: .Gyro)
             }
-            
-            for dataPoint in self._accelerationDataSequence.motionDataPoints {
-                realm.add(dataPoint)
-            }
-            
-            // Add sequences
-            realm.add(self._accelerationDataSequence)
-            realm.add(self._gyroDataSequence)
-            
-            // Add event
-            let motionDataCollection = MotionDataCollection()
-            motionDataCollection.accelerationDataSequence = self._accelerationDataSequence
-            motionDataCollection.gyroDataSequence = self._gyroDataSequence
-            realm.add(motionDataCollection)
-            
-            try! realm.commitWrite()
-            
-            self._accelerationDataSequence = MotionDataSequence.init(sensorType: .Acceleration)
-            self._gyroDataSequence = MotionDataSequence.init(sensorType: .Gyro)
         }
     }
 }
