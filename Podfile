@@ -18,5 +18,6 @@ end
 target 'Keyboard' do
     pod 'RealmSwift'
     pod 'SwiftDate'
+    pod 'MotionKit'
 end
 
