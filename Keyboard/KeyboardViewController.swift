@@ -8,6 +8,8 @@
 
 import UIKit
 import AudioToolbox
+import MotionKit
+
 import RealmSwift
 
 let metrics: [String:Double] = [
@@ -20,6 +22,8 @@ let kAutoCapitalization = "kAutoCapitalization"
 let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kSmallLowercase = "kSmallLowercase"
+
+let RealmQueueLabel = "edu.cornell.tech.keymochi.keyboard.realm"
 
 class KeyboardViewController: UIInputViewController {
     
@@ -170,12 +174,31 @@ class KeyboardViewController: UIInputViewController {
     */
     
     var realm: Realm!
+    let motionKit = MotionKit()
+    
+    let motionUpdateInterval = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
         let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
         self.realm = try! Realm.init(path: realmPath!)
+        
+        motionKit.getAccelerationFromDeviceMotion(motionUpdateInterval) { (x, y, z) -> () in
+            DataManager.sharedInatance.saveMotionData((x, y, z), ofSensorType: .Acceleration, atTime: CACurrentMediaTime())
+        }
+        
+        motionKit.getGyroValues(motionUpdateInterval) { (x, y, z) -> () in
+            DataManager.sharedInatance.saveMotionData((x, y, z), ofSensorType: .Gyro, atTime: CACurrentMediaTime())
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("View will disappear")
+        motionKit.stopDeviceMotionUpdates()
+        motionKit.stopGyroUpdates()
+        DataManager.sharedInatance.dumpCurrentMotionSequences()
+        super.viewWillAppear(animated)
     }
     
     var constraintsAdded: Bool = false
@@ -370,7 +393,6 @@ class KeyboardViewController: UIInputViewController {
         
         realm.beginWrite()
         let keyEvent = SymbolKeyEvent()
-        keyEvent.key = sender.text
         keyEvent.downTime = CACurrentMediaTime()
         self.lastKeyEvent = keyEvent
         try! realm.commitWrite()
@@ -382,11 +404,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func hidePopupDelay(sender: KeyboardKey) {
-        
-        realm.beginWrite()
-        lastKeyEvent?.upTime = CACurrentMediaTime()
-        realm.add(lastKeyEvent!)
-        try! realm.commitWrite()
         
         self.popupDelayTimer?.invalidate()
         
@@ -864,7 +881,13 @@ class KeyboardViewController: UIInputViewController {
     class var globalColors: GlobalColors.Type { get { return GlobalColors.self }}
     
     func keyPressed(key: Key) {
-        self.textDocumentProxy.insertText(key.outputForCase(self.shiftState.uppercase()))
+        let keyText = key.outputForCase(self.shiftState.uppercase())
+        realm.beginWrite()
+        lastKeyEvent?.upTime = CACurrentMediaTime()
+        (lastKeyEvent as! SymbolKeyEvent).key = keyText
+        realm.add(lastKeyEvent!)
+        try! realm.commitWrite()
+        self.textDocumentProxy.insertText(keyText)
     }
     
     // a banner that sits in the empty space on top of the keyboard
