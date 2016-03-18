@@ -40,6 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return $0.downTime > $1.downTime
         }
         self.eventHistoryTableView.reloadData()
+        
+        let dataChunks = Array(realm.objects(DataChunk))
+        for dataChunk in dataChunks {
+            print(dataChunk)
+        }
     }
     
     @IBAction func removeAllData(sender: AnyObject) {
