@@ -9,13 +9,27 @@
 import Foundation
 import RealmSwift
 
-enum KeyType {
+enum KeyType: CustomStringConvertible, CustomDebugStringConvertible {
     case Symbol, Backspace
+    
+    var description: String {
+        switch (self) {
+        case .Symbol: return "Symbol"
+        case .Backspace: return "Backspace"
+        }
+    }
+    
+    var debugDescription: String {
+        return description
+    }
 }
 
-class KeyEvent: Object {
-    dynamic var downTime: Double = 0.0
-    dynamic var upTime: Double = 0.0
+class SymbolKeyEventSequence: Object {
+    let keyEvents = List<SymbolKeyEvent>()
+}
+
+class BackspaceKeyEventSequence: Object {
+    let keyEvents = List<BackspaceKeyEvent>()
 }
 
 class SymbolKeyEvent: KeyEvent {
@@ -24,4 +38,9 @@ class SymbolKeyEvent: KeyEvent {
 
 class BackspaceKeyEvent: KeyEvent {
     dynamic var numberOfDeletions: Int = 0
+}
+
+class KeyEvent: Object {
+    dynamic var downTime: Double = 0.0
+    dynamic var upTime: Double = 0.0
 }

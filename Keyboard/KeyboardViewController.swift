@@ -10,8 +10,6 @@ import UIKit
 import AudioToolbox
 import MotionKit
 
-import RealmSwift
-
 let metrics: [String:Double] = [
     "topBanner": 30
 ]
@@ -22,8 +20,6 @@ let kAutoCapitalization = "kAutoCapitalization"
 let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kSmallLowercase = "kSmallLowercase"
-
-let RealmQueueLabel = "edu.cornell.tech.keymochi.keyboard.realm"
 
 class KeyboardViewController: UIInputViewController {
     
@@ -173,23 +169,29 @@ class KeyboardViewController: UIInputViewController {
     (even though it should really not be changing).
     */
     
-    var realm: Realm!
     let motionKit = MotionKit()
     
     let motionUpdateInterval = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
-        let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
-        self.realm = try! Realm.init(path: realmPath!)
         
         motionKit.getAccelerationFromDeviceMotion(motionUpdateInterval) { (x, y, z) -> () in
-            DataManager.sharedInatance.saveMotionData((x, y, z), ofSensorType: .Acceleration, atTime: CACurrentMediaTime())
+            let dataPoint = MotionDataPoint()
+            dataPoint.x = x
+            dataPoint.y = y
+            dataPoint.z = z
+            dataPoint.time = CACurrentMediaTime()
+            DataManager.sharedInatance.addMotionDataPoint(dataPoint, ofSensorType: .Acceleration)
         }
         
         motionKit.getGyroValues(motionUpdateInterval) { (x, y, z) -> () in
-            DataManager.sharedInatance.saveMotionData((x, y, z), ofSensorType: .Gyro, atTime: CACurrentMediaTime())
+            let dataPoint = MotionDataPoint()
+            dataPoint.x = x
+            dataPoint.y = y
+            dataPoint.z = z
+            dataPoint.time = CACurrentMediaTime()
+            DataManager.sharedInatance.addMotionDataPoint(dataPoint, ofSensorType: .Gyro)
         }
     }
     
@@ -197,7 +199,7 @@ class KeyboardViewController: UIInputViewController {
         print("View will disappear")
         motionKit.stopDeviceMotionUpdates()
         motionKit.stopGyroUpdates()
-        DataManager.sharedInatance.dumpCurrentMotionSequences()
+        DataManager.sharedInatance.dumpCurrentData()
         super.viewWillAppear(animated)
     }
     
@@ -391,11 +393,9 @@ class KeyboardViewController: UIInputViewController {
     
     func showPopup(sender: KeyboardKey) {
         
-        realm.beginWrite()
         let keyEvent = SymbolKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         self.lastKeyEvent = keyEvent
-        try! realm.commitWrite()
         
         if sender == self.keyWithDelayedPopup {
             self.popupDelayTimer?.invalidate()
@@ -572,11 +572,9 @@ class KeyboardViewController: UIInputViewController {
         
         numberOfDeletions = 0
         
-        realm.beginWrite()
         let keyEvent = BackspaceKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         self.lastKeyEvent = keyEvent
-        try! realm.commitWrite()
         
         self.deleteBackwordIfPossible()
         self.setCapsIfNeeded()
@@ -586,11 +584,9 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func backspaceUp(sender: KeyboardKey) {
-        realm.beginWrite()
         lastKeyEvent?.upTime = CACurrentMediaTime()
         (lastKeyEvent as! BackspaceKeyEvent).numberOfDeletions = numberOfDeletions
-        realm.add(lastKeyEvent!)
-        try! realm.commitWrite()
+        DataManager.sharedInatance.addKeyEvent(lastKeyEvent!, ofKeyType: .Backspace)
         
         print("backspaceUp")
         self.cancelBackspaceTimers()
@@ -882,11 +878,10 @@ class KeyboardViewController: UIInputViewController {
     
     func keyPressed(key: Key) {
         let keyText = key.outputForCase(self.shiftState.uppercase())
-        realm.beginWrite()
         lastKeyEvent?.upTime = CACurrentMediaTime()
         (lastKeyEvent as! SymbolKeyEvent).key = keyText
-        realm.add(lastKeyEvent!)
-        try! realm.commitWrite()
+        DataManager.sharedInatance.addKeyEvent(lastKeyEvent!, ofKeyType: .Symbol)
+        
         self.textDocumentProxy.insertText(keyText)
     }
     
