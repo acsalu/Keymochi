@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
+        
+        let keysDictionary = NSDictionary.init(contentsOfFile: NSBundle.mainBundle().pathForResource("keys", ofType: "plist")!)
+        let applicationId = keysDictionary!["parseApplicationId"] as! String
+        
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { configuration in
+                configuration.applicationId = applicationId
+            })
+        )
+            
         return true
     }
 
