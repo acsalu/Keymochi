@@ -4,6 +4,7 @@ use_frameworks!
 target 'Keymochi' do
     pod 'RealmSwift'
     pod 'SwiftDate'
+    pod 'Parse'
     pod 'Fabric'
     pod 'Crashlytics'
 end
