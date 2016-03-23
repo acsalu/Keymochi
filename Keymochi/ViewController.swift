@@ -13,7 +13,7 @@ import SwiftDate
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var realm: Realm!
-    var keyEvents = [KeyEvent]()
+    var dataChunks = [DataChunk]()
     @IBOutlet weak var eventHistoryTableView: UITableView!
     
     override func viewDidLoad() {
@@ -31,20 +31,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func reloadData() {
-        let symbolKeyEvents = Array(realm.objects((SymbolKeyEvent)))
-        let backspaceKeyEvents = Array(realm.objects(BackspaceKeyEvent))
-        keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
         
-        // Reverse chronological order
-        keyEvents.sortInPlace {
-            return $0.downTime > $1.downTime
-        }
+        self.dataChunks = Array(realm.objects(DataChunk))
         self.eventHistoryTableView.reloadData()
-        
-        let dataChunks = Array(realm.objects(DataChunk))
-        for dataChunk in dataChunks {
-            print(dataChunk)
-        }
     }
     
     @IBAction func removeAllData(sender: AnyObject) {
@@ -74,29 +63,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keyEvents.count
+        return dataChunks.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let keyEvent = keyEvents[indexPath.row]
+        let dataChunk = dataChunks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyEventCell", forIndexPath: indexPath)
         
-        let keyLabel      = cell.viewWithTag(100) as! UILabel
+        let emotionLabel      = cell.viewWithTag(100) as! UILabel
         let durationLabel = cell.viewWithTag(101) as! UILabel
-        let downTimeLabel = cell.viewWithTag(102) as! UILabel
-        let upTimeLabel   = cell.viewWithTag(103) as! UILabel
+        let keyEventCountLabel = cell.viewWithTag(102) as! UILabel
+        let motionDataPointCountLabel   = cell.viewWithTag(103) as! UILabel
         
-        if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
-            keyLabel.text = symbolKeyEvent.key!
-        } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
-            keyLabel.text = String(format: "← (%d)", backspaceKeyEvent.numberOfDeletions)
-        }
-        
-        downTimeLabel.text = "\(keyEvent.downTime)"
-        upTimeLabel.text = "\(keyEvent.upTime)"
-        durationLabel.text = String(format: "%.1f ms", (keyEvent.upTime - keyEvent.downTime) * 1000)
+        emotionLabel.text = dataChunk.emotion.description
+        durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime! - dataChunk.startTime!) * 1000)
+        keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents.count)
+        motionDataPointCountLabel.text =
+            String(format: "%d motion data points",
+                   dataChunk.accelerationDataPoints.count + dataChunk.gyroDataPoints.count)
         
         return cell
     }
