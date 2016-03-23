@@ -1,4 +1,6 @@
 # Keymochi
+[![GitHub version](https://badge.fury.io/gh/Keymochi%2FKeymochi.svg)](https://badge.fury.io/gh/Keymochi%2FKeymochi)
+
 iOS keyboard that measures your typing pattern.
 
 ### Development
