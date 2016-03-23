@@ -195,12 +195,11 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        print("View will disappear")
+    override func viewDidDisappear(animated: Bool) {
         motionKit.stopDeviceMotionUpdates()
         motionKit.stopGyroUpdates()
         DataManager.sharedInatance.dumpCurrentData()
-        super.viewWillAppear(animated)
+        super.viewDidDisappear(animated)
     }
     
     var constraintsAdded: Bool = false
