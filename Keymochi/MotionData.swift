@@ -10,40 +10,40 @@ import Foundation
 import RealmSwift
 
 enum SensorType: CustomStringConvertible, CustomDebugStringConvertible {
-    case Acceleration, Gyro
-    
-    var description: String {
-        switch (self) {
-        case .Acceleration: return "Acceleration"
-        case .Gyro: return "Gyro"
-        }
+  case Acceleration, Gyro
+  
+  var description: String {
+    switch (self) {
+    case .Acceleration: return "Acceleration"
+    case .Gyro: return "Gyro"
     }
-    
-    var debugDescription: String {
-        return description
-    }
+  }
+  
+  var debugDescription: String {
+    return description
+  }
 }
 
 class MotionDataCollection: Object {
-    dynamic var accelerationDataSequence: MotionDataSequence?
-    dynamic var gyroDataSequence: MotionDataSequence?
+  dynamic var accelerationDataSequence: MotionDataSequence?
+  dynamic var gyroDataSequence: MotionDataSequence?
 }
 
 class MotionDataSequence: Object {
-    
-    convenience required init(sensorType: SensorType) {
-        self.init()
-        self.sensorType = sensorType
-    }
-    
-    var sensorType: SensorType = .Acceleration
-    let motionDataPoints = List<MotionDataPoint>()
+  
+  convenience required init(sensorType: SensorType) {
+    self.init()
+    self.sensorType = sensorType
+  }
+  
+  var sensorType: SensorType = .Acceleration
+  let motionDataPoints = List<MotionDataPoint>()
 }
 
 class MotionDataPoint: Object {
-    dynamic var x: Double = 0.0
-    dynamic var y: Double = 0.0
-    dynamic var z: Double = 0.0
-    dynamic var time: Double = 0.0
+  dynamic var x: Double = 0.0
+  dynamic var y: Double = 0.0
+  dynamic var z: Double = 0.0
+  dynamic var time: Double = 0.0
 }
 
