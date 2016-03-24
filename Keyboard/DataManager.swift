@@ -29,8 +29,8 @@ class DataManager {
   func addKeyEvent(event: KeyEvent, ofKeyType keyType: KeyType) {
     
     switch keyType {
-    case .Symbol: self._symbolKeyEventSequence.keyEvents.append(event as! SymbolKeyEvent)
-    case .Backspace: self._backspaceKeyEventSequence.keyEvents.append(event as! BackspaceKeyEvent)
+    case .Symbol: _symbolKeyEventSequence.keyEvents.append(event as! SymbolKeyEvent)
+    case .Backspace: _backspaceKeyEventSequence.keyEvents.append(event as! BackspaceKeyEvent)
     }
   }
   
@@ -48,7 +48,7 @@ class DataManager {
   
   func dumpCurrentData() {
     
-    if self._symbolKeyEventSequence.keyEvents.count > 0 {
+    if _symbolKeyEventSequence.keyEvents.count > 0 {
       
       dispatch_async(realmQueue) {
         print("Dump current data in realm queue")

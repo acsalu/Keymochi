@@ -23,8 +23,6 @@ class DataChunk: Object, CustomStringConvertible {
   }
   
   override var description: String {
-    get {
-      
       let symbolKeyEventCount =
         (symbolKeyEventSequence != nil) ? symbolKeyEventSequence!.keyEvents.count : -1
       let accelerationDataPointCount =
@@ -34,54 +32,44 @@ class DataChunk: Object, CustomStringConvertible {
       
       return String(format: "[DataChunk]  %d symbols, %d acceleration dps, %d gyro dps",
                     symbolKeyEventCount, accelerationDataPointCount, gyroDataPointCount)
-    }
   }
   
   var startTime: Double? {
-    get {
-      guard let first = self.keyEvents.first else {
-        return nil
-      }
-      return first.downTime
+    guard let first = keyEvents.first else {
+      return nil
     }
+    return first.downTime
   }
   
   var endTime: Double? {
-    get {
-      guard let last = self.keyEvents.last else {
+    guard let last = keyEvents.last else {
         return nil
-      }
-      return last.upTime
     }
+    
+    return last.upTime
   }
   
   var keyEvents: [KeyEvent] {
-    get {
-      let symbolKeyEvents: [SymbolKeyEvent] =
-        (symbolKeyEventSequence != nil) ? Array(symbolKeyEventSequence!.keyEvents) : []
-      let backspaceKeyEvents: [BackspaceKeyEvent] =
-        (backspaceKeyEventSequence != nil) ? Array(backspaceKeyEventSequence!.keyEvents) : []
-      
-      var keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
-      
-      // Chronological order
-      keyEvents.sortInPlace {
-        return $0.downTime < $1.downTime
-      }
-      
-      return keyEvents
+    let symbolKeyEvents: [SymbolKeyEvent] =
+      (symbolKeyEventSequence != nil) ? Array(symbolKeyEventSequence!.keyEvents) : []
+    let backspaceKeyEvents: [BackspaceKeyEvent] =
+      (backspaceKeyEventSequence != nil) ? Array(backspaceKeyEventSequence!.keyEvents) : []
+    
+    var keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
+    
+    // Chronological order
+    keyEvents.sortInPlace {
+      return $0.downTime < $1.downTime
     }
+    
+    return keyEvents
   }
   
   var accelerationDataPoints: [MotionDataPoint] {
-    get {
-      return (self.accelerationDataSequence?.motionDataPoints.map { $0 })!
-    }
+    return (accelerationDataSequence?.motionDataPoints.map { $0 })!
   }
   
   var gyroDataPoints: [MotionDataPoint] {
-    get {
-      return (self.gyroDataSequence?.motionDataPoints.map { $0 })!
-    }
+    return (gyroDataSequence?.motionDataPoints.map { $0 })!
   }
 }

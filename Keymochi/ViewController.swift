@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
   
   var realm: Realm!
   var dataChunks = [DataChunk]()
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Do any additional setup after loading the view, typically from a nib.
     let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
     let realmPath = directoryURL?.URLByAppendingPathComponent("db.realm").path
-    self.realm = try! Realm.init(path: realmPath!)
+    realm = try! Realm.init(path: realmPath!)
     
     reloadData()
   }
@@ -31,8 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   
   func reloadData() {
     
-    self.dataChunks = Array(realm.objects(DataChunk))
-    self.eventHistoryTableView.reloadData()
+    dataChunks = Array(realm.objects(DataChunk))
+    eventHistoryTableView.reloadData()
   }
   
   @IBAction func removeAllData(sender: AnyObject) {
@@ -52,11 +52,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     alertController.addAction(actionCancel)
     alertController.addAction(actionDelete)
     
-    self.presentViewController(alertController, animated: true, completion: nil)
+    presentViewController(alertController, animated: true, completion: nil)
     
   }
-  
-  // MARK: - UITableViewDataSource methods
+}
+
+
+// MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -87,3 +91,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   }
 }
 
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+  
+}
