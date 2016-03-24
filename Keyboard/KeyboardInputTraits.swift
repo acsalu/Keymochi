@@ -20,22 +20,22 @@ import UIKit
 var traitPollingTimer: CADisplayLink?
 
 extension KeyboardViewController {
+  
+  func addInputTraitsObservers() {
+    // note that KVO doesn't work on textDocumentProxy, so we have to poll
+    traitPollingTimer?.invalidate()
+    traitPollingTimer = UIScreen.mainScreen().displayLinkWithTarget(self, selector: Selector("pollTraits"))
+    traitPollingTimer?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+  }
+  
+  func pollTraits() {
+    let proxy = self.textDocumentProxy
     
-    func addInputTraitsObservers() {
-        // note that KVO doesn't work on textDocumentProxy, so we have to poll
-        traitPollingTimer?.invalidate()
-        traitPollingTimer = UIScreen.mainScreen().displayLinkWithTarget(self, selector: Selector("pollTraits"))
-        traitPollingTimer?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+    if let layout = self.layout {
+      let appearanceIsDark = (proxy.keyboardAppearance == UIKeyboardAppearance.Dark)
+      if appearanceIsDark != layout.darkMode {
+        self.updateAppearances(appearanceIsDark)
+      }
     }
-    
-    func pollTraits() {
-        let proxy = self.textDocumentProxy
-        
-        if let layout = self.layout {
-            let appearanceIsDark = (proxy.keyboardAppearance == UIKeyboardAppearance.Dark)
-            if appearanceIsDark != layout.darkMode {
-                self.updateAppearances(appearanceIsDark)
-            }
-        }
-    }
+  }
 }
