@@ -8,5 +8,8 @@ iOS keyboard that measures your typing pattern.
 2. Install pods: ```pod install```
 3. Use ```Keymochi.xcworkspace``` from now on.
 
+### Style Guide
+Please refer to [raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).
+
 ### Attribution
 - [tasty-imitation-keyboard](https://github.com/archagon/tasty-imitation-keyboard)
