@@ -45,5 +45,9 @@ class MotionDataPoint: Object {
   dynamic var y: Double = 0.0
   dynamic var z: Double = 0.0
   dynamic var time: Double = 0.0
+  
+  var magnitude: Double {
+    return sqrt(x * x + y * y + z * z)
+  }
 }
 

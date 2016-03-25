@@ -30,9 +30,24 @@ class ViewController: UIViewController {
   }
   
   func reloadData() {
-    
     dataChunks = Array(realm.objects(DataChunk))
     eventHistoryTableView.reloadData()
+    
+    for (index, dataChunk) in dataChunks.enumerate() {
+      print("DataChunk #\(index)")
+      print("   \(dataChunk.keyEvents?.count) Key Events, " +
+        "\(dataChunk.totalNumberOfDeletions) Deletions, " +
+        "\(dataChunk.accelerationDataPoints?.count) Acceleration Data Points, " +
+        "\(dataChunk.gyroDataPoints?.count) Gyro Data Points, ")
+      print("   Symbol Counts: \(dataChunk.symbolCounts)")
+      print("   Inter-Tap Distance: mean=\(dataChunk.interTapDistances?.mean), " +
+        "std=\(dataChunk.interTapDistances?.standardDeveation)")
+      print("   Acceleration Magnitude: mean=\(dataChunk.accelerationMagnitudes?.mean), " +
+        "std=\(dataChunk.accelerationMagnitudes?.standardDeveation)")
+      print("   Gyro Magnitude: mean=\(dataChunk.gyroMagnitudes?.mean), " +
+        "std=\(dataChunk.gyroMagnitudes?.standardDeveation)")
+
+    }
   }
   
   @IBAction func removeAllData(sender: AnyObject) {
@@ -82,10 +97,10 @@ extension ViewController: UITableViewDataSource {
     
     emotionLabel.text = dataChunk.emotion.description
     durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime! - dataChunk.startTime!) * 1000)
-    keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents.count)
-    motionDataPointCountLabel.text =
-      String(format: "%d motion data points",
-             dataChunk.accelerationDataPoints.count + dataChunk.gyroDataPoints.count)
+    keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents?.count ?? -1)
+//    motionDataPointCountLabel.text =
+//      String(format: "%d motion data points",
+//             dataChunk.accelerationDataPoints?.count + dataChunk.gyroDataPoints?.count ?? -1)
     
     return cell
   }
