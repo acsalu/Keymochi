@@ -43,4 +43,8 @@ class BackspaceKeyEvent: KeyEvent {
 class KeyEvent: Object {
   dynamic var downTime: Double = 0.0
   dynamic var upTime: Double = 0.0
+  
+  var duration: Double {
+    return upTime - downTime
+  }
 }

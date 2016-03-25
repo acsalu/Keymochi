@@ -35,41 +35,88 @@ class DataChunk: Object, CustomStringConvertible {
   }
   
   var startTime: Double? {
-    guard let first = keyEvents.first else {
-      return nil
-    }
-    return first.downTime
+    return keyEvents?.first?.downTime
   }
   
   var endTime: Double? {
-    guard let last = keyEvents.last else {
-        return nil
-    }
-    
-    return last.upTime
+    return keyEvents?.last?.upTime
   }
   
-  var keyEvents: [KeyEvent] {
+  var keyEvents: [KeyEvent]? {
+    guard symbolKeyEventSequence != nil && backspaceKeyEventSequence != nil else {
+      return nil
+    }
+    
     let symbolKeyEvents: [SymbolKeyEvent] =
       (symbolKeyEventSequence != nil) ? Array(symbolKeyEventSequence!.keyEvents) : []
     let backspaceKeyEvents: [BackspaceKeyEvent] =
       (backspaceKeyEventSequence != nil) ? Array(backspaceKeyEventSequence!.keyEvents) : []
-    
     var keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
     
     // Chronological order
-    keyEvents.sortInPlace {
-      return $0.downTime < $1.downTime
-    }
+    keyEvents.sortInPlace { $0.downTime < $1.downTime }
     
     return keyEvents
   }
   
-  var accelerationDataPoints: [MotionDataPoint] {
-    return (accelerationDataSequence?.motionDataPoints.map { $0 })!
+  var accelerationDataPoints: [MotionDataPoint]? {
+    return accelerationDataSequence?.motionDataPoints.map { $0 }
   }
   
-  var gyroDataPoints: [MotionDataPoint] {
-    return (gyroDataSequence?.motionDataPoints.map { $0 })!
+  var gyroDataPoints: [MotionDataPoint]? {
+    return gyroDataSequence?.motionDataPoints.map { $0 }
+  }
+  
+  // MARK: - Stats
+  var symbolCounts: [String: Int]? {
+    guard let symbols = symbolKeyEventSequence?.keyEvents.map({ $0.key }) else {
+      return nil
+    }
+    
+    var symbolCounts = [String: Int]()
+    for symbol in symbols {
+      if let symbol = symbol {
+        if symbolCounts[symbol] == nil {
+          symbolCounts[symbol] = 1
+        } else {
+          symbolCounts[symbol]! += 1
+        }
+      }
+    }
+    return symbolCounts
+  }
+  
+  var totalNumberOfDeletions: Int? {
+    return backspaceKeyEventSequence?.keyEvents.map { $0.numberOfDeletions }
+      .reduce(0, combine: +)
+  }
+  
+  var interTapDistances: [Double]? {
+    guard let midTimes = (keyEvents?.map { ($0.downTime + $0.upTime) / 2 }) else {
+      return nil
+    }
+    
+    guard midTimes.count > 1 else {
+      return []
+    }
+    
+    var interTapDistances = [Double]()
+    for index in 0..<midTimes.count - 1 {
+      interTapDistances.append(midTimes[index + 1] - midTimes[index])
+    }
+    
+    return interTapDistances
+  }
+  
+  var tapDurations: [Double]? {
+    return keyEvents?.map { $0.duration }
+  }
+  
+  var accelerationMagnitudes: [Double]? {
+    return accelerationDataPoints?.map { $0.magnitude }
+  }
+  
+  var gyroMagnitudes: [Double]? {
+    return gyroDataPoints?.map { $0.magnitude }
   }
 }
