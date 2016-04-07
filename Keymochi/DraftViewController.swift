@@ -16,8 +16,8 @@ class DraftViewController: UIViewController {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    let tapRecognizer = UITapGestureRecognizer.init(target: self, action: "dismissKeyboardOnTap:")
-    let swipeDownRecognizer = UISwipeGestureRecognizer.init(target: self, action: "dismissKeyboardOnTap:")
+    let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(DraftViewController.dismissKeyboardOnTap(_:)))
+    let swipeDownRecognizer = UISwipeGestureRecognizer.init(target: self, action: #selector(DraftViewController.dismissKeyboardOnTap(_:)))
     swipeDownRecognizer.direction = .Down
     self.view.addGestureRecognizer(tapRecognizer)
     self.view.addGestureRecognizer(swipeDownRecognizer)

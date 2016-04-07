@@ -23,11 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let keysDictionary = NSDictionary.init(contentsOfFile: NSBundle.mainBundle().pathForResource("keys", ofType: "plist")!)
     let applicationId = keysDictionary!["parseApplicationId"] as! String
+    let clientKey = keysDictionary!["parseClientKey"] as! String
     
     Parse.initializeWithConfiguration(
-      ParseClientConfiguration(block: { configuration in
-        configuration.applicationId = applicationId
-      })
+      ParseClientConfiguration {
+        $0.applicationId = applicationId
+        $0.clientKey = clientKey
+      }
     )
     
     return true
