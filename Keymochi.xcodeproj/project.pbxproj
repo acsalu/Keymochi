@@ -50,6 +50,7 @@
 		90D96C9B1C877EC6004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
+		90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */; };
 		BB9124C5BF7AA6B45A644BD1 /* Pods_Keymochi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DC029B93664C2003AAC0B3 /* Pods_Keymochi.framework */; };
 		E452B7567BDECF938BCD86BD /* Pods_KeymochiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB62DBB4E8B3F3F2FCAA5986 /* Pods_KeymochiUITests.framework */; };
 		F51C021687641F3BB84709A9 /* Pods_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69640B8AC77633321D61A2CA /* Pods_Keyboard.framework */; };
@@ -153,6 +154,7 @@
 		90D53AD11C834B4D002D1B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D96C9A1C877EC6004508E1 /* KeyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEvent.swift; sourceTree = "<group>"; };
 		90DC28CB1C9B93B30061455F /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
+		90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunkViewController.swift; sourceTree = "<group>"; };
 		B58D6068F70EA595A7B18FF5 /* Pods-KeymochiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiUITests/Pods-KeymochiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B945FA4B3668378177C57F70 /* Pods-Keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		BD54D2243168198CFFCCB0A7 /* Pods-Keymochi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keymochi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Keymochi/Pods-Keymochi.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
 				901DF48B1C8928400030E17C /* DraftViewController.swift */,
+				90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 			files = (
 				90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */,
 				90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */,
+				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,
 				90B139681C9A177F00C865F0 /* MotionData.swift in Sources */,
 				90D4E0691C9B9D6B00402191 /* Emotion.swift in Sources */,
 				901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */,

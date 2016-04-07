@@ -66,8 +66,10 @@ class DataChunk: Object, CustomStringConvertible {
   var gyroDataPoints: [MotionDataPoint]? {
     return gyroDataSequence?.motionDataPoints.map { $0 }
   }
-  
-  // MARK: - Stats
+}
+
+// MARK: - Stats
+extension DataChunk {
   var symbolCounts: [String: Int]? {
     guard let symbols = symbolKeyEventSequence?.keyEvents.map({ $0.key }) else {
       return nil

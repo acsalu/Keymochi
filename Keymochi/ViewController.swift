@@ -70,6 +70,15 @@ class ViewController: UIViewController {
     presentViewController(alertController, animated: true, completion: nil)
     
   }
+  
+  // MARK: - Navigation
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "DataChunkDetails" {
+      let vc: DataChunkViewController = segue.destinationViewController as! DataChunkViewController
+      vc.dataChunk = sender! as! DataChunk
+    }
+  }
+  
 }
 
 
@@ -98,9 +107,10 @@ extension ViewController: UITableViewDataSource {
     emotionLabel.text = dataChunk.emotion.description
     durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime! - dataChunk.startTime!) * 1000)
     keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents?.count ?? -1)
-//    motionDataPointCountLabel.text =
-//      String(format: "%d motion data points",
-//             dataChunk.accelerationDataPoints?.count + dataChunk.gyroDataPoints?.count ?? -1)
+    
+    let motionDataPointCount =
+      ((dataChunk.accelerationDataPoints?.count) ?? 0) + ((dataChunk.gyroDataPoints?.count) ?? 0)
+    motionDataPointCountLabel.text = "\(motionDataPointCount) motion data points"
     
     return cell
   }
@@ -109,5 +119,7 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    [self.performSegueWithIdentifier("DataChunkDetails", sender: dataChunks[indexPath.row])]
+  }
 }

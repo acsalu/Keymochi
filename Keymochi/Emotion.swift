@@ -9,7 +9,11 @@
 import Foundation
 
 enum Emotion: CustomStringConvertible {
-  case Neutral, Happy, Sad
+  case Neutral
+  case Happy
+  case Sad
+  
+  static let all: [Emotion] = [.Happy, .Neutral, .Sad]
   
   var description: String {
     get {
