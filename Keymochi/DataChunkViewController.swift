@@ -18,7 +18,8 @@ class DataChunkViewController: UIViewController {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    emotionSegmentedControl = UISegmentedControl.init(frame: CGRect(x: 15, y: 100, width: 345, height: 30))
+    let segmentedControlWidth = UIScreen.mainScreen().bounds.width - 30
+    emotionSegmentedControl = UISegmentedControl.init(frame: CGRect(x: 15, y: 100, width: segmentedControlWidth, height: 30))
     for (index, emotion) in Emotion.all.enumerate() {
       emotionSegmentedControl
         .insertSegmentWithTitle(emotion.description, atIndex: index, animated: false)
@@ -38,8 +39,13 @@ class DataChunkViewController: UIViewController {
   }
   
   @IBAction func uploadDataChunk(sender: AnyObject) {
-    let object = PFObject(className: "DataChunkTest")
+    let object = PFObject(className: "DataChunk")
     let emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
+    
+    if let userId = NSUserDefaults.standardUserDefaults().objectForKey("userid_preference") {
+      object.setObject(userId, forKey: "userId")
+    }
+    
     object.setObject(emotion.description, forKey: "emotion")
     object.setObject(dataChunk.symbolCounts!, forKey: "symbolKeyCounts")
     object.setObject(dataChunk.totalNumberOfDeletions!, forKey: "totoalNumberOfDeletions")
@@ -47,12 +53,14 @@ class DataChunkViewController: UIViewController {
     object.setObject(dataChunk.tapDurations!, forKey: "tapDurations")
     object.setObject(dataChunk.accelerationMagnitudes!, forKey: "accelerationMagnitudes")
     object.setObject(dataChunk.gyroMagnitudes!, forKey: "gyroMagnitudes")
+    
     object.saveInBackgroundWithBlock { (success, error) in
       guard error == nil else {
         return
       }
-      
-      print("success")
+      let alert = UIAlertController.init(title: "DataChunk", message: "Successfully uploaded!", preferredStyle: .Alert)
+      alert.addAction(UIAlertAction.init(title: "Done", style: .Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
     }
   }
   
