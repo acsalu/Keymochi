@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tdR-jh-jli" id="tqD-qV-6Zy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzH-CJ-GB4">
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123.5" y="411.5"/>
+            <point key="canvasLocation" x="1819.5" y="410.5"/>
         </scene>
         <!--DataChunk-->
         <scene sceneID="QyP-xJ-9br">
@@ -114,20 +114,7 @@
                     <view key="view" contentMode="scaleToFill" id="9ce-Er-Z6c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO5-im-p5h">
-                                <rect key="frame" x="122" y="557" width="130" height="30"/>
-                                <state key="normal" title="Upload DataChunk"/>
-                                <connections>
-                                    <action selector="uploadDataChunk:" destination="zcE-dc-WI0" eventType="touchUpInside" id="gNh-Pp-LRo"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Llc-Vy-ny0" firstAttribute="top" secondItem="fO5-im-p5h" secondAttribute="bottom" constant="80" id="bKg-hy-eWd"/>
-                            <constraint firstItem="fO5-im-p5h" firstAttribute="centerX" secondItem="9ce-Er-Z6c" secondAttribute="centerX" id="yed-xm-jbW"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="DataChunk" id="OSo-3N-kba">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="I3N-pg-aUy">
@@ -140,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUe-mA-vj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.5" y="411.5"/>
+            <point key="canvasLocation" x="2311.5" y="410.5"/>
         </scene>
         <!--Draft-->
         <scene sceneID="82S-xX-ZYN">
@@ -191,6 +178,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="G32-ay-icf" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jQz-E2-bw9">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
