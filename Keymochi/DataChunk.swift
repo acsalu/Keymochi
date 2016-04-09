@@ -68,6 +68,15 @@ class DataChunk: Object, CustomStringConvertible {
   }
 }
 
+extension Array {
+  var pair: [(Element, Element)]? {
+    guard count > 1 else {
+      return nil
+    }
+    return Array<(Element, Element)>(Zip2Sequence(self[0..<count - 1], self[1..<count]))
+  }
+}
+
 // MARK: - Stats
 extension DataChunk {
   var symbolCounts: [String: Int]? {
@@ -89,25 +98,18 @@ extension DataChunk {
   }
   
   var totalNumberOfDeletions: Int? {
-    return backspaceKeyEventSequence?.keyEvents.map { $0.numberOfDeletions }
+    return backspaceKeyEventSequence?.keyEvents
+      .map { $0.numberOfDeletions }
       .reduce(0, combine: +)
   }
   
   var interTapDistances: [Double]? {
-    guard let midTimes = (keyEvents?.map { ($0.downTime + $0.upTime) / 2 }) else {
+    guard let keyEvents = keyEvents else {
       return nil
     }
     
-    guard midTimes.count > 1 else {
-      return []
-    }
-    
-    var interTapDistances = [Double]()
-    for index in 0..<midTimes.count - 1 {
-      interTapDistances.append(midTimes[index + 1] - midTimes[index])
-    }
-    
-    return interTapDistances
+    return keyEvents.pair?
+      .map { return $0.1.downTime - $0.0.upTime }
   }
   
   var tapDurations: [Double]? {
