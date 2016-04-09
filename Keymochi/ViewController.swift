@@ -32,22 +32,7 @@ class ViewController: UIViewController {
   func reloadData() {
     dataChunks = Array(realm.objects(DataChunk))
     eventHistoryTableView.reloadData()
-    
-    for (index, dataChunk) in dataChunks.enumerate() {
-      print("DataChunk #\(index)")
-      print("   \(dataChunk.keyEvents?.count) Key Events, " +
-        "\(dataChunk.totalNumberOfDeletions) Deletions, " +
-        "\(dataChunk.accelerationDataPoints?.count) Acceleration Data Points, " +
-        "\(dataChunk.gyroDataPoints?.count) Gyro Data Points, ")
-      print("   Symbol Counts: \(dataChunk.symbolCounts)")
-      print("   Inter-Tap Distance: mean=\(dataChunk.interTapDistances?.mean), " +
-        "std=\(dataChunk.interTapDistances?.standardDeveation)")
-      print("   Acceleration Magnitude: mean=\(dataChunk.accelerationMagnitudes?.mean), " +
-        "std=\(dataChunk.accelerationMagnitudes?.standardDeveation)")
-      print("   Gyro Magnitude: mean=\(dataChunk.gyroMagnitudes?.mean), " +
-        "std=\(dataChunk.gyroMagnitudes?.standardDeveation)")
-
-    }
+    title = "\(dataChunks.count) DataChunks"
   }
   
   @IBAction func removeAllData(sender: AnyObject) {
