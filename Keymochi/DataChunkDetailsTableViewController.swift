@@ -11,6 +11,7 @@ import UIKit
 class DataChunkDetailsTableViewController: UITableViewController {
   
   var data: [String]!
+  var timestamps: [String]?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,6 +39,10 @@ class DataChunkDetailsTableViewController: UITableViewController {
     
     if let textLabel = cell.textLabel {
       textLabel.text = data[indexPath.row]
+    }
+    
+    if let detailTextLabel = cell.detailTextLabel {
+      detailTextLabel.text = timestamps?[indexPath.row] ?? ""
     }
     
     return cell

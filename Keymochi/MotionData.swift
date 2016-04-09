@@ -51,7 +51,11 @@ class MotionDataPoint: Object {
   }
   
   override var description: String {
-    return String(format: "%.3f (%.2f, %.2f, %.2f)", magnitude, x, y, z)
+    return String(format: "%.3f (%.3f, %.3f, %.3f)", magnitude, x, y, z)
+  }
+  
+  var timestamp: String {
+    return String(format: "%.2f", time)
   }
 }
 

@@ -67,32 +67,29 @@ class DataChunkViewController: UITableViewController {
     }
     
     let vc = segue.destinationViewController as! DataChunkDetailsTableViewController
-    func bindData(data: [String], withTitle title: String) {
+    func bindData(data: [String], andTimestamps timeStamps: [String]?, withTitle title: String) {
       vc.data = data
+      vc.timestamps = timeStamps
       vc.title = "\(title) (\(data.count))"
     }
     
     switch identifier {
     case "ShowKey":
-      bindData(dataChunk.keyEvents?
-          .map { "\($0.upTime)" } ?? [],
-        withTitle: "Key")
-      
+      bindData(dataChunk.keyEvents?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.keyEvents?.map { $0.timestamp} ?? [],
+               withTitle: "Key")
     case "ShowITD":
-      bindData(dataChunk.interTapDistances?
-          .map(String.init) ?? [],
-        withTitle: "Inter-Tap Distance")
-      
+      bindData(dataChunk.interTapDistances?.map(String.init) ?? [],
+               andTimestamps: nil,
+               withTitle: "Inter-Tap Distance")
     case "ShowAcceleration":
-      bindData(dataChunk.accelerationDataPoints?
-          .map { $0.description } ?? [],
-        withTitle: "Acceleration")
-      
+      bindData(dataChunk.accelerationDataPoints?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.accelerationDataPoints?.map { $0.timestamp } ?? [],
+               withTitle: "Acceleration")
     case "ShowGyro":
-      bindData(dataChunk.gyroDataPoints?
-        .map { $0.description } ?? [],
+      bindData(dataChunk.gyroDataPoints?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.gyroDataPoints?.map { $0.timestamp } ?? [],
                withTitle: "Gyro")
-      
     default:
       break
     }
