@@ -14,6 +14,7 @@
 		90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90564CC51CA3A35700A16866 /* NumericOperations.swift */; };
 		9065D1991CA3045100F47855 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9065D1981CA3045100F47855 /* keys.plist */; };
 		906744221CB7FA9700DABC18 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906744211CB7FA9700DABC18 /* Settings.bundle */; };
+		90A6E8DF1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */; };
 		90B139681C9A177F00C865F0 /* MotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B139671C9A177F00C865F0 /* MotionData.swift */; };
 		90B139691C9A1AFE00C865F0 /* MotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B139671C9A177F00C865F0 /* MotionData.swift */; };
 		90B1396B1C9A3A9700C865F0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1396A1C9A3A9700C865F0 /* DataManager.swift */; };
@@ -109,6 +110,7 @@
 		9065D1981CA3045100F47855 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		906744211CB7FA9700DABC18 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		908CC48C14AF1EB88C3E3CD0 /* Pods-Keymochi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keymochi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Keymochi/Pods-Keymochi.debug.xcconfig"; sourceTree = "<group>"; };
+		90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunkDetailsTableViewController.swift; sourceTree = "<group>"; };
 		90B139671C9A177F00C865F0 /* MotionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionData.swift; sourceTree = "<group>"; };
 		90B1396A1C9A3A9700C865F0 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		90B7D0551C85248800BF87C0 /* Keymochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Keymochi.entitlements; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
 				901DF48B1C8928400030E17C /* DraftViewController.swift */,
 				90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */,
+				90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,
 				90B139681C9A177F00C865F0 /* MotionData.swift in Sources */,
 				90D4E0691C9B9D6B00402191 /* Emotion.swift in Sources */,
+				90A6E8DF1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift in Sources */,
 				901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */,
 				90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */,
 				90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */,

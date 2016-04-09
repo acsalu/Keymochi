@@ -34,10 +34,17 @@ class BackspaceKeyEventSequence: Object {
 
 class SymbolKeyEvent: KeyEvent {
   dynamic var key: String?
+  
+  override var description: String {
+    return key ?? ""
+  }
 }
 
 class BackspaceKeyEvent: KeyEvent {
   dynamic var numberOfDeletions: Int = 0
+  override var description: String {
+    return "← \(numberOfDeletions)"
+  }
 }
 
 class KeyEvent: Object {
@@ -45,6 +52,10 @@ class KeyEvent: Object {
   dynamic var upTime: Double = 0.0
   
   var duration: Double {
-    return upTime - downTime
+    return (upTime - downTime) * 1000
+  }
+  
+  var timestamp: String {
+    return String(format: "%.0f (%.2f - %.2f)", duration, downTime, upTime)
   }
 }

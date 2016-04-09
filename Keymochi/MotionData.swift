@@ -49,5 +49,13 @@ class MotionDataPoint: Object {
   var magnitude: Double {
     return sqrt(x * x + y * y + z * z)
   }
+  
+  override var description: String {
+    return String(format: "%.3f (%.3f, %.3f, %.3f)", magnitude, x, y, z)
+  }
+  
+  var timestamp: String {
+    return String(format: "%.2f", time)
+  }
 }
 

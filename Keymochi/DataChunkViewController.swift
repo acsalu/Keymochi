@@ -9,33 +9,26 @@
 import UIKit
 import Parse
 
-class DataChunkViewController: UIViewController {
+class DataChunkViewController: UITableViewController {
   
   var dataChunk: DataChunk!
   var emotionSegmentedControl: UISegmentedControl!
+  
+  @IBOutlet weak var emotionContainer: UIView!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
     let segmentedControlWidth = UIScreen.mainScreen().bounds.width - 30
-    emotionSegmentedControl = UISegmentedControl.init(frame: CGRect(x: 15, y: 100, width: segmentedControlWidth, height: 30))
+    emotionSegmentedControl = UISegmentedControl.init(frame: CGRect(x: 15, y: 7, width: segmentedControlWidth, height: 30))
     for (index, emotion) in Emotion.all.enumerate() {
       emotionSegmentedControl
         .insertSegmentWithTitle(emotion.description, atIndex: index, animated: false)
     }
     
-    view.addSubview(emotionSegmentedControl)
-  }
-  
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.setNavigationBarHidden(false, animated: true)
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+    emotionContainer.addSubview(emotionSegmentedControl)
   }
   
   @IBAction func uploadDataChunk(sender: AnyObject) {
@@ -64,14 +57,46 @@ class DataChunkViewController: UIViewController {
     }
   }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  
+  // MARK: - Navigation
+  
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    guard let identifier = segue.identifier else {
+      return
+    }
+    
+    let vc = segue.destinationViewController as! DataChunkDetailsTableViewController
+    func bindData(data: [String], andTimestamps timeStamps: [String]?, withTitle title: String) {
+      vc.data = data
+      vc.timestamps = timeStamps
+      vc.title = "\(title) (\(data.count))"
+    }
+    
+    switch identifier {
+    case "ShowKey":
+      bindData(dataChunk.keyEvents?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.keyEvents?.map { $0.timestamp} ?? [],
+               withTitle: "Key")
+    case "ShowITD":
+      bindData(dataChunk.interTapDistances?.map(String.init) ?? [],
+               andTimestamps: nil,
+               withTitle: "Inter-Tap Distance")
+    case "ShowAcceleration":
+      bindData(dataChunk.accelerationDataPoints?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.accelerationDataPoints?.map { $0.timestamp } ?? [],
+               withTitle: "Acceleration")
+    case "ShowGyro":
+      bindData(dataChunk.gyroDataPoints?.map { $0.description } ?? [],
+               andTimestamps: dataChunk.gyroDataPoints?.map { $0.timestamp } ?? [],
+               withTitle: "Gyro")
+    default:
+      break
+    }
+    
+    
+    
+  }
+  
   
 }
