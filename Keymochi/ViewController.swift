@@ -90,8 +90,8 @@ extension ViewController: UITableViewDataSource {
     let motionDataPointCountLabel   = cell.viewWithTag(103) as! UILabel
     
     emotionLabel.text = dataChunk.emotion.description
-    durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime! - dataChunk.startTime!) * 1000)
-    keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents?.count ?? -1)
+//    durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime? ?? 0.0 - dataChunk.startTime? ?? 0.0) * 1000)
+//    keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents?.count ?? -1)
     
     let motionDataPointCount =
       ((dataChunk.accelerationDataPoints?.count) ?? 0) + ((dataChunk.gyroDataPoints?.count) ?? 0)

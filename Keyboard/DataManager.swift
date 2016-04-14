@@ -26,11 +26,13 @@ class DataManager {
   private var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
   private var _backspaceKeyEventSequence: BackspaceKeyEventSequence = BackspaceKeyEventSequence()
   
-  func addKeyEvent(event: KeyEvent, ofKeyType keyType: KeyType) {
-    
-    switch keyType {
-    case .Symbol: _symbolKeyEventSequence.keyEvents.append(event as! SymbolKeyEvent)
-    case .Backspace: _backspaceKeyEventSequence.keyEvents.append(event as! BackspaceKeyEvent)
+  func addKeyEvent(keyEvent: KeyEvent) {
+    dispatch_async(realmQueue) { 
+      if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
+        self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
+      } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
+        self._backspaceKeyEventSequence.keyEvents.append(backspaceKeyEvent)
+      }
     }
   }
   
@@ -74,7 +76,7 @@ class DataManager {
           realm.add(dataPoint)
         }
         
-        for dataPoint in self._accelerationDataSequence.motionDataPoints {
+        for dataPoint in self._gyroDataSequence.motionDataPoints {
           realm.add(dataPoint)
         }
         
