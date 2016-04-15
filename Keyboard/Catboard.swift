@@ -32,6 +32,7 @@ class Catboard: KeyboardViewController {
     let textDocumentProxy = self.textDocumentProxy
     
     let keyOutput = key.outputForCase(self.shiftState.uppercase())
+    print("keyPressed: \(keyOutput)")
     
     if !NSUserDefaults.standardUserDefaults().boolForKey(kCatTypeEnabled) {
       textDocumentProxy.insertText(keyOutput)
@@ -87,7 +88,7 @@ class Catboard: KeyboardViewController {
         for rowKeys in page.rows {
           for key in rowKeys {
             if let keyView = self.layout!.viewForKey(key) {
-              keyView.addTarget(self, action: "takeScreenshotDelay", forControlEvents: .TouchDown)
+              keyView.addTarget(self, action: #selector(takeScreenshotDelay), forControlEvents: .TouchDown)
             }
           }
         }
@@ -100,7 +101,7 @@ class Catboard: KeyboardViewController {
   }
   
   func takeScreenshotDelay() {
-    NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("takeScreenshot"), userInfo: nil, repeats: false)
+    NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(takeScreenshot), userInfo: nil, repeats: false)
   }
   
   func takeScreenshot() {

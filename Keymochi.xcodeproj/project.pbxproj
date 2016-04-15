@@ -11,6 +11,7 @@
 		901DF4851C8925EE0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF4861C89261D0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
+		90410E1E1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */; };
 		90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90564CC51CA3A35700A16866 /* NumericOperations.swift */; };
 		9065D1991CA3045100F47855 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9065D1981CA3045100F47855 /* keys.plist */; };
 		906744221CB7FA9700DABC18 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906744211CB7FA9700DABC18 /* Settings.bundle */; };
@@ -105,6 +106,7 @@
 		8ACE810CB583607E551B2298 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
 		901DF4841C8925EE0030E17C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		901DF48B1C8928400030E17C /* DraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
+		90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymochiKeyboardViewController.swift; sourceTree = "<group>"; };
 		90564CC51CA3A35700A16866 /* NumericOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericOperations.swift; sourceTree = "<group>"; };
 		905E43EB1C9A07F8009520D9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9065D1981CA3045100F47855 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				90C5441D1C84F16F0038C7FE /* Catboard.swift */,
 				90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */,
+				90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90410E1E1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift in Sources */,
 				90D4E06A1C9B9E0900402191 /* Emotion.swift in Sources */,
 				90D4E06B1C9B9E0900402191 /* DataChunk.swift in Sources */,
 				90B139691C9A1AFE00C865F0 /* MotionData.swift in Sources */,
