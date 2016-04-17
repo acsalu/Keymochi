@@ -32,7 +32,6 @@ class ViewController: UIViewController {
   func reloadData() {
     dataChunks = Array(realm.objects(DataChunk))
     eventHistoryTableView.reloadData()
-    title = "\(dataChunks.count) DataChunks"
   }
   
   @IBAction func removeAllData(sender: AnyObject) {
