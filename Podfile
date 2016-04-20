@@ -15,7 +15,8 @@ target 'KeymochiTests' do
 end
 
 target 'KeymochiUITests' do
-
+    pod 'Quick'
+    pod 'Nimble'
 end
 
 target 'Keyboard' do

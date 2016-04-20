@@ -8,20 +8,14 @@
 
 import Foundation
 
-enum Emotion: CustomStringConvertible {
-  case Neutral
-  case Happy
-  case Sad
+enum Emotion: String, CustomStringConvertible {
+  case Neutral = "Neutral"
+  case Happy = "Happy"
+  case Sad = "Sad"
   
   static let all: [Emotion] = [.Happy, .Neutral, .Sad]
   
   var description: String {
-    get {
-      switch self {
-      case .Neutral: return "Neutral"
-      case .Happy: return "Happy"
-      case .Sad: return "Sad"
-      }
-    }
+    return rawValue
   }
 }

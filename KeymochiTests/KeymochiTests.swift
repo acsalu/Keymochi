@@ -6,31 +6,59 @@
 //  Copyright © 2016 Cornell Tech. All rights reserved.
 //
 
-import XCTest
+import Quick
+import Nimble
+import RealmSwift
 @testable import Keymochi
 
-class KeymochiTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-  
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-  
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-  }
-  
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    self.measureBlock {
-      // Put the code you want to measure the time of here.
+class DataManagerSpec: QuickSpec {
+  override func spec() {
+    describe("DataManager") {
+      var testRealm: Realm!
+      
+      beforeEach {
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = "data-manager-spec"
+        testRealm = try! Realm(configuration: config)
+        DataManager.sharedInatance.setRealm(testRealm)
+      }
+      
+      afterEach {
+        testRealm.beginWrite()
+        testRealm.deleteAll()
+        try! testRealm.commitWrite()
+      }
+      
+      it("Add a data chunk to the Realm") {
+        expect(testRealm.objects(DataChunk).count).to(equal(0))
+        
+        let dataChunk = DataChunk()
+       
+        DataManager.sharedInatance.addDataChunk(dataChunk)
+        expect(testRealm.objects(DataChunk).count).to(equal(1))
+        
+        let quriedDataChunk = testRealm.objectForPrimaryKey(DataChunk.self, key: dataChunk.realmId)
+        expect(quriedDataChunk).notTo(beNil())
+      }
+      
+      it("Update a data chunk in the Realm") {
+        
+        let dataChunk = DataChunk()
+        
+        expect(dataChunk.emotion).to(beNil())
+        expect(dataChunk.parseId).to(beNil())
+        
+        let emotion = Emotion.Neutral
+        let parseId = "axcb12k"
+        
+        DataManager.sharedInatance.addDataChunk(dataChunk)
+        DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion, andParseId: parseId)
+        let quriedDataChunk = testRealm.objectForPrimaryKey(DataChunk.self, key: dataChunk.realmId)
+        expect(quriedDataChunk?.emotion).to(equal(emotion))
+        expect(quriedDataChunk?.parseId).to(equal(parseId))
+        
+      }
+      
     }
   }
-  
 }

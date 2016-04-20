@@ -419,7 +419,7 @@
 		<key>051F32A7C046F28D8F054AAFEF2F72E9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>D255FF61E41230514F4D5BDE519788F3</string>
+			<string>0B6EAA3632152748F8958939E47D7023</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -624,6 +624,68 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>0784D87386D48D5A5681BAE6BBA72119</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>7FB2E0F1534397E058CEB6C586E6264D</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-KeymochiUITests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-KeymochiUITests/Pods-KeymochiUITests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_KeymochiUITests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
 		<key>07EABA34572234A751F470356D94C1ED</key>
 		<dict>
 			<key>fileRef</key>
@@ -737,6 +799,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>08D5DD618EEF59B22D44F13F8D823F4D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-Keymochi-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>08FE101986A6AFFFCB99E83825705E6E</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -792,9 +867,22 @@
 			<key>productName</key>
 			<string>Pods-Keyboard</string>
 			<key>productReference</key>
-			<string>1EB4EEB3084B6EE323AD8EED21B801BE</string>
+			<string>8087C6CAA37C5FCC8BE0CC9B54B42A52</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>093BAFFA82FBC4B13C35F61F519E7EC1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-Keyboard-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>097D8EB758FBB215E6B42904351C5F0A</key>
 		<dict>
@@ -841,14 +929,14 @@
 			<key>productName</key>
 			<string>RealmSwift</string>
 			<key>productReference</key>
-			<string>5519E10A1FCD7528D3467C5E9B286A7C</string>
+			<string>405B4702D62006ABF53EB2DA1E3C5F8E</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
 		<key>0A08A29A65106EA1B3201A11E997CC1A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1A134936AB575B13E2B2F515136A0949</string>
+			<string>4B3B037644B4BA8B2BD6E9D513B8B603</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -891,6 +979,17 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>0B0682CA78E8589BAA96E64B4E82C016</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0B2F6CC8A6093245FD7DAE30683B7D31</key>
 		<dict>
 			<key>fileRef</key>
@@ -901,7 +1000,7 @@
 		<key>0B57D8867AD5C8BEFFBF9BF61273E15B</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C7AA0553A10B72DEB831442C63670FCF</string>
+			<string>36A61A641B945B7603C6888B5E48DA69</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -924,6 +1023,19 @@
 			<string>BFTaskCompletionSource.m</string>
 			<key>path</key>
 			<string>Bolts/Common/BFTaskCompletionSource.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0B6EAA3632152748F8958939E47D7023</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Keymochi.release.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -981,6 +1093,19 @@
 			<string>PFEventuallyPin.m</string>
 			<key>path</key>
 			<string>Parse/Internal/PFEventuallyPin.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0C5D970B08B09CAF63EF631508EA5C3D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Keyboard.release.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1130,6 +1255,19 @@
 				<string>40E78A56A520697E9E6DCEB285FFD9AC</string>
 				<string>A262A639734243651D20E2013EB0356F</string>
 				<string>B8ECE8E0DFB6670563123030758468D3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>0E0798FDA97E21529F303345A43C0336</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3D1B79E0D84543F7A6BD4C0666A59F17</string>
 			</array>
 			<key>isa</key>
 			<string>PBXHeadersBuildPhase</string>
@@ -1577,6 +1715,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>115B9213DAB93225B214385D0EE4B513</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>11C4436BC41A7EAB099B9507D57D9235</key>
 		<dict>
 			<key>fileRef</key>
@@ -1618,6 +1769,17 @@
 			<string>PFEventuallyQueue.h</string>
 			<key>path</key>
 			<string>Parse/Internal/PFEventuallyQueue.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1224571FF7BAE27535437B0F51B69C37</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-Keymochi.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1826,6 +1988,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>158FB1F47D214DFF537A161906A8AE11</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_KeymochiTests.framework</string>
+			<key>path</key>
+			<string>Pods_KeymochiTests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>15A71645E2AB77B1103104F858C82063</key>
 		<dict>
 			<key>fileRef</key>
@@ -1985,7 +2162,7 @@
 			<key>productName</key>
 			<string>Pods-Keymochi</string>
 			<key>productReference</key>
-			<string>D1C68970C2A2B8D1DA6B8D441AEA109A</string>
+			<string>6E2ADA3E2538B813D298DAA87231E9A7</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -2031,19 +2208,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>190F4274E8EED5BA0B96FE2D5BA86328</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-Keymochi-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>191AD010AB1DB4885B933CA5E5801DBF</key>
 		<dict>
@@ -2093,19 +2257,6 @@
 			<string>6850B824F7F9E34E0C71C6D574B61F18</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>1A134936AB575B13E2B2F515136A0949</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-Keyboard-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1A725E3D655FB58DBB9A0B1CBE83ECEC</key>
 		<dict>
@@ -2450,6 +2601,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>1D202929BEDA6EE1074F1B8E1E61FCC0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>1D6017E95D65D2FAF56250BD409EEB02</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2486,30 +2650,6 @@
 			<string>38382C3A0A6E72B5140B565301775280</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>1DD0E2F033531E105114C42E077D5099</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>91B9AAD444B306610C6B8E7952766B75</string>
-				<string>4276F63911A86F696510F28EC93D424D</string>
-				<string>B8E29263A60DC523562439ED7757B6A6</string>
-				<string>740ACDF2436D433BC5C50769B131593F</string>
-				<string>270B5CE7C541F1597B35984C66EDA01B</string>
-				<string>1F9F03CE5FCEEA81CB471CFB48F37617</string>
-				<string>77409FBDFE61A6A7FBF489D9FF6B007D</string>
-				<string>1A134936AB575B13E2B2F515136A0949</string>
-				<string>6652CD8FFFEB0DF8C10149B0237471E5</string>
-				<string>D1BB4097F5CB2CAB540A6E99E5C06A71</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-Keyboard</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-Keyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1DE6DAE4B59B51368667D6BA3757A2D7</key>
 		<dict>
@@ -2558,21 +2698,6 @@
 			<string>DEECC8E00CD9C6E1D055746FFF507321</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>1EB4EEB3084B6EE323AD8EED21B801BE</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_Keyboard.framework</string>
-			<key>path</key>
-			<string>Pods_Keyboard.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>1EFA294D15C74344F700C0101B9A4173</key>
 		<dict>
@@ -2642,6 +2767,19 @@
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
 		</dict>
+		<key>1F384530A3523D636311B221769E12BB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>1F4258C69B8A3BDF09F820882AABD0FD</key>
 		<dict>
 			<key>fileRef</key>
@@ -2655,32 +2793,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>1F48597CB6A16E8D978AB537B734FB08</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Keymochi.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1F9F03CE5FCEEA81CB471CFB48F37617</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-Keyboard-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1FE42FE5EB4BDF439431E9772EF84008</key>
 		<dict>
@@ -2708,6 +2820,32 @@
 			<string>8764E2EF976AEDC4654FDFAA5974C366</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>21B53060D825F338103EA145762FADB2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>21B7041DD588701D7D3D19FEAD2772C3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Keymochi-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>21B8DBC7FEAA869AAF1948F1443DA3D2</key>
 		<dict>
@@ -2895,7 +3033,7 @@
 			<key>productName</key>
 			<string>Pods-KeymochiTests</string>
 			<key>productReference</key>
-			<string>385AB9DEFFEF4F77E4A2C81ECB5681F1</string>
+			<string>158FB1F47D214DFF537A161906A8AE11</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -3224,7 +3362,7 @@
 		<key>26988FC0AA0BB794A57FAA6F11B0B343</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>D1BB4097F5CB2CAB540A6E99E5C06A71</string>
+			<string>0C5D970B08B09CAF63EF631508EA5C3D</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>APPLICATION_EXTENSION_API_ONLY</key>
@@ -3296,32 +3434,6 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
-		</dict>
-		<key>270B5CE7C541F1597B35984C66EDA01B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-Keyboard-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>27AEBC1770CB9FE26691687AB326BC01</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>27D40221220AB675AEDA0E1A746E8BA0</key>
 		<dict>
@@ -3411,19 +3523,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>2957551504884E683C199E6676AA7E55</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>29600D47BE8BC97E90180F6943CABE7A</key>
 		<dict>
 			<key>fileRef</key>
@@ -3460,7 +3559,7 @@
 		<key>29A38458D59976A048B0190A8DDF4759</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5227625F80284B097C7BC29974DCBA95</string>
+			<string>4B1109085AE8973A0F48D987AA0F1FF3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -3491,6 +3590,21 @@
 			<string>A1BC996705CDA86632B2347652BF7D73</string>
 			<key>remoteInfo</key>
 			<string>Realm</string>
+		</dict>
+		<key>29E574C697BE5589104E0C715B03684E</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Quick.framework</string>
+			<key>path</key>
+			<string>Quick.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>29E7C6DDEAF9AB34C574E081C104118D</key>
 		<dict>
@@ -3704,7 +3818,7 @@
 			<key>productName</key>
 			<string>Parse</string>
 			<key>productReference</key>
-			<string>3FD8C42C7ED937DC80A81582E50B7441</string>
+			<string>4E78339D9D1B7F5EC1474AE0482BFFD3</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -3828,6 +3942,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>2E34DC98AA4B7EE47EFFCE41BE3CD1AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>2E4ABAC928258F05E3E531B262A0C9CD</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3899,20 +4026,18 @@
 				</array>
 			</dict>
 		</dict>
-		<key>2F8F3E3F3490A5ACECBB537CCA8EEA9E</key>
+		<key>2F5F4A7D4B92577214FC3E6428A37C02</key>
 		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
 			<key>includeInIndex</key>
-			<string>0</string>
+			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Bolts.framework</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>Bolts.framework</string>
+			<string>Pods-Keyboard-dummy.m</string>
 			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2FA8713DDE255FD5F0ABD87718170075</key>
 		<dict>
@@ -4345,7 +4470,7 @@
 		<key>355DF7AA63425D2D9E08DAA918773B4C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>1F48597CB6A16E8D978AB537B734FB08</string>
+			<string>5D7AF42AC0ADE8C86FA1664B6538F763</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -4479,6 +4604,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>36A61A641B945B7603C6888B5E48DA69</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Keymochi-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3771619414053FFCA0613B9CDA88BB22</key>
 		<dict>
 			<key>fileRef</key>
@@ -4580,21 +4718,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>385AB9DEFFEF4F77E4A2C81ECB5681F1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_KeymochiTests.framework</string>
-			<key>path</key>
-			<string>Pods_KeymochiTests.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>386E151868D277805E3ED08C40CC7501</key>
 		<dict>
@@ -5005,28 +5128,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>3CD08306D81F176D641FC4F2D3568814</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>2F8F3E3F3490A5ACECBB537CCA8EEA9E</string>
-				<string>98BB8E6409F55B3EA09B36118EBD2C5C</string>
-				<string>B6F145D7FCA5A347542934C471ADE600</string>
-				<string>3FD8C42C7ED937DC80A81582E50B7441</string>
-				<string>1EB4EEB3084B6EE323AD8EED21B801BE</string>
-				<string>D1C68970C2A2B8D1DA6B8D441AEA109A</string>
-				<string>385AB9DEFFEF4F77E4A2C81ECB5681F1</string>
-				<string>7D59CCB62B749EC1AA4773E7077497EF</string>
-				<string>5CEB9578FD760E45C526F75379A83146</string>
-				<string>5519E10A1FCD7528D3467C5E9B286A7C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>3CD30378DB158F72FCA5709E5C30956D</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -5052,6 +5153,20 @@
 			<dict>
 				<key>COMPILER_FLAGS</key>
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
+			</dict>
+		</dict>
+		<key>3D1B79E0D84543F7A6BD4C0666A59F17</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E385D7370FA6AFA16BFCAF4F21CD28AD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
 			</dict>
 		</dict>
 		<key>3D41CCCBC0ADD81E74B729C3E1DF9E65</key>
@@ -5401,21 +5516,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3FD8C42C7ED937DC80A81582E50B7441</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Parse.framework</string>
-			<key>path</key>
-			<string>Parse.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>3FEABA8853D57815778E11B6E44164E2</key>
 		<dict>
 			<key>fileRef</key>
@@ -5459,6 +5559,21 @@
 			<string>include/Realm/RLMResults.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>405B4702D62006ABF53EB2DA1E3C5F8E</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>RealmSwift.framework</string>
+			<key>path</key>
+			<string>RealmSwift.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>406664FFE321FA9F152404E33164BAF2</key>
 		<dict>
@@ -5612,17 +5727,6 @@
 			<string>Support Files</string>
 			<key>path</key>
 			<string>../Target Support Files/Nimble</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4276F63911A86F696510F28EC93D424D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-Keyboard.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -5979,6 +6083,30 @@
 					<string>Project</string>
 				</array>
 			</dict>
+		</dict>
+		<key>459D7B70BA02287BEB1F1AB0F390EE81</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>71BECF021D59CFFCC9159C9F0B24B990</string>
+				<string>EF3E19FD42D608FEA3C8CA7414330A1E</string>
+				<string>093BAFFA82FBC4B13C35F61F519E7EC1</string>
+				<string>8E9F4B7E24FBC14471842A80D7264D4B</string>
+				<string>2F5F4A7D4B92577214FC3E6428A37C02</string>
+				<string>A9EEE02CD03A8396BA67A8196400BAC0</string>
+				<string>CCB30297107B2628ED870248AFFFA9F5</string>
+				<string>4B3B037644B4BA8B2BD6E9D513B8B603</string>
+				<string>5E8353969218ED8FB0D2950AE49C1315</string>
+				<string>0C5D970B08B09CAF63EF631508EA5C3D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-Keyboard</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-Keyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>45ADAD4ADC0844684C26CBF049347FFE</key>
 		<dict>
@@ -6499,6 +6627,32 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>4B1109085AE8973A0F48D987AA0F1FF3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Keymochi-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4B3B037644B4BA8B2BD6E9D513B8B603</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Keyboard-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>4B3BDD3CBDD3E2213FD67DB4D4ADA747</key>
 		<dict>
 			<key>fileRef</key>
@@ -6533,17 +6687,6 @@
 			<string>PFPersistenceGroup.h</string>
 			<key>path</key>
 			<string>Parse/Internal/Persistence/Group/PFPersistenceGroup.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4BA7A469240FA741A6399716A30AA684</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-Keymochi.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6587,19 +6730,6 @@
 			<string>RLMMigration.h</string>
 			<key>path</key>
 			<string>include/Realm/RLMMigration.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4C4BB5AB1FB3CC30C2D97C7ED6887AC8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-acknowledgements.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6751,6 +6881,21 @@
 				</array>
 			</dict>
 		</dict>
+		<key>4E78339D9D1B7F5EC1474AE0482BFFD3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Parse.framework</string>
+			<key>path</key>
+			<string>Parse.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>4E9E0AD8326517B0631F1BF272FA0C96</key>
 		<dict>
 			<key>fileRef</key>
@@ -6799,6 +6944,21 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>4F02DE6B444915656E45B45C57652E6C</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>MotionKit.framework</string>
+			<key>path</key>
+			<string>MotionKit.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>4F1B973D09B338F2C57CC528998608F5</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -6820,7 +6980,7 @@
 			<key>productName</key>
 			<string>MotionKit</string>
 			<key>productReference</key>
-			<string>98BB8E6409F55B3EA09B36118EBD2C5C</string>
+			<string>4F02DE6B444915656E45B45C57652E6C</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -6888,7 +7048,7 @@
 			<key>productName</key>
 			<string>Nimble</string>
 			<key>productReference</key>
-			<string>B6F145D7FCA5A347542934C471ADE600</string>
+			<string>DA16F1BAE7E3D661E6A0E558A0F05B89</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -7109,19 +7269,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>5227625F80284B097C7BC29974DCBA95</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-Keymochi-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>5229E175B39D51FBB2CE7F66984AD728</key>
 		<dict>
 			<key>fileRef</key>
@@ -7156,19 +7303,6 @@
 			<string>DE0F3D00AE5E0D8618FFF96852C39D31</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>53448B87F388262D09B8834F816A1123</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>537A874BCD7945AA4300B491B36EA702</key>
 		<dict>
@@ -7298,21 +7432,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>5519E10A1FCD7528D3467C5E9B286A7C</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>RealmSwift.framework</string>
-			<key>path</key>
-			<string>RealmSwift.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>556EBD2BACC110F5363F2BC09A055F3C</key>
 		<dict>
 			<key>fileRef</key>
@@ -7426,6 +7545,21 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>56C5FA328677C5F5076EC4B46D4C933F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_KeymochiUITests.framework</string>
+			<key>path</key>
+			<string>Pods_KeymochiUITests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>571245E96DABDA59CDF71763BA53008E</key>
 		<dict>
@@ -7541,6 +7675,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>588D2A8829F0A148525081D35FBE0EDF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Keymochi-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>58B0D104C47083C23B86CB0CB08BEEC5</key>
 		<dict>
 			<key>fileRef</key>
@@ -7648,21 +7795,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>5CEB9578FD760E45C526F75379A83146</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Realm.framework</string>
-			<key>path</key>
-			<string>Realm.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>5CEBE7DDB98D55251879B0183AD3CFB2</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -7700,6 +7832,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>5D7AF42AC0ADE8C86FA1664B6538F763</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Keymochi.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>5DC3C5C3DAE84EC3B960A1BA2F29E4E3</key>
 		<dict>
 			<key>fileRef</key>
@@ -7713,6 +7858,19 @@
 					<string>Project</string>
 				</array>
 			</dict>
+		</dict>
+		<key>5E8353969218ED8FB0D2950AE49C1315</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Keyboard.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>5E9F05449FDD967C09BC0631A6E57B49</key>
 		<dict>
@@ -7910,7 +8068,7 @@
 		<key>6169BE880C861DAE1D840DA5D433F410</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>EB3DBDD8C148E37DFFAF4E13F4183188</string>
+			<string>2E34DC98AA4B7EE47EFFCE41BE3CD1AC</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -8656,19 +8814,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>6652CD8FFFEB0DF8C10149B0237471E5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Keyboard.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>66BEB93B8D94AA5ADC3A0F22E619227A</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -8741,6 +8886,43 @@
 			<string>BeGreaterThanOrEqualTo.swift</string>
 			<key>path</key>
 			<string>Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>68575A8E1D42F8ACB480A5700759A87A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6861F805EC45F412FD89B50C72FC02E1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F384530A3523D636311B221769E12BB</string>
+				<string>1224571FF7BAE27535437B0F51B69C37</string>
+				<string>7C6D54B1B20195A9D9B848806916DC29</string>
+				<string>08D5DD618EEF59B22D44F13F8D823F4D</string>
+				<string>4B1109085AE8973A0F48D987AA0F1FF3</string>
+				<string>21B7041DD588701D7D3D19FEAD2772C3</string>
+				<string>588D2A8829F0A148525081D35FBE0EDF</string>
+				<string>36A61A641B945B7603C6888B5E48DA69</string>
+				<string>5D7AF42AC0ADE8C86FA1664B6538F763</string>
+				<string>0B6EAA3632152748F8958939E47D7023</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-Keymochi</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-Keymochi</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -8900,6 +9082,30 @@
 			<string>PFRESTSessionCommand.h</string>
 			<key>path</key>
 			<string>Parse/Internal/Commands/PFRESTSessionCommand.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6B62DAA6B95361F50752F436855CE0DC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CBC36B6426125A734036B9FA1B4ED21E</string>
+				<string>0B0682CA78E8589BAA96E64B4E82C016</string>
+				<string>FFABEEF7F0E6AD2BE83AE3A3E2061135</string>
+				<string>F3BE4D03841062B477F5D08F0ACFC642</string>
+				<string>77F8243C5EDD646CE12B03AAF5E1C5A3</string>
+				<string>BB97FA22B539CA9F295125C237D3E51A</string>
+				<string>21B53060D825F338103EA145762FADB2</string>
+				<string>966367FE7848E40D894DB1D6AAAEB4BC</string>
+				<string>AEA979C4671A4474C5E5E7464A9DF1E6</string>
+				<string>2E34DC98AA4B7EE47EFFCE41BE3CD1AC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-KeymochiTests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-KeymochiTests</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -9139,6 +9345,21 @@
 				</array>
 			</dict>
 		</dict>
+		<key>6E2ADA3E2538B813D298DAA87231E9A7</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_Keymochi.framework</string>
+			<key>path</key>
+			<string>Pods_Keymochi.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>6EE89D1E8AE49FE148A7B0D539B13991</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -9321,6 +9542,19 @@
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
 		</dict>
+		<key>71BECF021D59CFFCC9159C9F0B24B990</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>71D8D2B95AE2242DD753F020546E4760</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -9406,19 +9640,6 @@
 			<string>PBXFileReference</string>
 			<key>path</key>
 			<string>Bolts.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>740ACDF2436D433BC5C50769B131593F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-Keyboard-acknowledgements.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -9721,18 +9942,18 @@
 				</array>
 			</dict>
 		</dict>
-		<key>77409FBDFE61A6A7FBF489D9FF6B007D</key>
+		<key>777B50C9FF0016F6D30BDAB184E956C9</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-Keyboard-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>4FA852B36637F5FBFB642C28D8B6C6BC</string>
+			<key>remoteInfo</key>
+			<string>Nimble</string>
 		</dict>
 		<key>777F3223B7981DDF7FFD8ACF820E370F</key>
 		<dict>
@@ -9761,6 +9982,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>77F8243C5EDD646CE12B03AAF5E1C5A3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>783FE9A7C6D63147EBFEB7F830A34AD8</key>
 		<dict>
@@ -9804,6 +10038,19 @@
 			<string>7BCEE6E08CCFC21CAE10B9420C31C3AF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>7AB14D4D2A6D455B6E52AA8ABC5E2116</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D07C8E15A13C0608201A6242D9EAAA25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>7AC3EE1AF1C56A3AB947FA53B9B245B9</key>
 		<dict>
@@ -9944,6 +10191,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>7C6D54B1B20195A9D9B848806916DC29</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-Keymochi-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>7CA617C130B8F2942C0146C951D949C3</key>
 		<dict>
 			<key>buildConfigurations</key>
@@ -10007,6 +10267,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>7D4C6B90D32DA2D69931282927845165</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>F5D14F44D678E8C318C52790764E5449</string>
+			<key>remoteInfo</key>
+			<string>Quick</string>
+		</dict>
 		<key>7D532C6FB0E08574896E18287F7BAFE7</key>
 		<dict>
 			<key>fileRef</key>
@@ -10020,21 +10293,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>7D59CCB62B749EC1AA4773E7077497EF</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Quick.framework</string>
-			<key>path</key>
-			<string>Quick.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>7DA16682FD514C5D9EB6171A7CC7B0E7</key>
 		<dict>
@@ -10073,8 +10331,8 @@
 				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
 				<string>A84F5427A7F161856F3365E30192E421</string>
 				<string>E580E862A195A56270BC88FAA7C1C42D</string>
-				<string>3CD08306D81F176D641FC4F2D3568814</string>
-				<string>9B7F9F86DBA9857D80B5B36E4AC97626</string>
+				<string>F91D437A85B8B5421F35B57F3E5EDFA2</string>
+				<string>CB4B08F04A631C978A4764A36181A644</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -10197,6 +10455,19 @@
 				</array>
 			</dict>
 		</dict>
+		<key>7FB2E0F1534397E058CEB6C586E6264D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>7FFF2774D479E1AA17C34BAEBF507062</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -10218,6 +10489,21 @@
 			<string>43505A411808DD9BE6FCB1DB0D4AE2C8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>8087C6CAA37C5FCC8BE0CC9B54B42A52</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_Keyboard.framework</string>
+			<key>path</key>
+			<string>Pods_Keyboard.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>809BF15F669DE6300EF3D317439BFAC7</key>
 		<dict>
@@ -10288,6 +10574,20 @@
 			<string>EF8D2FD3FC9A215844B6A4A721E93712</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>811A68DE525AE0332C2AAB069FFF405F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8FB6A82D57117CEF7AEB86FB1505B10D</string>
+				<string>0784D87386D48D5A5681BAE6BBA72119</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
 		</dict>
 		<key>81511019D121B42C98951F0C7FA80E43</key>
 		<dict>
@@ -10404,10 +10704,25 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>834C085A20771986227C7C76E90DBEAF</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Bolts.framework</string>
+			<key>path</key>
+			<string>Bolts.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
 		<key>8387CB35EEBC04F89527B1689A93A924</key>
 		<dict>
 			<key>fileRef</key>
-			<string>53448B87F388262D09B8834F816A1123</string>
+			<string>77F8243C5EDD646CE12B03AAF5E1C5A3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -10590,6 +10905,30 @@
 			<string>PFFileManager.h</string>
 			<key>path</key>
 			<string>Parse/Internal/PFFileManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8530A9E9B556343BABC5A6F781C6F960</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>115B9213DAB93225B214385D0EE4B513</string>
+				<string>D84BE52CADD11F0165977D1F5B34FA87</string>
+				<string>F09742859BC6998DEC9E00D052F971E9</string>
+				<string>8C378318BC062294B52EF5E7A5FDF49F</string>
+				<string>68575A8E1D42F8ACB480A5700759A87A</string>
+				<string>9E31D2CF887411DE70B9E9060F7E25D4</string>
+				<string>1D202929BEDA6EE1074F1B8E1E61FCC0</string>
+				<string>E385D7370FA6AFA16BFCAF4F21CD28AD</string>
+				<string>D9E09C6AD6480629BF4710956509B821</string>
+				<string>7FB2E0F1534397E058CEB6C586E6264D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-KeymochiUITests</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-KeymochiUITests</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -10852,6 +11191,13 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>88794982EDE77C77A15A6162CE37B88A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>68575A8E1D42F8ACB480A5700759A87A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>88A88FC8FD1AC34545D67EC1BA027274</key>
 		<dict>
 			<key>fileRef</key>
@@ -10894,17 +11240,6 @@
 			<string>2B06320411131904C058E5B41078074C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>89424DE1A4F497C8BBEDD6076CB57C69</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>89ED64BF0ADB2EF6E12EB8228B0F1F84</key>
 		<dict>
@@ -11020,6 +11355,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>8C378318BC062294B52EF5E7A5FDF49F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>8C63C1E6892762DBCEF674179E83E53D</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -11034,6 +11382,21 @@
 			<string>Sources/Nimble/Matchers/BeEmpty.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8C8E3D13DF31320530B600E719093C7D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Realm.framework</string>
+			<key>path</key>
+			<string>Realm.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>8C9B24CA96A4BD16B289AEA787694EB1</key>
 		<dict>
@@ -11175,12 +11538,36 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>8E9F4B7E24FBC14471842A80D7264D4B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-Keyboard-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>8EB5CB562A6FAF17D11C0A6709BD8162</key>
 		<dict>
 			<key>fileRef</key>
 			<string>9290B7BD43E11EA745B04DBBC7483308</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EED0805731E6234EB6869BF79DC006E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>Quick</string>
+			<key>target</key>
+			<string>F5D14F44D678E8C318C52790764E5449</string>
+			<key>targetProxy</key>
+			<string>7D4C6B90D32DA2D69931282927845165</string>
 		</dict>
 		<key>8F5D3588CBC04399D0CCD30D4BAAB006</key>
 		<dict>
@@ -11226,6 +11613,70 @@
 			<string>Parse/Internal/File/Controller/PFFileStagingController.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FB6A82D57117CEF7AEB86FB1505B10D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D9E09C6AD6480629BF4710956509B821</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-KeymochiUITests/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-KeymochiUITests/Pods-KeymochiUITests.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_KeymochiUITests</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
 		</dict>
 		<key>8FCCB5CD28E3F8BD2295FFDB76D148D3</key>
 		<dict>
@@ -11360,19 +11811,6 @@
 			<string>PFEventuallyQueue.m</string>
 			<key>path</key>
 			<string>Parse/Internal/PFEventuallyQueue.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>91B9AAD444B306610C6B8E7952766B75</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -11677,6 +12115,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>966367FE7848E40D894DB1D6AAAEB4BC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>96CEEEFD1496A3EB0BF998D10F389812</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -11871,21 +12322,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>98BB8E6409F55B3EA09B36118EBD2C5C</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>MotionKit.framework</string>
-			<key>path</key>
-			<string>MotionKit.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>99203FE035A61D9A97E94C3866A8EC1A</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -11977,7 +12413,7 @@
 		<key>9A2408D266DE849EC3D42E6DEADAC629</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>6652CD8FFFEB0DF8C10149B0237471E5</string>
+			<string>5E8353969218ED8FB0D2950AE49C1315</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>APPLICATION_EXTENSION_API_ONLY</key>
@@ -12057,21 +12493,6 @@
 			<string>RLMObjectBase.mm</string>
 			<key>path</key>
 			<string>Realm/RLMObjectBase.mm</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9B7F9F86DBA9857D80B5B36E4AC97626</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1DD0E2F033531E105114C42E077D5099</string>
-				<string>D9672E0486D3F3CCFC802B2A6C55CF05</string>
-				<string>C99FFAA7C315084338126DDB52839FBD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -12244,6 +12665,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>9E31D2CF887411DE70B9E9060F7E25D4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>9E330B2B880AA9CB1860BC2A8B58A290</key>
 		<dict>
@@ -12537,7 +12971,7 @@
 			<key>productName</key>
 			<string>Realm</string>
 			<key>productReference</key>
-			<string>5CEB9578FD760E45C526F75379A83146</string>
+			<string>8C8E3D13DF31320530B600E719093C7D</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -12606,6 +13040,17 @@
 			<string>A1BC996705CDA86632B2347652BF7D73</string>
 			<key>remoteInfo</key>
 			<string>Realm</string>
+		</dict>
+		<key>A240E0D7DC93CEA30760AAB9A92BDC64</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>Nimble</string>
+			<key>target</key>
+			<string>4FA852B36637F5FBFB642C28D8B6C6BC</string>
+			<key>targetProxy</key>
+			<string>777B50C9FF0016F6D30BDAB184E956C9</string>
 		</dict>
 		<key>A24A2681EEBAFE4990552C72E35B1082</key>
 		<dict>
@@ -13156,6 +13601,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>A9EEE02CD03A8396BA67A8196400BAC0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Keyboard-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>A9F6BC0F6628C2AE2563B320379E51FB</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -13399,6 +13857,19 @@
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
 		</dict>
+		<key>ACC299732D61DF931DAE69EAB6D623EC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>88794982EDE77C77A15A6162CE37B88A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
 		<key>AD406745EA451C46ABB5D15312F00234</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -13516,6 +13987,19 @@
 					<string>Project</string>
 				</array>
 			</dict>
+		</dict>
+		<key>AEA979C4671A4474C5E5E7464A9DF1E6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>AF02053BA8A08336D088B40602593854</key>
 		<dict>
@@ -13808,7 +14292,7 @@
 			<key>productName</key>
 			<string>Bolts</string>
 			<key>productReference</key>
-			<string>2F8F3E3F3490A5ACECBB537CCA8EEA9E</string>
+			<string>834C085A20771986227C7C76E90DBEAF</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -14092,21 +14576,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B6F145D7FCA5A347542934C471ADE600</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Nimble.framework</string>
-			<key>path</key>
-			<string>Nimble.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>B6F8E993F979817BAC3AF336034D872B</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -14242,19 +14711,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>B8E29263A60DC523562439ED7757B6A6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-Keyboard-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>B8ECE8E0DFB6670563123030758468D3</key>
 		<dict>
@@ -14517,6 +14973,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>BB97FA22B539CA9F295125C237D3E51A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BBA3C5A769017899A277CED658F5B6E1</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -14557,19 +15026,6 @@
 			<string>PFNetworkActivityIndicatorManager.h</string>
 			<key>path</key>
 			<string>Parse/PFNetworkActivityIndicatorManager.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BC16A5B0938E7563E86DE5114D6DCDAC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-frameworks.sh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -15250,19 +15706,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C37A071A07EB30F8A3FBAC5437D018CC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C380E41AEF144659604E61A77247F6CE</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -15324,7 +15767,7 @@
 		<key>C478D4571AA277873AD5DE0DE5B74719</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>E3101F4236C735B6C36B1407178B02B2</string>
+			<string>AEA979C4671A4474C5E5E7464A9DF1E6</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -15694,19 +16137,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C7AA0553A10B72DEB831442C63670FCF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-Keymochi-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C7CE889F213D2F0B82B5EC1D91EF983B</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -15891,30 +16321,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C99FFAA7C315084338126DDB52839FBD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C37A071A07EB30F8A3FBAC5437D018CC</string>
-				<string>89424DE1A4F497C8BBEDD6076CB57C69</string>
-				<string>2957551504884E683C199E6676AA7E55</string>
-				<string>4C4BB5AB1FB3CC30C2D97C7ED6887AC8</string>
-				<string>53448B87F388262D09B8834F816A1123</string>
-				<string>BC16A5B0938E7563E86DE5114D6DCDAC</string>
-				<string>EF2003D8E19FEE398BD74A9AFC0BC6BF</string>
-				<string>27AEBC1770CB9FE26691687AB326BC01</string>
-				<string>E3101F4236C735B6C36B1407178B02B2</string>
-				<string>EB3DBDD8C148E37DFFAF4E13F4183188</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-KeymochiTests</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-KeymochiTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C9BEC180A49FF96D43F66C9B2EFE8E90</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -16012,6 +16418,35 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>CB4B08F04A631C978A4764A36181A644</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>459D7B70BA02287BEB1F1AB0F390EE81</string>
+				<string>6861F805EC45F412FD89B50C72FC02E1</string>
+				<string>6B62DAA6B95361F50752F436855CE0DC</string>
+				<string>8530A9E9B556343BABC5A6F781C6F960</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CBC36B6426125A734036B9FA1B4ED21E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CBD33B204AAF0712F748A36356A5A623</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -16092,6 +16527,19 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>CCB30297107B2628ED870248AFFFA9F5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Keyboard-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CCC4150EEF4E14C8F1F61FAE3A7CE289</key>
 		<dict>
 			<key>buildConfigurations</key>
@@ -16134,19 +16582,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>CD05718CC715ACF078B47E8959AD1D89</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>CD253E8D5313033CA77059C5634FE127</key>
 		<dict>
@@ -16486,6 +16921,13 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>D07C8E15A13C0608201A6242D9EAAA25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3A50F08AE8818D58E85C0748C39B4051</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>D135E41205BF58046BFAD09843D9E9AB</key>
 		<dict>
 			<key>fileRef</key>
@@ -16561,60 +17003,6 @@
 			<string>PFAnonymousAuthenticationProvider.h</string>
 			<key>path</key>
 			<string>Parse/Internal/User/AuthenticationProviders/Providers/Anonymous/PFAnonymousAuthenticationProvider.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D1BB4097F5CB2CAB540A6E99E5C06A71</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Keyboard.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D1C68970C2A2B8D1DA6B8D441AEA109A</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_Keymochi.framework</string>
-			<key>path</key>
-			<string>Pods_Keymochi.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>D21BD98E9B25098BC77EAFD6EBF9874E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-Keymochi-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D255FF61E41230514F4D5BDE519788F3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Keymochi.release.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -16775,7 +17163,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>3CD08306D81F176D641FC4F2D3568814</string>
+			<string>F91D437A85B8B5421F35B57F3E5EDFA2</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -16791,6 +17179,7 @@
 				<string>091A4147BB2C826F96072ACA32ED2EC2</string>
 				<string>18AAD8E02221F9F0EDDD24CE7ED95E1D</string>
 				<string>2278A17F8DEC1961261689342E5ADB77</string>
+				<string>D8FC4ED83CF61C94EE32210D82833FDD</string>
 				<string>F5D14F44D678E8C318C52790764E5449</string>
 				<string>A1BC996705CDA86632B2347652BF7D73</string>
 				<string>09D5A7D61D1EF344E0F08FC384D89288</string>
@@ -17079,6 +17468,17 @@
 			<key>remoteInfo</key>
 			<string>Bolts</string>
 		</dict>
+		<key>D84BE52CADD11F0165977D1F5B34FA87</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D8666E446D14DDF3D00D209DB780573D</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -17123,6 +17523,34 @@
 				</array>
 			</dict>
 		</dict>
+		<key>D8FC4ED83CF61C94EE32210D82833FDD</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>811A68DE525AE0332C2AAB069FFF405F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>ACC299732D61DF931DAE69EAB6D623EC</string>
+				<string>7AB14D4D2A6D455B6E52AA8ABC5E2116</string>
+				<string>0E0798FDA97E21529F303345A43C0336</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>A240E0D7DC93CEA30760AAB9A92BDC64</string>
+				<string>8EED0805731E6234EB6869BF79DC006E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-KeymochiUITests</string>
+			<key>productName</key>
+			<string>Pods-KeymochiUITests</string>
+			<key>productReference</key>
+			<string>56C5FA328677C5F5076EC4B46D4C933F</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
 		<key>D9177990546C52C2AA8B66BB84D6DF04</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -17135,30 +17563,6 @@
 			<string>Migration.swift</string>
 			<key>path</key>
 			<string>RealmSwift/Migration.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D9672E0486D3F3CCFC802B2A6C55CF05</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CD05718CC715ACF078B47E8959AD1D89</string>
-				<string>4BA7A469240FA741A6399716A30AA684</string>
-				<string>E9E8B2CB0F325616EDCCD18C33C8BACB</string>
-				<string>D21BD98E9B25098BC77EAFD6EBF9874E</string>
-				<string>5227625F80284B097C7BC29974DCBA95</string>
-				<string>E18C757A1C917579C4F08AA6EC886602</string>
-				<string>190F4274E8EED5BA0B96FE2D5BA86328</string>
-				<string>C7AA0553A10B72DEB831442C63670FCF</string>
-				<string>1F48597CB6A16E8D978AB537B734FB08</string>
-				<string>D255FF61E41230514F4D5BDE519788F3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-Keymochi</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-Keymochi</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -17177,6 +17581,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>D9E09C6AD6480629BF4710956509B821</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D9F8356CC8E4C64CBE5328C9AF8877C3</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -17191,6 +17608,21 @@
 			<string>include/Realm/RLMOptionalBase.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DA16F1BAE7E3D661E6A0E558A0F05B89</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Nimble.framework</string>
+			<key>path</key>
+			<string>Nimble.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>DA2E76645E227B8541201BF6482ED286</key>
 		<dict>
@@ -17647,19 +18079,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E18C757A1C917579C4F08AA6EC886602</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-Keymochi-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>E19FDBD395C332EC06270543B9194B54</key>
 		<dict>
 			<key>fileRef</key>
@@ -17773,19 +18192,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>E3101F4236C735B6C36B1407178B02B2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>E348672EDED2F4771086969C676C9398</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -17798,6 +18204,19 @@
 			<string>PFFilePersistenceGroup.m</string>
 			<key>path</key>
 			<string>Parse/Internal/Persistence/Group/PFFilePersistenceGroup.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E385D7370FA6AFA16BFCAF4F21CD28AD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -18312,19 +18731,6 @@
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
 		</dict>
-		<key>E9E8B2CB0F325616EDCCD18C33C8BACB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-Keymochi-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>EA63C30CD6F41C4BBADF6D72144BEC39</key>
 		<dict>
 			<key>fileRef</key>
@@ -18396,19 +18802,6 @@
 					<string>Project</string>
 				</array>
 			</dict>
-		</dict>
-		<key>EB3DBDD8C148E37DFFAF4E13F4183188</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>EB7F47F3C9AD7F2E7FCB64214D3686FB</key>
 		<dict>
@@ -18495,7 +18888,7 @@
 		<key>EC863D22E7AF1013A0F17CEE6D2920F9</key>
 		<dict>
 			<key>fileRef</key>
-			<string>270B5CE7C541F1597B35984C66EDA01B</string>
+			<string>2F5F4A7D4B92577214FC3E6428A37C02</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -18747,25 +19140,23 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>EF2003D8E19FEE398BD74A9AFC0BC6BF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-KeymochiTests-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>EF2C56C728061EBB0975A9954A651B0B</key>
 		<dict>
 			<key>fileRef</key>
 			<string>6EE89D1E8AE49FE148A7B0D539B13991</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>EF3E19FD42D608FEA3C8CA7414330A1E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods-Keyboard.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>EF4BD4DB3CFDCDE4510D1E19A38F2827</key>
 		<dict>
@@ -18822,6 +19213,19 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@"0.98.6"' -D__ASSERTMACROS__</string>
 			</dict>
+		</dict>
+		<key>F09742859BC6998DEC9E00D052F971E9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-KeymochiUITests-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F0A0C890A95FD50C93F191B30865F434</key>
 		<dict>
@@ -19004,6 +19408,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>F3BE4D03841062B477F5D08F0ACFC642</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>F3CA103E18CA1C03BEEF404F52992062</key>
 		<dict>
 			<key>fileRef</key>
@@ -19092,7 +19509,7 @@
 			<key>productName</key>
 			<string>Quick</string>
 			<key>productReference</key>
-			<string>7D59CCB62B749EC1AA4773E7077497EF</string>
+			<string>29E574C697BE5589104E0C715B03684E</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
@@ -19320,6 +19737,29 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>F91D437A85B8B5421F35B57F3E5EDFA2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>834C085A20771986227C7C76E90DBEAF</string>
+				<string>4F02DE6B444915656E45B45C57652E6C</string>
+				<string>DA16F1BAE7E3D661E6A0E558A0F05B89</string>
+				<string>4E78339D9D1B7F5EC1474AE0482BFFD3</string>
+				<string>8087C6CAA37C5FCC8BE0CC9B54B42A52</string>
+				<string>6E2ADA3E2538B813D298DAA87231E9A7</string>
+				<string>158FB1F47D214DFF537A161906A8AE11</string>
+				<string>56C5FA328677C5F5076EC4B46D4C933F</string>
+				<string>29E574C697BE5589104E0C715B03684E</string>
+				<string>8C8E3D13DF31320530B600E719093C7D</string>
+				<string>405B4702D62006ABF53EB2DA1E3C5F8E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>F944ED9DE4CD342358C9B67B0FF7833B</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -19359,7 +19799,7 @@
 		<key>F9B6CD9DAE7E77EBF5401F73F0C57D8B</key>
 		<dict>
 			<key>fileRef</key>
-			<string>27AEBC1770CB9FE26691687AB326BC01</string>
+			<string>966367FE7848E40D894DB1D6AAAEB4BC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -19741,6 +20181,19 @@
 			<string>PFURLSessionJSONDataTaskDelegate.h</string>
 			<key>path</key>
 			<string>Parse/Internal/Commands/CommandRunner/URLSession/Session/TaskDelegate/PFURLSessionJSONDataTaskDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FFABEEF7F0E6AD2BE83AE3A3E2061135</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-KeymochiTests-acknowledgements.markdown</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
