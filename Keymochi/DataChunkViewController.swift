@@ -34,7 +34,14 @@ class DataChunkViewController: UITableViewController {
       emotionSegmentedControl.selectedSegmentIndex = Emotion.all.indexOf(emotion)!
     }
     
+    emotionSegmentedControl.addTarget(self, action: #selector(changeEmotion(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    
     emotionContainer.addSubview(emotionSegmentedControl)
+  }
+  
+  func changeEmotion(sender: UISegmentedControl) {
+    let emotion = Emotion.all[sender.selectedSegmentIndex]
+    DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion)
   }
   
   @IBAction func uploadDataChunk(sender: AnyObject) {
@@ -54,7 +61,6 @@ class DataChunkViewController: UITableViewController {
       self.presentViewController(alert, animated: true, completion: nil)
       return
     }
-    
     
     if let symbolCounts = dataChunk.symbolCounts {
       for (symbol, count) in symbolCounts {
@@ -143,11 +149,6 @@ class DataChunkViewController: UITableViewController {
                withTitle: "Gyro")
     default:
       break
-    }
-    
-    
-    
+    } 
   }
-  
-  
 }

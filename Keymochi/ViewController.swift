@@ -77,19 +77,12 @@ extension ViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier("KeyEventCell", forIndexPath: indexPath)
     
     let emotionLabel      = cell.viewWithTag(100) as! UILabel
-    let parseIdLabel = cell.viewWithTag(101) as! UILabel
-    let keyEventCountLabel = cell.viewWithTag(102) as! UILabel
-    let motionDataPointCountLabel   = cell.viewWithTag(103) as! UILabel
+    let updatedAtLabel    = cell.viewWithTag(101) as! UILabel
+    let parseIdLabel      = cell.viewWithTag(102) as! UILabel
     
-    emotionLabel.text = dataChunk.emotion?.description ?? "(upspecified)"
-//    durationLabel.text = String(format: "%.1f ms", (dataChunk.endTime? ?? 0.0 - dataChunk.startTime? ?? 0.0) * 1000)
-//    keyEventCountLabel.text = String(format: "%d key events", dataChunk.keyEvents?.count ?? -1)
-    
-    let motionDataPointCount =
-      ((dataChunk.accelerationDataPoints?.count) ?? 0) + ((dataChunk.gyroDataPoints?.count) ?? 0)
-    motionDataPointCountLabel.text = "\(motionDataPointCount) motion data points"
-    
+    emotionLabel.text = dataChunk.emotion?.description ?? "(unlabeld)"
     parseIdLabel.text = dataChunk.parseId ?? "(unpushed)"
+    updatedAtLabel.text = dataChunk.createdAt.description
     
     return cell
   }

@@ -17,6 +17,7 @@ class DataChunk: Object, CustomStringConvertible {
   dynamic var accelerationDataSequence: MotionDataSequence?
   dynamic var gyroDataSequence: MotionDataSequence?
   dynamic var realmId: String = NSUUID().UUIDString
+  dynamic var createdAt: NSDate = NSDate()
   dynamic var parseId: String?
   
   override class func primaryKey() -> String? {

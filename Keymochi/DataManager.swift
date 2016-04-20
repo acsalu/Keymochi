@@ -148,11 +148,15 @@ extension DataManager {
       try! realm.commitWrite()
   }
   
-  func updateDataChunk(dataChunk: DataChunk, withEmotion emotion: Emotion, andParseId parseId: String) {
+  func updateDataChunk(dataChunk: DataChunk, withEmotion emotion: Emotion, andParseId parseId: String?) {
     realm.beginWrite()
     dataChunk.emotion = emotion
     dataChunk.parseId = parseId
     try! realm.commitWrite()
+  }
+  
+  func updateDataChunk(dataChunk: DataChunk, withEmotion emotion: Emotion) {
+    updateDataChunk(dataChunk, withEmotion: emotion, andParseId: nil)
   }
   
   
