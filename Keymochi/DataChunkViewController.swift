@@ -51,7 +51,18 @@ class DataChunkViewController: UITableViewController {
     
     if let symbolCounts = dataChunk.symbolCounts {
       for (symbol, count) in symbolCounts {
-        object.setObject(count, forKey: "symbol_\(symbol)")
+        if symbol == " " {
+          object.setObject(count, forKey: "symbol_space")
+        } else {
+          for scalar in symbol.unicodeScalars {
+            let value = scalar.value
+            if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) {
+              object.setObject(count, forKey: "symbol_\(symbol)")
+            } else {
+              object.setObject(count, forKey: "symbol_punctuation")
+            }
+          }
+        }
       }
     }
     
