@@ -8,9 +8,11 @@
 
 import UIKit
 import Parse
+import RealmSwift
 
 class DataChunkViewController: UITableViewController {
   
+  var realm: Realm!
   var dataChunk: DataChunk!
   var emotionSegmentedControl: UISegmentedControl!
   
@@ -28,7 +30,18 @@ class DataChunkViewController: UITableViewController {
         .insertSegmentWithTitle(emotion.description, atIndex: index, animated: false)
     }
     
+    if let emotion = dataChunk.emotion {
+      emotionSegmentedControl.selectedSegmentIndex = Emotion.all.indexOf(emotion)!
+    }
+    
+    emotionSegmentedControl.addTarget(self, action: #selector(changeEmotion(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    
     emotionContainer.addSubview(emotionSegmentedControl)
+  }
+  
+  func changeEmotion(sender: UISegmentedControl) {
+    let emotion = Emotion.all[sender.selectedSegmentIndex]
+    DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion)
   }
   
   @IBAction func uploadDataChunk(sender: AnyObject) {
@@ -38,16 +51,16 @@ class DataChunkViewController: UITableViewController {
       object.setObject(userId, forKey: "userId")
     }
     
+    var emotion: Emotion!
     if emotionSegmentedControl.selectedSegmentIndex != -1 {
-      let emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
+      emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
       object.setObject(emotion.description, forKey: "emotion")
     } else {
-      let alert = UIAlertController.init(title: "Error", message: "Please specify the associated emotion for this data chunk.", preferredStyle: .Alert)
+      let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .Alert)
       alert.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       return
     }
-    
     
     if let symbolCounts = dataChunk.symbolCounts {
       for (symbol, count) in symbolCounts {
@@ -91,8 +104,10 @@ class DataChunkViewController: UITableViewController {
         let alert = UIAlertController.init(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
         alert.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-      } else {
-        let alert = UIAlertController.init(title: "DataChunk", message: "Successfully uploaded!", preferredStyle: .Alert)
+        
+      } else if let parseId = object.objectId {
+        DataManager.sharedInatance.updateDataChunk(self.dataChunk, withEmotion: emotion, andParseId: parseId)
+        let alert = UIAlertController.init(title: "DataChunk", message: "Successfully uploaded! \(self.dataChunk.parseId)", preferredStyle: .Alert)
         alert.addAction(UIAlertAction.init(title: "Done", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
       }
@@ -134,11 +149,6 @@ class DataChunkViewController: UITableViewController {
                withTitle: "Gyro")
     default:
       break
-    }
-    
-    
-    
+    } 
   }
-  
-  
 }

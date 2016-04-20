@@ -11,15 +11,17 @@ import RealmSwift
 
 class DataChunk: Object, CustomStringConvertible {
   
-  var emotion: Emotion = .Neutral
+  private dynamic var emotionDescription: String?
   dynamic var symbolKeyEventSequence: SymbolKeyEventSequence?
   dynamic var backspaceKeyEventSequence: BackspaceKeyEventSequence?
   dynamic var accelerationDataSequence: MotionDataSequence?
   dynamic var gyroDataSequence: MotionDataSequence?
+  dynamic var realmId: String = NSUUID().UUIDString
+  dynamic var createdAt: NSDate = NSDate()
+  dynamic var parseId: String?
   
-  convenience required init(emotion: Emotion) {
-    self.init()
-    self.emotion = emotion
+  override class func primaryKey() -> String? {
+    return "realmId"
   }
   
   override var description: String {
@@ -32,6 +34,19 @@ class DataChunk: Object, CustomStringConvertible {
       
       return String(format: "[DataChunk]  %d symbols, %d acceleration dps, %d gyro dps",
                     symbolKeyEventCount, accelerationDataPointCount, gyroDataPointCount)
+  }
+  
+  var emotion: Emotion? {
+    get {
+      guard let emotionDescription = emotionDescription else {
+        return nil
+      }
+      return Emotion(rawValue: emotionDescription)
+    }
+    
+    set {
+      emotionDescription = newValue?.rawValue
+    }
   }
   
   var startTime: Double? {
