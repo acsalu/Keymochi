@@ -56,7 +56,7 @@ class DataChunkViewController: UITableViewController {
       emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
       object.setObject(emotion.description, forKey: "emotion")
     } else {
-      let alert = UIAlertController.init(title: "Error", message: "Please specify the associated emotion for this data chunk.", preferredStyle: .Alert)
+      let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .Alert)
       alert.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: nil))
       self.presentViewController(alert, animated: true, completion: nil)
       return
