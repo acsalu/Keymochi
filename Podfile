@@ -9,6 +9,9 @@ target 'Keymochi' do
 end
 
 target 'KeymochiTests' do
+    pod 'RealmSwift'
+    pod 'Quick'
+    pod 'Nimble'
 end
 
 target 'KeymochiUITests' do

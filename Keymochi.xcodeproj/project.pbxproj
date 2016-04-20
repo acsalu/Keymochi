@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69644BF1EEC0748E4F8524BE /* Pods_KeymochiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09EF6B44C59AC0DD631E1036 /* Pods_KeymochiTests.framework */; };
+		901B11501CC72E2B009BA5B5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1396A1C9A3A9700C865F0 /* DataManager.swift */; };
 		901DF4851C8925EE0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF4861C89261D0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
@@ -771,6 +772,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901B11501CC72E2B009BA5B5 /* DataManager.swift in Sources */,
 				90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */,
 				90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */,
 				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,
