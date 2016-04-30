@@ -21,13 +21,25 @@ class DataManager {
     realmPath = (directoryURL?.URLByAppendingPathComponent("db.realm").path)!
     var realmConfig = Realm.Configuration()
     realmConfig.path = realmPath
-    realmConfig.schemaVersion = 1
+    realmConfig.schemaVersion = 2
     realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
       if oldSchemaVersion < 1 {
         migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
           newObject!["appVersion"] = "0.2.0"
         })
       }
+      if oldSchemaVersion < 2 {
+        migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
+          guard let emotionDescription = oldObject!["emotionDescription"] else {
+            return
+          }
+          
+          if emotionDescription as! String == Emotion.Neutral.description {
+            newObject!["emotionDescription"] = nil
+          }
+        })
+      }
+
     }
     Realm.Configuration.defaultConfiguration = realmConfig
   }

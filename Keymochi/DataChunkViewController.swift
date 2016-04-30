@@ -30,8 +30,8 @@ class DataChunkViewController: UITableViewController {
         .insertSegmentWithTitle(emotion.description, atIndex: index, animated: false)
     }
     
-    if let emotion = dataChunk.emotion {
-      emotionSegmentedControl.selectedSegmentIndex = Emotion.all.indexOf(emotion)!
+    if let emotion = dataChunk.emotion, index = Emotion.all.indexOf(emotion) {
+      emotionSegmentedControl.selectedSegmentIndex = index
     }
     
     emotionSegmentedControl.addTarget(self, action: #selector(changeEmotion(_:)), forControlEvents: UIControlEvents.ValueChanged)
