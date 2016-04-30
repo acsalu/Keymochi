@@ -19,6 +19,17 @@ class DataManager {
   
   init() {
     realmPath = (directoryURL?.URLByAppendingPathComponent("db.realm").path)!
+    var realmConfig = Realm.Configuration()
+    realmConfig.path = realmPath
+    realmConfig.schemaVersion = 1
+    realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
+      if oldSchemaVersion < 1 {
+        migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
+          newObject!["appVersion"] = "0.2.0"
+        })
+      }
+    }
+    Realm.Configuration.defaultConfiguration = realmConfig
   }
   
   private let realmQueue = dispatch_queue_create("com.emomeapp.emome.suggestionQueue", DISPATCH_QUEUE_SERIAL)

@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import MotionKit
+import CoreMotion
 
 class KeymochiKeyboardViewController: KeyboardViewController {
   
-  var motionKit: MotionKit!
-  let motionUpdateInterval = 0.25
+  var motionManager: CMMotionManager!
   
   var backspaceKeyEvent: BackspaceKeyEvent?
   var symbolKeyEventMap: [String: SymbolKeyEvent]!
@@ -25,30 +24,28 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     super.viewDidLoad()
     
     symbolKeyEventMap = [String: SymbolKeyEvent]()
-    motionKit = MotionKit()
     
-    motionKit.getAccelerationFromDeviceMotion(motionUpdateInterval) { (x, y, z) -> () in
-      let dataPoint = MotionDataPoint()
-      dataPoint.x = x
-      dataPoint.y = y
-      dataPoint.z = z
-      dataPoint.time = CACurrentMediaTime()
-      DataManager.sharedInatance.addMotionDataPoint(dataPoint, ofSensorType: .Acceleration)
-    }
-    
-    motionKit.getGyroValues(motionUpdateInterval) { (x, y, z) -> () in
-      let dataPoint = MotionDataPoint()
-      dataPoint.x = x
-      dataPoint.y = y
-      dataPoint.z = z
-      dataPoint.time = CACurrentMediaTime()
-      DataManager.sharedInatance.addMotionDataPoint(dataPoint, ofSensorType: .Gyro)
+    motionManager = CMMotionManager()
+    let motionUpdateInterval: NSTimeInterval = 0.1
+    motionManager.deviceMotionUpdateInterval = motionUpdateInterval
+    motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { (deviceMotioin, error) in
+      guard error == nil else {
+        debugPrint(error)
+        return
+      }
+      guard let deviceMotioin = deviceMotioin else {
+        return
+      }
+      
+      let accelerationDataPoint = MotionDataPoint(acceleration: deviceMotioin.userAcceleration, atTime: deviceMotioin.timestamp)
+      let gyroDataPoint = MotionDataPoint(rotationRate: deviceMotioin.rotationRate, atTime: deviceMotioin.timestamp)
+      DataManager.sharedInatance.addMotionDataPoint(accelerationDataPoint, ofSensorType: .Acceleration)
+      DataManager.sharedInatance.addMotionDataPoint(gyroDataPoint, ofSensorType: .Gyro)
     }
   }
   
   override func viewDidDisappear(animated: Bool) {
-    motionKit.stopDeviceMotionUpdates()
-    motionKit.stopGyroUpdates()
+    motionManager.stopDeviceMotionUpdates()
     DataManager.sharedInatance.dumpCurrentData()
     super.viewDidDisappear(animated)
   }
