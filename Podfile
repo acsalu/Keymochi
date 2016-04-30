@@ -21,6 +21,5 @@ end
 
 target 'Keyboard' do
     pod 'RealmSwift'
-    pod 'MotionKit'
 end
 
