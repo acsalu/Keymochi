@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Parse
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         $0.clientKey = clientKey
       }
     )
+    
+    let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
+    let realmPath = (directoryURL?.URLByAppendingPathComponent("db.realm").path)!
+    var realmConfig = Realm.Configuration()
+    realmConfig.path = realmPath
+    realmConfig.schemaVersion = 1
+    realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
+      if oldSchemaVersion < 1 {
+        migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
+          newObject!["appVersion"] = "0.2.0"
+        })
+      }
+    }
+    Realm.Configuration.defaultConfiguration = realmConfig
     
     return true
   }

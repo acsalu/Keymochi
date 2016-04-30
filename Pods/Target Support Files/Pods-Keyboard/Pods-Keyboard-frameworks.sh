@@ -86,10 +86,8 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Keyboard/Realm.framework"
   install_framework "Pods-Keyboard/RealmSwift.framework"
-  install_framework "Pods-Keyboard/MotionKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Keyboard/Realm.framework"
   install_framework "Pods-Keyboard/RealmSwift.framework"
-  install_framework "Pods-Keyboard/MotionKit.framework"
 fi

@@ -19,6 +19,7 @@ class DataChunk: Object, CustomStringConvertible {
   dynamic var realmId: String = NSUUID().UUIDString
   dynamic var createdAt: NSDate = NSDate()
   dynamic var parseId: String?
+  dynamic var appVersion: String? = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
   
   override class func primaryKey() -> String? {
     return "realmId"

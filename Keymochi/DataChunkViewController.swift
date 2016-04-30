@@ -99,6 +99,10 @@ class DataChunkViewController: UITableViewController {
       object.setObject(gyroMagnitudes, forKey: "gyroMagnitudes")
     }
     
+    if let appVersion = dataChunk.appVersion {
+      object.setObject(appVersion, forKey: "appVersion")
+    }
+    
     object.saveInBackgroundWithBlock { (success, error) in
       if let error = error {
         let alert = UIAlertController.init(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
@@ -133,7 +137,7 @@ class DataChunkViewController: UITableViewController {
     switch identifier {
     case "ShowKey":
       bindData(dataChunk.keyEvents?.map { $0.description } ?? [],
-               andTimestamps: dataChunk.keyEvents?.map { $0.timestamp} ?? [],
+               andTimestamps: dataChunk.keyEvents?.map { $0.timestamp } ?? [],
                withTitle: "Key")
     case "ShowITD":
       bindData(dataChunk.interTapDistances?.map(String.init) ?? [],
@@ -141,11 +145,11 @@ class DataChunkViewController: UITableViewController {
                withTitle: "Inter-Tap Distance")
     case "ShowAcceleration":
       bindData(dataChunk.accelerationDataPoints?.map { $0.description } ?? [],
-               andTimestamps: dataChunk.accelerationDataPoints?.map { $0.timestamp } ?? [],
+               andTimestamps: dataChunk.accelerationDataSequence?.timestamps ?? [],
                withTitle: "Acceleration")
     case "ShowGyro":
       bindData(dataChunk.gyroDataPoints?.map { $0.description } ?? [],
-               andTimestamps: dataChunk.gyroDataPoints?.map { $0.timestamp } ?? [],
+               andTimestamps: dataChunk.gyroDataSequence?.timestamps ?? [],
                withTitle: "Gyro")
     default:
       break

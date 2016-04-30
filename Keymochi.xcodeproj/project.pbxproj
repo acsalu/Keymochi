@@ -13,6 +13,8 @@
 		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
 		90410E1E1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */; };
 		90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90564CC51CA3A35700A16866 /* NumericOperations.swift */; };
+		906255B91CD44E55002EE58C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905E43EB1C9A07F8009520D9 /* CoreMotion.framework */; };
+		906255BA1CD44F53002EE58C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905E43EB1C9A07F8009520D9 /* CoreMotion.framework */; };
 		9065D1991CA3045100F47855 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9065D1981CA3045100F47855 /* keys.plist */; };
 		906744221CB7FA9700DABC18 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906744211CB7FA9700DABC18 /* Settings.bundle */; };
 		9074C1381CC7D4D100837E99 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074C1371CC7D4D100837E99 /* DataManager.swift */; };
@@ -174,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				906255BA1CD44F53002EE58C /* CoreMotion.framework in Frameworks */,
 				BB9124C5BF7AA6B45A644BD1 /* Pods_Keymochi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				906255B91CD44E55002EE58C /* CoreMotion.framework in Frameworks */,
 				F51C021687641F3BB84709A9 /* Pods_Keyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,9 +232,9 @@
 			isa = PBXGroup;
 			children = (
 				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
-				901DF48B1C8928400030E17C /* DraftViewController.swift */,
 				90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */,
 				90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */,
+				901DF48B1C8928400030E17C /* DraftViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
