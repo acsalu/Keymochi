@@ -25,6 +25,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     symbolKeyEventMap = [String: SymbolKeyEvent]()
     
+    // Make sure the container is empty.
+    DataManager.sharedInatance.reset()
+    
     motionManager = CMMotionManager()
     let motionUpdateInterval: NSTimeInterval = 0.1
     motionManager.deviceMotionUpdateInterval = motionUpdateInterval
