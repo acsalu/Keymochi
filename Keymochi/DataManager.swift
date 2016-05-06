@@ -73,8 +73,11 @@ class DataManager {
   }
   
   func dumpCurrentData() {
-    if _symbolKeyEventSequence.keyEvents.count > 0 {
-      
+    let totalKeyCount =
+      _symbolKeyEventSequence.keyEvents.count + _backspaceKeyEventSequence.keyEvents.count
+    
+    // Data without legit intertap distance shall not pass.
+    if totalKeyCount > 2  {  
         print("Dump current data in realm queue")
         print("(\(KeyType.Symbol)) \(_symbolKeyEventSequence.keyEvents.count) key events")
         print("(\(KeyType.Backspace)) \(_backspaceKeyEventSequence.keyEvents.count) key events")
