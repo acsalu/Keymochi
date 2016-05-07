@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftColor
+import SwiftHEXColors
 
 struct Constants {
   static let groupIdentifier = "group.edu.cornell.tech.keymochi"
