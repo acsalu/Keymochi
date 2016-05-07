@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import SwiftColor
 
 struct Constants {
-    static let groupIdentifier = "group.edu.cornell.tech.keymochi"
+  static let groupIdentifier = "group.edu.cornell.tech.keymochi"
+}
+
+struct Colors {
+  static let mainColor = UIColor(hexString: "#25B5DB")
 }

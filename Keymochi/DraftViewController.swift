@@ -27,6 +27,11 @@ class DraftViewController: UIViewController {
     self.view.endEditing(true)
   }
   
+  @IBAction func clearText(sender: AnyObject) {
+    textView.text = ""
+  }
+  
+  
   /*
    // MARK: - Navigation
    
