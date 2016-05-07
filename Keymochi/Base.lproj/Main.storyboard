@@ -328,13 +328,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHm-mh-07T">
+                                <rect key="frame" x="0.0" y="570" width="375" height="48"/>
+                                <color key="backgroundColor" red="0.14117647058823529" green="0.65490196078431373" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="e6p-HD-VgO"/>
+                                </constraints>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="WJh-qC-r2z" eventType="touchUpInside" id="wdd-9T-T70"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnb-QP-tBe">
                                 <rect key="frame" x="0.0" y="570" width="375" height="48"/>
                                 <color key="backgroundColor" red="0.14509803921568626" green="0.70980392156862748" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="ZOz-6C-9iS"/>
                                 </constraints>
-                                <state key="normal" title="Clear">
+                                <state key="normal" title="Clear Text">
                                     <color key="titleColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -346,13 +359,16 @@
                         <constraints>
                             <constraint firstItem="8Qp-rC-3R2" firstAttribute="top" secondItem="BYy-HV-jkB" secondAttribute="bottom" constant="8" id="0uh-DH-jSQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BYy-HV-jkB" secondAttribute="trailing" id="5m5-Q7-meH"/>
+                            <constraint firstItem="UHm-mh-07T" firstAttribute="width" secondItem="aed-b0-Rnj" secondAttribute="width" id="AsZ-80-Lhi"/>
                             <constraint firstItem="Xnb-QP-tBe" firstAttribute="width" secondItem="aed-b0-Rnj" secondAttribute="width" id="Dyv-aE-uZZ"/>
+                            <constraint firstItem="8Qp-rC-3R2" firstAttribute="top" secondItem="UHm-mh-07T" secondAttribute="bottom" id="JNO-et-7CS"/>
                             <constraint firstItem="BYy-HV-jkB" firstAttribute="centerX" secondItem="aed-b0-Rnj" secondAttribute="centerX" id="RtL-HS-R3K"/>
                             <constraint firstItem="8Qp-rC-3R2" firstAttribute="top" secondItem="Xnb-QP-tBe" secondAttribute="bottom" id="fqT-Bs-puM"/>
                             <constraint firstItem="BYy-HV-jkB" firstAttribute="centerY" secondItem="aed-b0-Rnj" secondAttribute="centerY" id="gP9-8i-KQv"/>
                             <constraint firstItem="BYy-HV-jkB" firstAttribute="top" secondItem="U2k-M4-ujV" secondAttribute="bottom" id="irc-tI-bey"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BYy-HV-jkB" secondAttribute="leading" id="mAd-uI-KaI"/>
                             <constraint firstItem="Xnb-QP-tBe" firstAttribute="centerX" secondItem="aed-b0-Rnj" secondAttribute="centerX" id="pI0-di-zdv"/>
+                            <constraint firstItem="UHm-mh-07T" firstAttribute="centerX" secondItem="aed-b0-Rnj" secondAttribute="centerX" id="u9M-iA-pzj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -363,6 +379,7 @@
                     <tabBarItem key="tabBarItem" title="Draft" image="ic_draft" id="UKD-PP-DWU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="doneButtonBottomConstraint" destination="JNO-et-7CS" id="u6z-MC-S9B"/>
                         <outlet property="textView" destination="BYy-HV-jkB" id="5ty-pF-8Og"/>
                     </connections>
                 </viewController>
