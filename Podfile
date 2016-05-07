@@ -6,6 +6,7 @@ target 'Keymochi' do
     pod 'Parse'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'SwiftHEXColors'
 end
 
 target 'KeymochiTests' do
