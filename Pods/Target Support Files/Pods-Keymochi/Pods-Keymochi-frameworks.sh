@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Keymochi/Parse.framework"
   install_framework "Pods-Keymochi/Realm.framework"
   install_framework "Pods-Keymochi/RealmSwift.framework"
+  install_framework "Pods-Keymochi/SwiftHEXColors.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Keymochi/Bolts.framework"
   install_framework "Pods-Keymochi/Parse.framework"
   install_framework "Pods-Keymochi/Realm.framework"
   install_framework "Pods-Keymochi/RealmSwift.framework"
+  install_framework "Pods-Keymochi/SwiftHEXColors.framework"
 fi

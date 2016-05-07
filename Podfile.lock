@@ -12,6 +12,7 @@ PODS:
   - Realm/Headers (0.98.6)
   - RealmSwift (0.98.6):
     - Realm (= 0.98.6)
+  - SwiftHEXColors (1.0.4)
 
 DEPENDENCIES:
   - Crashlytics
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Parse
   - Quick
   - RealmSwift
+  - SwiftHEXColors
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -30,5 +32,6 @@ SPEC CHECKSUMS:
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
   Realm: 44803f35418c5d89b27825a564247fcd190de37e
   RealmSwift: c7239c52c83f8c43525a5269ba7be1694da33afc
+  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
 COCOAPODS: 0.39.0
