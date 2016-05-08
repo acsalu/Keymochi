@@ -63,20 +63,30 @@ class DataChunkViewController: UITableViewController {
     }
     
     if let symbolCounts = dataChunk.symbolCounts {
+      var puncuationCount = 0
       for (symbol, count) in symbolCounts {
-        if symbol == " " {
-          object.setObject(count, forKey: "symbol_space")
-        } else {
-          for scalar in symbol.unicodeScalars {
-            let value = scalar.value
-            if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) {
-              object.setObject(count, forKey: "symbol_\(symbol)")
-            } else {
-              object.setObject(count, forKey: "symbol_punctuation")
+        for scalar in symbol.unicodeScalars {
+          let value = scalar.value
+          if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) {
+            object.setObject(count, forKey: "symbol_\(symbol)")
+          } else {
+            puncuationCount += count
+            switch symbol {
+            case " ":
+              object.setObject(count, forKey: "symbol_space")
+            case "!":
+              object.setObject(count, forKey: "symbol_exclamation_mark")
+            case ".":
+              object.setObject(count, forKey: "symbol_period")
+            case "?":
+              object.setObject(count, forKey: "symbol_question_mark")
+            default:
+              continue
             }
           }
         }
       }
+      object.setObject(puncuationCount, forKey: "symbol_punctuation")
     }
     
     if let totalNumberOfDeletions = dataChunk.totalNumberOfDeletions {
