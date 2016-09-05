@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class DataChunk: Object, CustomStringConvertible {
+class DataChunk: Object {
   
   private dynamic var emotionDescription: String?
   dynamic var symbolKeyEventSequence: SymbolKeyEventSequence?
