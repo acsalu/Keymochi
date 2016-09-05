@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.1'
 use_frameworks!
 
@@ -22,5 +23,6 @@ end
 
 target 'Keyboard' do
     pod 'RealmSwift'
+    pod 'SwiftHEXColors'
 end
 
