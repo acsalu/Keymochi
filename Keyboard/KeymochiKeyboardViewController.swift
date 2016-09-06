@@ -16,6 +16,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
   var backspaceKeyEvent: BackspaceKeyEvent?
   var symbolKeyEventMap: [String: SymbolKeyEvent]!
   
+  var currentWord: String = ""
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -64,6 +66,27 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     symbolKeyEvent.upTime = CACurrentMediaTime()
     DataManager.sharedInatance.addKeyEvent(symbolKeyEvent)
+    
+    if key == " " {
+      let textChecker = UITextChecker()
+      let range = NSRange(location: 0, length: currentWord.characters.count)
+      let misspelledRange = textChecker.rangeOfMisspelledWordInString(
+        currentWord, range: range, startingAt: 0, wrap: false, language: "en_US")
+      if misspelledRange.location != NSNotFound {
+        if let guesses = textChecker.guessesForWordRange(range, inString: currentWord, language: "en_US") as! [String]? {
+          if guesses.count > 0 {
+            let replacement = guesses[0]
+            for _ in 0..<currentWord.characters.count {
+              textDocumentProxy.deleteBackward()
+            }
+            textDocumentProxy.insertText(replacement)
+          }
+        }
+      }
+      currentWord = ""
+    } else {
+      currentWord.appendContentsOf(key)
+    }
   }
   
   override func symbolKeyDown(sender: KeyboardKey) {
