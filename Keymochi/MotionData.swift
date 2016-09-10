@@ -11,75 +11,75 @@ import RealmSwift
 import CoreMotion
 
 enum SensorType: CustomStringConvertible, CustomDebugStringConvertible {
-  case acceleration, gyro
-  
-  var description: String {
-    switch (self) {
-    case .acceleration: return "Acceleration"
-    case .gyro: return "Gyro"
+    case acceleration, gyro
+    
+    var description: String {
+        switch (self) {
+        case .acceleration: return "Acceleration"
+        case .gyro: return "Gyro"
+        }
     }
-  }
-  
-  var debugDescription: String {
-    return description
-  }
+    
+    var debugDescription: String {
+        return description
+    }
 }
 
 class MotionDataCollection: Object {
-  dynamic var accelerationDataSequence: MotionDataSequence?
-  dynamic var gyroDataSequence: MotionDataSequence?
+    dynamic var accelerationDataSequence: MotionDataSequence?
+    dynamic var gyroDataSequence: MotionDataSequence?
 }
 
 class MotionDataSequence: Object {
-  
-  convenience required init(sensorType: SensorType) {
-    self.init()
-    self.sensorType = sensorType
-  }
-  
-  var sensorType: SensorType = .acceleration
-  let motionDataPoints = List<MotionDataPoint>()
-  
-  var timestamps: [String] {
     
-    guard !motionDataPoints.isEmpty else {
-      return []
+    convenience required init(sensorType: SensorType) {
+        self.init()
+        self.sensorType = sensorType
     }
     
-    let first = motionDataPoints[0].time
+    var sensorType: SensorType = .acceleration
+    let motionDataPoints = List<MotionDataPoint>()
     
-    return motionDataPoints.map { String(format: "%.5f", $0.time - first) }
-  }
+    var timestamps: [String] {
+        
+        guard !motionDataPoints.isEmpty else {
+            return []
+        }
+        
+        let first = motionDataPoints[0].time
+        
+        return motionDataPoints.map { String(format: "%.5f", $0.time - first) }
+    }
 }
 
 class MotionDataPoint: Object {
-  dynamic var x: Double = 0.0
-  dynamic var y: Double = 0.0
-  dynamic var z: Double = 0.0
-  dynamic var time: Double = 0.0
-  
-  convenience init(acceleration: CMAcceleration, atTime timestamp: TimeInterval) {
-    self.init()
-    x = acceleration.x
-    y = acceleration.y
-    z = acceleration.z
-    time = timestamp
-  }
-  
-  convenience init(rotationRate: CMRotationRate, atTime timestamp: TimeInterval) {
-    self.init()
-    x = rotationRate.x
-    y = rotationRate.y
-    z = rotationRate.z
-    time = timestamp
-  }
-  
-  var magnitude: Double {
-    return sqrt(x * x + y * y + z * z)
-  }
-  
-  override var description: String {
-    return String(format: "%.3f (%.3f, %.3f, %.3f)", magnitude, x, y, z)
-  }
+    dynamic var x: Double = 0.0
+    dynamic var y: Double = 0.0
+    dynamic var z: Double = 0.0
+    dynamic var time: Double = 0.0
+    
+    convenience init(acceleration: CMAcceleration, atTime timestamp: TimeInterval) {
+        self.init()
+        x = acceleration.x
+        y = acceleration.y
+        z = acceleration.z
+        time = timestamp
+    }
+    
+    convenience init(rotationRate: CMRotationRate, atTime timestamp: TimeInterval) {
+        self.init()
+        x = rotationRate.x
+        y = rotationRate.y
+        z = rotationRate.z
+        time = timestamp
+    }
+    
+    var magnitude: Double {
+        return sqrt(x * x + y * y + z * z)
+    }
+    
+    override var description: String {
+        return String(format: "%.3f (%.3f, %.3f, %.3f)", magnitude, x, y, z)
+    }
 }
 

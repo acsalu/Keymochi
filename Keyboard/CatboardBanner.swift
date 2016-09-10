@@ -14,54 +14,54 @@ import UIKit
  */
 
 class CatboardBanner: ExtraView {
-  
-  var catSwitch: UISwitch = UISwitch()
-  var catLabel: UILabel = UILabel()
-  
-  required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
-    super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
     
-    self.addSubview(self.catSwitch)
-    self.addSubview(self.catLabel)
+    var catSwitch: UISwitch = UISwitch()
+    var catLabel: UILabel = UILabel()
     
-    self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
-    self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-    self.catSwitch.addTarget(self, action: #selector(respondToSwitch), for: UIControlEvents.valueChanged)
-    
-    self.updateAppearance()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func setNeedsLayout() {
-    super.setNeedsLayout()
-  }
-  
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    
-    self.catSwitch.center = self.center
-    self.catLabel.center = self.center
-    self.catLabel.frame.origin = CGPoint(x: self.catSwitch.frame.origin.x + self.catSwitch.frame.width + 8, y: self.catLabel.frame.origin.y)
-  }
-  
-  func respondToSwitch() {
-    UserDefaults.standard.set(self.catSwitch.isOn, forKey: kCatTypeEnabled)
-    self.updateAppearance()
-  }
-  
-  func updateAppearance() {
-    if self.catSwitch.isOn {
-      self.catLabel.text = "😺"
-      self.catLabel.alpha = 1
-    }
-    else {
-      self.catLabel.text = "🐱"
-      self.catLabel.alpha = 0.5
+    required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
+        super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
+        
+        self.addSubview(self.catSwitch)
+        self.addSubview(self.catLabel)
+        
+        self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
+        self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        self.catSwitch.addTarget(self, action: #selector(respondToSwitch), for: UIControlEvents.valueChanged)
+        
+        self.updateAppearance()
     }
     
-    self.catLabel.sizeToFit()
-  }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setNeedsLayout() {
+        super.setNeedsLayout()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.catSwitch.center = self.center
+        self.catLabel.center = self.center
+        self.catLabel.frame.origin = CGPoint(x: self.catSwitch.frame.origin.x + self.catSwitch.frame.width + 8, y: self.catLabel.frame.origin.y)
+    }
+    
+    func respondToSwitch() {
+        UserDefaults.standard.set(self.catSwitch.isOn, forKey: kCatTypeEnabled)
+        self.updateAppearance()
+    }
+    
+    func updateAppearance() {
+        if self.catSwitch.isOn {
+            self.catLabel.text = "😺"
+            self.catLabel.alpha = 1
+        }
+        else {
+            self.catLabel.text = "🐱"
+            self.catLabel.alpha = 0.5
+        }
+        
+        self.catLabel.sizeToFit()
+    }
 }

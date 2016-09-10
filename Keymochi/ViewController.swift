@@ -9,88 +9,88 @@
 import UIKit
 
 class ViewController: UIViewController {
-  
-  var dataChunks = [DataChunk]()
-  @IBOutlet weak var eventHistoryTableView: UITableView!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    reloadData()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    reloadData()
-  }
-  
-  func reloadData() {
-    dataChunks = DataManager.sharedInatance.getDataChunks()
-    eventHistoryTableView.reloadData()
-  }
-  
-  @IBAction func removeAllData(_ sender: AnyObject) {
     
-    let alertController = UIAlertController.init(title: "Delete Data", message: "Are you sure to delete all data?", preferredStyle: .alert)
-    let actionDelete = UIAlertAction.init(title: "Delete", style: .destructive) { alertAction -> Void in
-      DataManager.sharedInatance.clearData()
-      self.reloadData()
+    var dataChunks = [DataChunk]()
+    @IBOutlet weak var eventHistoryTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        reloadData()
     }
     
-    let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel) { alertAction -> Void in
-      
+    override func viewWillAppear(_ animated: Bool) {
+        reloadData()
     }
     
-    alertController.addAction(actionCancel)
-    alertController.addAction(actionDelete)
-    
-    present(alertController, animated: true, completion: nil)
-    
-  }
-  
-  // MARK: - Navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "DataChunkDetails" {
-      let vc: DataChunkViewController = segue.destination as! DataChunkViewController
-      vc.dataChunk = sender! as! DataChunk
+    func reloadData() {
+        dataChunks = DataManager.sharedInatance.getDataChunks()
+        eventHistoryTableView.reloadData()
     }
-  }
-  
+    
+    @IBAction func removeAllData(_ sender: AnyObject) {
+        
+        let alertController = UIAlertController.init(title: "Delete Data", message: "Are you sure to delete all data?", preferredStyle: .alert)
+        let actionDelete = UIAlertAction.init(title: "Delete", style: .destructive) { alertAction -> Void in
+            DataManager.sharedInatance.clearData()
+            self.reloadData()
+        }
+        
+        let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel) { alertAction -> Void in
+            
+        }
+        
+        alertController.addAction(actionCancel)
+        alertController.addAction(actionDelete)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DataChunkDetails" {
+            let vc: DataChunkViewController = segue.destination as! DataChunkViewController
+            vc.dataChunk = sender! as! DataChunk
+        }
+    }
+    
 }
 
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataChunks.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let dataChunk = dataChunks[(indexPath as NSIndexPath).row]
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "KeyEventCell", for: indexPath)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataChunks.count
+    }
     
-    let emotionLabel      = cell.viewWithTag(100) as! UILabel
-    let updatedAtLabel    = cell.viewWithTag(101) as! UILabel
-    let parseIdLabel      = cell.viewWithTag(102) as! UILabel
-    
-    emotionLabel.text = dataChunk.emotion?.description ?? "(unlabeld)"
-    parseIdLabel.text = dataChunk.parseId ?? "(unpushed)"
-    updatedAtLabel.text = dataChunk.createdAt.description
-    
-    return cell
-  }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let dataChunk = dataChunks[(indexPath as NSIndexPath).row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "KeyEventCell", for: indexPath)
+        
+        let emotionLabel      = cell.viewWithTag(100) as! UILabel
+        let updatedAtLabel    = cell.viewWithTag(101) as! UILabel
+        let parseIdLabel      = cell.viewWithTag(102) as! UILabel
+        
+        emotionLabel.text = dataChunk.emotion?.description ?? "(unlabeld)"
+        parseIdLabel.text = dataChunk.parseId ?? "(unpushed)"
+        updatedAtLabel.text = dataChunk.createdAt.description
+        
+        return cell
+    }
 }
 
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    [self.performSegue(withIdentifier: "DataChunkDetails", sender: dataChunks[(indexPath as NSIndexPath).row])]
-  }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        [self.performSegue(withIdentifier: "DataChunkDetails", sender: dataChunks[(indexPath as NSIndexPath).row])]
+    }
 }
