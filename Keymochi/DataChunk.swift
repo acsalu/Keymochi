@@ -11,15 +11,15 @@ import RealmSwift
 
 class DataChunk: Object {
   
-  private dynamic var emotionDescription: String?
+  fileprivate dynamic var emotionDescription: String?
   dynamic var symbolKeyEventSequence: SymbolKeyEventSequence?
   dynamic var backspaceKeyEventSequence: BackspaceKeyEventSequence?
   dynamic var accelerationDataSequence: MotionDataSequence?
   dynamic var gyroDataSequence: MotionDataSequence?
-  dynamic var realmId: String = NSUUID().UUIDString
-  dynamic var createdAt: NSDate = NSDate()
+  dynamic var realmId: String = UUID().uuidString
+  dynamic var createdAt: Date = Date()
   dynamic var parseId: String?
-  dynamic var appVersion: String? = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
+  dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
   
   override class func primaryKey() -> String? {
     return "realmId"
@@ -67,10 +67,7 @@ class DataChunk: Object {
       (symbolKeyEventSequence != nil) ? Array(symbolKeyEventSequence!.keyEvents) : []
     let backspaceKeyEvents: [BackspaceKeyEvent] =
       (backspaceKeyEventSequence != nil) ? Array(backspaceKeyEventSequence!.keyEvents) : []
-    var keyEvents = (symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])
-    
-    // Chronological order
-    keyEvents.sortInPlace { $0.downTime < $1.downTime }
+    let keyEvents = ((symbolKeyEvents as [KeyEvent]) + (backspaceKeyEvents as [KeyEvent])).sorted { $0.downTime < $1.downTime }
     
     return keyEvents
   }
@@ -89,7 +86,7 @@ extension Array {
     guard count > 1 else {
       return nil
     }
-    return Array<(Element, Element)>(Zip2Sequence(self[0..<count - 1], self[1..<count]))
+    return Array<(Element, Element)>(zip(self[0..<count-1], self[1..<count]))
   }
 }
 
@@ -116,7 +113,7 @@ extension DataChunk {
   var totalNumberOfDeletions: Int? {
     return backspaceKeyEventSequence?.keyEvents
       .map { $0.numberOfDeletions }
-      .reduce(0, combine: +)
+      .reduce(0, +)
   }
   
   var interTapDistances: [Double]? {

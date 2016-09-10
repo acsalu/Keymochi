@@ -25,24 +25,24 @@ class DataChunkDetailsTableViewController: UITableViewController {
   
   // MARK: - Table view data source
   
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return data.count
   }
   
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("DataChunkDetailCell", forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "DataChunkDetailCell", for: indexPath)
     
     if let textLabel = cell.textLabel {
-      textLabel.text = data[indexPath.row]
+      textLabel.text = data[(indexPath as NSIndexPath).row]
     }
     
     if let detailTextLabel = cell.detailTextLabel {
-      detailTextLabel.text = timestamps?[indexPath.row] ?? ""
+      detailTextLabel.text = timestamps?[(indexPath as NSIndexPath).row] ?? ""
     }
     
     return cell

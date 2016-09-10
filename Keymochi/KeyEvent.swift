@@ -10,12 +10,12 @@ import Foundation
 import RealmSwift
 
 enum KeyType: CustomStringConvertible, CustomDebugStringConvertible {
-  case Symbol, Backspace
+  case symbol, backspace
   
   var description: String {
     switch (self) {
-    case .Symbol: return "Symbol"
-    case .Backspace: return "Backspace"
+    case .symbol: return "Symbol"
+    case .backspace: return "Backspace"
     }
   }
   

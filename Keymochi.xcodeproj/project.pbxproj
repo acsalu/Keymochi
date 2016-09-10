@@ -504,6 +504,7 @@
 					90D53A971C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 5LEMESW6GH;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -513,16 +514,19 @@
 					90D53AAB1C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 5LEMESW6GH;
+						LastSwiftMigration = 0800;
 						TestTargetID = 90D53A971C834AFA002D1B94;
 					};
 					90D53AB61C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 5LEMESW6GH;
+						LastSwiftMigration = 0800;
 						TestTargetID = 90D53A971C834AFA002D1B94;
 					};
 					90D53ACC1C834B4D002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 5LEMESW6GH;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -976,10 +980,12 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 				);
 				INFOPLIST_FILE = Keymochi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -998,10 +1004,12 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 				);
 				INFOPLIST_FILE = Keymochi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1019,6 +1027,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keymochi.app/Keymochi";
 			};
 			name = Debug;
@@ -1037,6 +1046,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Keymochi.app/Keymochi";
 			};
 			name = Release;
@@ -1049,6 +1059,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Keymochi;
 				USES_XCTRUNNER = YES;
 			};
@@ -1062,6 +1073,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.KeymochiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Keymochi;
 				USES_XCTRUNNER = YES;
 			};
@@ -1080,11 +1092,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1101,11 +1115,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.tech.Keymochi.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

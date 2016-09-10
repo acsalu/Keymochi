@@ -23,31 +23,31 @@ class DataChunkViewController: UITableViewController {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    let segmentedControlWidth = UIScreen.mainScreen().bounds.width - 30
+    let segmentedControlWidth = UIScreen.main.bounds.width - 30
     emotionSegmentedControl = UISegmentedControl.init(frame: CGRect(x: 15, y: 7, width: segmentedControlWidth, height: 30))
-    for (index, emotion) in Emotion.all.enumerate() {
+    for (index, emotion) in Emotion.all.enumerated() {
       emotionSegmentedControl
-        .insertSegmentWithTitle(emotion.description, atIndex: index, animated: false)
+        .insertSegment(withTitle: emotion.description, at: index, animated: false)
     }
     
-    if let emotion = dataChunk.emotion, index = Emotion.all.indexOf(emotion) {
+    if let emotion = dataChunk.emotion, let index = Emotion.all.index(of: emotion) {
       emotionSegmentedControl.selectedSegmentIndex = index
     }
     
-    emotionSegmentedControl.addTarget(self, action: #selector(changeEmotion(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    emotionSegmentedControl.addTarget(self, action: #selector(changeEmotion(_:)), for: UIControlEvents.valueChanged)
     
     emotionContainer.addSubview(emotionSegmentedControl)
   }
   
-  func changeEmotion(sender: UISegmentedControl) {
+  func changeEmotion(_ sender: UISegmentedControl) {
     let emotion = Emotion.all[sender.selectedSegmentIndex]
     DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion)
   }
   
-  @IBAction func uploadDataChunk(sender: AnyObject) {
+  @IBAction func uploadDataChunk(_ sender: AnyObject) {
     let object = PFObject(className: "DataChunk")
     
-    if let userId = NSUserDefaults.standardUserDefaults().objectForKey("userid_preference") {
+    if let userId = UserDefaults.standard.object(forKey: "userid_preference") {
       object.setObject(userId, forKey: "userId")
     }
     
@@ -56,9 +56,9 @@ class DataChunkViewController: UITableViewController {
       emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
       object.setObject(emotion.description, forKey: "emotion")
     } else {
-      let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .Alert)
-      alert.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: nil))
-      self.presentViewController(alert, animated: true, completion: nil)
+      let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .alert)
+      alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true, completion: nil)
       return
     }
     
@@ -113,17 +113,17 @@ class DataChunkViewController: UITableViewController {
       object.setObject(appVersion, forKey: "appVersion")
     }
     
-    object.saveInBackgroundWithBlock { (success, error) in
+    object.saveInBackground { (success, error) in
       if let error = error {
-        let alert = UIAlertController.init(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController.init(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
       } else if let parseId = object.objectId {
         DataManager.sharedInatance.updateDataChunk(self.dataChunk, withEmotion: emotion, andParseId: parseId)
-        let alert = UIAlertController.init(title: "DataChunk", message: "Successfully uploaded! \(self.dataChunk.parseId)", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction.init(title: "Done", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController.init(title: "DataChunk", message: "Successfully uploaded! \(self.dataChunk.parseId)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "Done", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
       }
     }
   }
@@ -132,13 +132,13 @@ class DataChunkViewController: UITableViewController {
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
     }
     
-    let vc = segue.destinationViewController as! DataChunkDetailsTableViewController
-    func bindData(data: [String], andTimestamps timeStamps: [String]?, withTitle title: String) {
+    let vc = segue.destination as! DataChunkDetailsTableViewController
+    func bindData(_ data: [String], andTimestamps timeStamps: [String]?, withTitle title: String) {
       vc.data = data
       vc.timestamps = timeStamps
       vc.title = "\(title) (\(data.count))"

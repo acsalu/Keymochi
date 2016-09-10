@@ -14,22 +14,22 @@ class DataManager {
   static let sharedInatance = DataManager()
   
   
-  let directoryURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.groupIdentifier)
+  let directoryURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.groupIdentifier)
   let realmPath: String
   
   init() {
-    realmPath = (directoryURL?.URLByAppendingPathComponent("db.realm").path)!
+    realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!
     var realmConfig = Realm.Configuration()
-    realmConfig.path = realmPath
+    realmConfig.fileURL = URL(fileURLWithPath: realmPath)
     realmConfig.schemaVersion = 2
     realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
       if oldSchemaVersion < 1 {
-        migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
+        migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
           newObject!["appVersion"] = "0.2.0"
         })
       }
       if oldSchemaVersion < 2 {
-        migration.enumerate(DataChunk.className(), { (oldObject, newObject) in
+        migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
           guard let emotionDescription = oldObject!["emotionDescription"] else {
             return
           }
@@ -44,14 +44,14 @@ class DataManager {
     Realm.Configuration.defaultConfiguration = realmConfig
   }
   
-  private let realmQueue = dispatch_queue_create("com.emomeapp.emome.suggestionQueue", DISPATCH_QUEUE_SERIAL)
+  fileprivate let realmQueue = DispatchQueue(label: "com.emomeapp.emome.suggestionQueue", attributes: [])
   
   // MARK: - Key Events
-  private var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
-  private var _backspaceKeyEventSequence: BackspaceKeyEventSequence = BackspaceKeyEventSequence()
+  fileprivate var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
+  fileprivate var _backspaceKeyEventSequence: BackspaceKeyEventSequence = BackspaceKeyEventSequence()
   
-  func addKeyEvent(keyEvent: KeyEvent) {
-    dispatch_async(realmQueue) { 
+  func addKeyEvent(_ keyEvent: KeyEvent) {
+    realmQueue.async { 
       if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
         self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
       } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
@@ -61,14 +61,14 @@ class DataManager {
   }
   
   // MARK: - Motion Data
-  private var _accelerationDataSequence: MotionDataSequence = MotionDataSequence.init(sensorType: .Acceleration)
-  private var _gyroDataSequence: MotionDataSequence = MotionDataSequence.init(sensorType: .Gyro)
+  fileprivate var _accelerationDataSequence: MotionDataSequence = MotionDataSequence.init(sensorType: .acceleration)
+  fileprivate var _gyroDataSequence: MotionDataSequence = MotionDataSequence.init(sensorType: .gyro)
   
-  func addMotionDataPoint(dataPoint: MotionDataPoint, ofSensorType sensorType: SensorType) {
+  func addMotionDataPoint(_ dataPoint: MotionDataPoint, ofSensorType sensorType: SensorType) {
     
     switch sensorType {
-    case .Acceleration: _accelerationDataSequence.motionDataPoints.append(dataPoint)
-    case .Gyro: _gyroDataSequence.motionDataPoints.append(dataPoint)
+    case .acceleration: _accelerationDataSequence.motionDataPoints.append(dataPoint)
+    case .gyro: _gyroDataSequence.motionDataPoints.append(dataPoint)
     }
   }
   
@@ -79,10 +79,10 @@ class DataManager {
     // Data without legit intertap distance shall not pass.
     if totalKeyCount > 2  {  
         print("Dump current data in realm queue")
-        print("(\(KeyType.Symbol)) \(_symbolKeyEventSequence.keyEvents.count) key events")
-        print("(\(KeyType.Backspace)) \(_backspaceKeyEventSequence.keyEvents.count) key events")
-        print("(\(SensorType.Acceleration)) \(_accelerationDataSequence.motionDataPoints.count) data points")
-        print("(\(SensorType.Gyro)) \(_gyroDataSequence.motionDataPoints.count) data points")
+        print("(\(KeyType.symbol)) \(_symbolKeyEventSequence.keyEvents.count) key events")
+        print("(\(KeyType.backspace)) \(_backspaceKeyEventSequence.keyEvents.count) key events")
+        print("(\(SensorType.acceleration)) \(_accelerationDataSequence.motionDataPoints.count) data points")
+        print("(\(SensorType.gyro)) \(_gyroDataSequence.motionDataPoints.count) data points")
       
         let dataChunck = DataChunk()
         dataChunck.symbolKeyEventSequence = _symbolKeyEventSequence
@@ -99,8 +99,8 @@ class DataManager {
   func reset() {
     _symbolKeyEventSequence = SymbolKeyEventSequence()
     _backspaceKeyEventSequence = BackspaceKeyEventSequence()
-    _accelerationDataSequence = MotionDataSequence.init(sensorType: .Acceleration)
-    _gyroDataSequence = MotionDataSequence.init(sensorType: .Gyro)
+    _accelerationDataSequence = MotionDataSequence.init(sensorType: .acceleration)
+    _gyroDataSequence = MotionDataSequence.init(sensorType: .gyro)
   }
   
   var _realm: Realm?
@@ -110,11 +110,11 @@ class DataManager {
       if let _realm = _realm {
         return _realm
       }
-      return try! Realm.init(path: self.realmPath)
+      return try! Realm(fileURL: URL(fileURLWithPath: self.realmPath))
     }
   }
   
-  func setRealm(realm: Realm) {
+  func setRealm(_ realm: Realm) {
     _realm = realm
   }
   
@@ -122,16 +122,16 @@ class DataManager {
 
 extension DataManager {
   func getDataChunks() -> [DataChunk] {
-    return Array(realm.objects(DataChunk))
+    return Array(realm.allObjects(ofType: DataChunk.self))
   }
   
   func clearData() {
     realm.beginWrite()
-    realm.deleteAll()
+    realm.deleteAllObjects()
     try! realm.commitWrite()
   }
   
-  func addDataChunk(dataChunck: DataChunk) {
+  func addDataChunk(_ dataChunck: DataChunk) {
       realm.beginWrite()
       realm.add(dataChunck)
       
@@ -174,14 +174,14 @@ extension DataManager {
       try! realm.commitWrite()
   }
   
-  func updateDataChunk(dataChunk: DataChunk, withEmotion emotion: Emotion, andParseId parseId: String?) {
+  func updateDataChunk(_ dataChunk: DataChunk, withEmotion emotion: Emotion, andParseId parseId: String?) {
     realm.beginWrite()
     dataChunk.emotion = emotion
     dataChunk.parseId = parseId
     try! realm.commitWrite()
   }
   
-  func updateDataChunk(dataChunk: DataChunk, withEmotion emotion: Emotion) {
+  func updateDataChunk(_ dataChunk: DataChunk, withEmotion emotion: Emotion) {
     updateDataChunk(dataChunk, withEmotion: emotion, andParseId: nil)
   }
   

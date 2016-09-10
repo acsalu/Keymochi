@@ -11,12 +11,12 @@ import RealmSwift
 import CoreMotion
 
 enum SensorType: CustomStringConvertible, CustomDebugStringConvertible {
-  case Acceleration, Gyro
+  case acceleration, gyro
   
   var description: String {
     switch (self) {
-    case .Acceleration: return "Acceleration"
-    case .Gyro: return "Gyro"
+    case .acceleration: return "Acceleration"
+    case .gyro: return "Gyro"
     }
   }
   
@@ -37,7 +37,7 @@ class MotionDataSequence: Object {
     self.sensorType = sensorType
   }
   
-  var sensorType: SensorType = .Acceleration
+  var sensorType: SensorType = .acceleration
   let motionDataPoints = List<MotionDataPoint>()
   
   var timestamps: [String] {
@@ -58,7 +58,7 @@ class MotionDataPoint: Object {
   dynamic var z: Double = 0.0
   dynamic var time: Double = 0.0
   
-  convenience init(acceleration: CMAcceleration, atTime timestamp: NSTimeInterval) {
+  convenience init(acceleration: CMAcceleration, atTime timestamp: TimeInterval) {
     self.init()
     x = acceleration.x
     y = acceleration.y
@@ -66,7 +66,7 @@ class MotionDataPoint: Object {
     time = timestamp
   }
   
-  convenience init(rotationRate: CMRotationRate, atTime timestamp: NSTimeInterval) {
+  convenience init(rotationRate: CMRotationRate, atTime timestamp: TimeInterval) {
     self.init()
     x = rotationRate.x
     y = rotationRate.y

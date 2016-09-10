@@ -31,9 +31,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     DataManager.sharedInatance.reset()
     
     motionManager = CMMotionManager()
-    let motionUpdateInterval: NSTimeInterval = 0.1
+    let motionUpdateInterval: TimeInterval = 0.1
     motionManager.deviceMotionUpdateInterval = motionUpdateInterval
-    motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { (deviceMotioin, error) in
+    motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (deviceMotioin, error) in
       guard error == nil else {
         debugPrint(error)
         return
@@ -44,19 +44,19 @@ class KeymochiKeyboardViewController: KeyboardViewController {
       
       let accelerationDataPoint = MotionDataPoint(acceleration: deviceMotioin.userAcceleration, atTime: deviceMotioin.timestamp)
       let gyroDataPoint = MotionDataPoint(rotationRate: deviceMotioin.rotationRate, atTime: deviceMotioin.timestamp)
-      DataManager.sharedInatance.addMotionDataPoint(accelerationDataPoint, ofSensorType: .Acceleration)
-      DataManager.sharedInatance.addMotionDataPoint(gyroDataPoint, ofSensorType: .Gyro)
+      DataManager.sharedInatance.addMotionDataPoint(accelerationDataPoint, ofSensorType: .acceleration)
+      DataManager.sharedInatance.addMotionDataPoint(gyroDataPoint, ofSensorType: .gyro)
     }
   }
   
-  override func viewDidDisappear(animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     motionManager.stopDeviceMotionUpdates()
     DataManager.sharedInatance.dumpCurrentData()
     super.viewDidDisappear(animated)
   }
   
-  override func symbolKeyUp(sender: KeyboardKey) {
-    guard let key = self.layout?.keyForView(sender)?.outputForCase(self.shiftState.uppercase()) else {
+  override func symbolKeyUp(_ sender: KeyboardKey) {
+    guard let key = self.layout?.keyForView(key: sender)?.outputForCase(self.shiftState.uppercase()) else {
       return
     }
     
@@ -70,10 +70,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     if key == " " {
       let textChecker = UITextChecker()
       let range = NSRange(location: 0, length: currentWord.characters.count)
-      let misspelledRange = textChecker.rangeOfMisspelledWordInString(
-        currentWord, range: range, startingAt: 0, wrap: false, language: "en_US")
+      let misspelledRange = textChecker.rangeOfMisspelledWord(
+        in: currentWord, range: range, startingAt: 0, wrap: false, language: "en_US")
       if misspelledRange.location != NSNotFound {
-        if let guesses = textChecker.guessesForWordRange(range, inString: currentWord, language: "en_US") as! [String]? {
+        if let guesses = textChecker.guesses(forWordRange: range, in: currentWord, language: "en_US") {
           if guesses.count > 0 {
             let replacement = guesses[0]
             for _ in 0..<currentWord.characters.count {
@@ -85,12 +85,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
       }
       currentWord = ""
     } else {
-      currentWord.appendContentsOf(key)
+      currentWord += key
     }
   }
   
-  override func symbolKeyDown(sender: KeyboardKey) {
-    guard let key = self.layout?.keyForView(sender)?.outputForCase(self.shiftState.uppercase()) else {
+  override func symbolKeyDown(_ sender: KeyboardKey) {
+    guard let key = self.layout?.keyForView(key: sender)?.outputForCase(self.shiftState.uppercase()) else {
       return
     }
     
@@ -100,7 +100,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     symbolKeyEventMap[key] = symbolKeyEvent
   }
   
-  override func backspaceDown(sender: KeyboardKey) {
+  override func backspaceDown(_ sender: KeyboardKey) {
     let keyEvent = BackspaceKeyEvent()
     keyEvent.downTime = CACurrentMediaTime()
     backspaceKeyEvent = keyEvent
@@ -108,7 +108,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     super.backspaceDown(sender)
   }
   
-  override func backspaceUp(sender: KeyboardKey) {
+  override func backspaceUp(_ sender: KeyboardKey) {
     if let backspaceKeyEvent = backspaceKeyEvent {
       backspaceKeyEvent.upTime = CACurrentMediaTime()
       backspaceKeyEvent.numberOfDeletions = numberOfDeletions

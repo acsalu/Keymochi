@@ -18,52 +18,52 @@ class DraftViewController: UIViewController {
     
     let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(DraftViewController.dismissKeyboardOnTap(_:)))
     let swipeDownRecognizer = UISwipeGestureRecognizer.init(target: self, action: #selector(DraftViewController.dismissKeyboardOnTap(_:)))
-    swipeDownRecognizer.direction = .Down
+    swipeDownRecognizer.direction = .down
     view.addGestureRecognizer(tapRecognizer)
     view.addGestureRecognizer(swipeDownRecognizer)
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
   
-  override func viewWillDisappear(animated: Bool) {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+  override func viewWillDisappear(_ animated: Bool) {
+    NotificationCenter.default.removeObserver(self)
     super.viewWillDisappear(animated)
   }
   
-  func dismissKeyboardOnTap(sender: AnyObject) {
+  func dismissKeyboardOnTap(_ sender: AnyObject) {
     dismissKeyboard()
   }
   
-  @IBAction func doneButtonPressed(sender: AnyObject) {
+  @IBAction func doneButtonPressed(_ sender: AnyObject) {
     dismissKeyboard()
   }
   
-  private func dismissKeyboard() {
+  fileprivate func dismissKeyboard() {
     view.endEditing(true)
   }
   
-  @IBAction func clearText(sender: AnyObject) {
+  @IBAction func clearText(_ sender: AnyObject) {
     textView.text = ""
   }
   
   
-  func keyboardWillShow(notification: NSNotification) {
-    guard let userInfo = notification.userInfo else {
+  func keyboardWillShow(_ notification: Notification) {
+    guard let userInfo = (notification as NSNotification).userInfo else {
       return
     }
     
-    guard let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() else {
+    guard let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
       return
     }
 
     doneButtonBottomConstraint.constant = keyboardFrame.size.height - (tabBarController?.tabBar.frame.size.height ?? 0.0)
   }
   
-  func keyboardWillHide(notification: NSNotification) {
+  func keyboardWillHide(_ notification: Notification) {
     doneButtonBottomConstraint.constant = 0.0
   }
   
