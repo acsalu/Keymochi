@@ -18,7 +18,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
     
     var currentWord: String = ""
-    
+	 var lastWord: String = ""
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,22 +66,28 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         DataManager.sharedInatance.addKeyEvent(symbolKeyEvent)
         
         if key == " " {
-            let textChecker = UITextChecker()
-            let range = NSRange(location: 0, length: currentWord.characters.count)
-            let misspelledRange = textChecker.rangeOfMisspelledWord(
+				let words : [String] = (textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "))!
+				if lastWord == "" {
+					lastWord = words.last!
+				} else if lastWord != words.last! {
+					lastWord = words.last!
+					let textChecker = UITextChecker()
+					let range = NSRange(location: 0, length: currentWord.characters.count)
+					let misspelledRange = textChecker.rangeOfMisspelledWord(
                 in: currentWord, range: range, startingAt: 0, wrap: false, language: "en_US")
-            if misspelledRange.location != NSNotFound {
-                if let guesses = textChecker.guesses(forWordRange: range, in: currentWord, language: "en_US") {
-                    if guesses.count > 0 {
-                        let replacement = guesses[0]
-                        for _ in 0..<currentWord.characters.count {
-                            textDocumentProxy.deleteBackward()
-                        }
-                        textDocumentProxy.insertText(replacement)
-                    }
-                }
-            }
-            currentWord = ""
+					if misspelledRange.location != NSNotFound {
+						if let guesses = textChecker.guesses(forWordRange: range, in: currentWord, language: "en_US") {
+							if guesses.count > 0 {
+								let replacement = guesses[0]
+								for _ in 0..<currentWord.characters.count {
+									textDocumentProxy.deleteBackward()
+								}
+								textDocumentProxy.insertText(replacement)
+							}
+						}
+					}
+				}
+				currentWord = ""
         } else {
             currentWord += key
         }
