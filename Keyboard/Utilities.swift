@@ -36,19 +36,19 @@ import UIKit
 //    return memoized
 //}
 
-func memoize<T:Hashable, U>(fn : T -> U) -> T -> U {
-  var cache = [T:U]()
-  return {
-    (val : T) -> U in
-    let value = cache[val]
-    if value != nil {
-      return value!
-    } else {
-      let newValue = fn(val)
-      cache[val] = newValue
-      return newValue
+func memoize<T:Hashable, U>(_ fn : @escaping (T) -> U) -> (T) -> U {
+    var cache = [T:U]()
+    return {
+        (val : T) -> U in
+        let value = cache[val]
+        if value != nil {
+            return value!
+        } else {
+            let newValue = fn(val)
+            cache[val] = newValue
+            return newValue
+        }
     }
-  }
 }
 
 //let fibonacci = memoize {
@@ -67,26 +67,26 @@ func memoize<T:Hashable, U>(fn : T -> U) -> T -> U {
 //    return memoized
 //}
 
-var profile: ((id: String) -> Double?) = {
-  var counterForName = Dictionary<String, Double>()
-  var isOpen = Dictionary<String, Double>()
-  
-  return { (id: String) -> Double? in
-    if let startTime = isOpen[id] {
-      let diff = CACurrentMediaTime() - startTime
-      if let currentCount = counterForName[id] {
-        counterForName[id] = (currentCount + diff)
-      }
-      else {
-        counterForName[id] = diff
-      }
-      
-      isOpen[id] = nil
-    }
-    else {
-      isOpen[id] = CACurrentMediaTime()
-    }
+var profile: ((_ id: String) -> Double?) = {
+    var counterForName = Dictionary<String, Double>()
+    var isOpen = Dictionary<String, Double>()
     
-    return counterForName[id]
-  }
+    return { (id: String) -> Double? in
+        if let startTime = isOpen[id] {
+            let diff = CACurrentMediaTime() - startTime
+            if let currentCount = counterForName[id] {
+                counterForName[id] = (currentCount + diff)
+            }
+            else {
+                counterForName[id] = diff
+            }
+            
+            isOpen[id] = nil
+        }
+        else {
+            isOpen[id] = CACurrentMediaTime()
+        }
+        
+        return counterForName[id]
+    }
 }()

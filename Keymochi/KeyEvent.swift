@@ -10,52 +10,52 @@ import Foundation
 import RealmSwift
 
 enum KeyType: CustomStringConvertible, CustomDebugStringConvertible {
-  case Symbol, Backspace
-  
-  var description: String {
-    switch (self) {
-    case .Symbol: return "Symbol"
-    case .Backspace: return "Backspace"
+    case symbol, backspace
+    
+    var description: String {
+        switch (self) {
+        case .symbol: return "Symbol"
+        case .backspace: return "Backspace"
+        }
     }
-  }
-  
-  var debugDescription: String {
-    return description
-  }
+    
+    var debugDescription: String {
+        return description
+    }
 }
 
 class SymbolKeyEventSequence: Object {
-  let keyEvents = List<SymbolKeyEvent>()
+    let keyEvents = List<SymbolKeyEvent>()
 }
 
 class BackspaceKeyEventSequence: Object {
-  let keyEvents = List<BackspaceKeyEvent>()
+    let keyEvents = List<BackspaceKeyEvent>()
 }
 
 class SymbolKeyEvent: KeyEvent {
-  dynamic var key: String?
-  
-  override var description: String {
-    return key ?? ""
-  }
+    dynamic var key: String?
+    
+    override var description: String {
+        return key ?? ""
+    }
 }
 
 class BackspaceKeyEvent: KeyEvent {
-  dynamic var numberOfDeletions: Int = 0
-  override var description: String {
-    return "← \(numberOfDeletions)"
-  }
+    dynamic var numberOfDeletions: Int = 0
+    override var description: String {
+        return "← \(numberOfDeletions)"
+    }
 }
 
 class KeyEvent: Object {
-  dynamic var downTime: Double = 0.0
-  dynamic var upTime: Double = 0.0
-  
-  var duration: Double {
-    return (upTime - downTime) * 1000
-  }
-  
-  var timestamp: String {
-    return String(format: "%.0f (%.2f - %.2f)", duration, downTime, upTime)
-  }
+    dynamic var downTime: Double = 0.0
+    dynamic var upTime: Double = 0.0
+    
+    var duration: Double {
+        return (upTime - downTime) * 1000
+    }
+    
+    var timestamp: String {
+        return String(format: "%.0f (%.2f - %.2f)", duration, downTime, upTime)
+    }
 }

@@ -10,9 +10,9 @@ import Foundation
 import SwiftHEXColors
 
 struct Constants {
-  static let groupIdentifier = "group.edu.cornell.tech.keymochi"
+    static let groupIdentifier = "group.edu.cornell.tech.keymochi"
 }
 
 struct Colors {
-  static let mainColor = UIColor(hexString: "#25B5DB")
+    static let mainColor = UIColor(hexString: "#25B5DB")
 }
