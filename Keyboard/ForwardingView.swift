@@ -194,6 +194,7 @@ class ForwardingView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchesEnded")
         for touch in touches {
             let view = self.touchToView[touch]
             
@@ -211,6 +212,7 @@ class ForwardingView: UIView {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchesCancelled")
         for touch in touches {
             let view = self.touchToView[touch]
             

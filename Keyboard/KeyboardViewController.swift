@@ -377,7 +377,7 @@ class KeyboardViewController: UIInputViewController {
     var popupDelayTimer: Timer?
     
     func showPopup(_ sender: KeyboardKey) {
-        
+        print("showPopup")
         if sender == self.keyWithDelayedPopup {
             self.popupDelayTimer?.invalidate()
         }
@@ -385,7 +385,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func hidePopupDelay(_ sender: KeyboardKey) {
-        
+        print("hidePopupDelay")
         self.popupDelayTimer?.invalidate()
         
         if sender != self.keyWithDelayedPopup {
