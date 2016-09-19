@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftDate
 
-class ViewController: UIViewController {
+class DataChunkTableViewController: UIViewController {
     
     var dataChunks = [DataChunk]()
     @IBOutlet weak var eventHistoryTableView: UITableView!
@@ -59,7 +60,7 @@ class ViewController: UIViewController {
 
 
 // MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension DataChunkTableViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -81,7 +82,7 @@ extension ViewController: UITableViewDataSource {
         
         emotionLabel.text = dataChunk.emotion?.description ?? "(unlabeld)"
         parseIdLabel.text = dataChunk.parseId ?? "(unpushed)"
-        updatedAtLabel.text = dataChunk.createdAt.description
+        updatedAtLabel.text = dataChunk.createdAt.inRegion(Region.defaultRegion).description
         
         return cell
     }
@@ -89,8 +90,8 @@ extension ViewController: UITableViewDataSource {
 
 
 // MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
+extension DataChunkTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        [self.performSegue(withIdentifier: "DataChunkDetails", sender: dataChunks[(indexPath as NSIndexPath).row])]
+        self.performSegue(withIdentifier: "DataChunkDetails", sender: dataChunks[(indexPath as NSIndexPath).row])
     }
 }

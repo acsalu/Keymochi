@@ -122,12 +122,12 @@ class DataManager {
 
 extension DataManager {
     func getDataChunks() -> [DataChunk] {
-        return Array(realm.allObjects(ofType: DataChunk.self))
+        return Array(realm.objects(DataChunk.self))
     }
     
     func clearData() {
         realm.beginWrite()
-        realm.deleteAllObjects()
+        realm.deleteAll()
         try! realm.commitWrite()
     }
     

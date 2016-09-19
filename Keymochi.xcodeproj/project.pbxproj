@@ -48,7 +48,7 @@
 		90D4E06A1C9B9E0900402191 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4E0681C9B9D6B00402191 /* Emotion.swift */; };
 		90D4E06B1C9B9E0900402191 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
 		90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */; };
-		90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53A9D1C834AFA002D1B94 /* ViewController.swift */; };
+		90D53A9E1C834AFA002D1B94 /* DataChunkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D53A9D1C834AFA002D1B94 /* DataChunkTableViewController.swift */; };
 		90D53AA11C834AFA002D1B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90D53A9F1C834AFA002D1B94 /* Main.storyboard */; };
 		90D53AA31C834AFA002D1B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D53AA21C834AFA002D1B94 /* Assets.xcassets */; };
 		90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */; };
@@ -148,7 +148,7 @@
 		90D4E0681C9B9D6B00402191 /* Emotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		90D53A981C834AFA002D1B94 /* Keymochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keymochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D53A9B1C834AFA002D1B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		90D53A9D1C834AFA002D1B94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		90D53A9D1C834AFA002D1B94 /* DataChunkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataChunkTableViewController.swift; sourceTree = "<group>"; };
 		90D53AA01C834AFA002D1B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90D53AA21C834AFA002D1B94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90D53AA51C834AFA002D1B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		901DF48D1C8929400030E17C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				90D53A9D1C834AFA002D1B94 /* ViewController.swift */,
+				90D53A9D1C834AFA002D1B94 /* DataChunkTableViewController.swift */,
 				90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */,
 				90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */,
 				901DF48B1C8928400030E17C /* DraftViewController.swift */,
@@ -786,7 +786,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90D53A9E1C834AFA002D1B94 /* ViewController.swift in Sources */,
+				90D53A9E1C834AFA002D1B94 /* DataChunkTableViewController.swift in Sources */,
 				9074C1381CC7D4D100837E99 /* DataManager.swift in Sources */,
 				90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */,
 				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,

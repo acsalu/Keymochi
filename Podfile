@@ -3,8 +3,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'Keymochi' do
-    pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
-    pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
+    pod 'Realm'
+    pod 'RealmSwift'
     pod 'Parse'
     pod 'Fabric'
     pod 'Crashlytics'
@@ -12,11 +12,12 @@ target 'Keymochi' do
     pod 'Firebase'
     pod 'Firebase/Core’
     pod 'Firebase/Database'
+    pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git', branch: 'feature/swift-3.0'
 end
 
 target 'KeymochiTests' do
-    pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
-    pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
+    pod 'Realm'
+    pod 'RealmSwift'
     pod 'Quick'
     pod 'Nimble'
 end
@@ -27,8 +28,8 @@ target 'KeymochiUITests' do
 end
 
 target 'Keyboard' do
-    pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
-    pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
+    pod 'Realm'
+    pod 'RealmSwift'
     pod 'SwiftHEXColors'
     pod 'Firebase'
     pod 'Firebase/Core’
