@@ -29,11 +29,12 @@ PODS:
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
   - Quick (0.9.1)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
+  - SwiftDate (3.0.8)
   - SwiftHEXColors (1.0.4)
 
 DEPENDENCIES:
@@ -45,29 +46,10 @@ DEPENDENCIES:
   - Nimble
   - Parse
   - Quick
-  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
-  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - Realm
+  - RealmSwift
+  - SwiftDate
   - SwiftHEXColors
-
-EXTERNAL SOURCES:
-  Realm:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-
-CHECKOUT OPTIONS:
-  Realm:
-    :commit: 103d4c86cc2aa0d3fd2a3b4156dbd65e410ff25e
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :commit: 103d4c86cc2aa0d3fd2a3b4156dbd65e410ff25e
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -83,10 +65,11 @@ SPEC CHECKSUMS:
   Nimble: 72bcc3e2f02242e6bfaaf8d9412ca7bfe3d8b417
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
-  Realm: 2948cfa3a05b7acc446abc4c124d443df646c8de
-  RealmSwift: 4816c8608630a9a00bba6d726bb30b4bab6dd6bf
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
-PODFILE CHECKSUM: 46ef34f7bdcbbfa5e76c9588f76555c86dbeb3d0
+PODFILE CHECKSUM: c63d4260ce6b3c328e3afc0d573d7f44eb8c7c09
 
 COCOAPODS: 1.0.1
