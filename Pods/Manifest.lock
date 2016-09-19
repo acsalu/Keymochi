@@ -34,7 +34,7 @@ PODS:
   - Realm/Headers (1.1.0)
   - RealmSwift (1.1.0):
     - Realm (= 1.1.0)
-  - SwiftDate (3.0.8)
+  - SwiftDate (3.0.9)
   - SwiftHEXColors (1.0.4)
 
 DEPENDENCIES:
@@ -48,8 +48,18 @@ DEPENDENCIES:
   - Quick
   - Realm
   - RealmSwift
-  - SwiftDate
+  - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`, branch `feature/swift-3.0`)
   - SwiftHEXColors
+
+EXTERNAL SOURCES:
+  SwiftDate:
+    :branch: feature/swift-3.0
+    :git: https://github.com/malcommac/SwiftDate.git
+
+CHECKOUT OPTIONS:
+  SwiftDate:
+    :commit: 644a4615c77dc70d7861ddadb2c59f5c45f4c235
+    :git: https://github.com/malcommac/SwiftDate.git
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -67,9 +77,9 @@ SPEC CHECKSUMS:
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
   Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
   RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
-PODFILE CHECKSUM: c63d4260ce6b3c328e3afc0d573d7f44eb8c7c09
+PODFILE CHECKSUM: f9e914794bb49e76063461754e6dc3ed52e4cc5a
 
 COCOAPODS: 1.0.1
