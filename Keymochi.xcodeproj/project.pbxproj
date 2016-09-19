@@ -14,6 +14,7 @@
 		901DF4851C8925EE0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF4861C89261D0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
+		9044406B1D90715B00FCE1C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */; };
 		90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90564CC51CA3A35700A16866 /* NumericOperations.swift */; };
 		906255B91CD44E55002EE58C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905E43EB1C9A07F8009520D9 /* CoreMotion.framework */; };
 		906255BA1CD44F53002EE58C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905E43EB1C9A07F8009520D9 /* CoreMotion.framework */; };
@@ -59,7 +60,6 @@
 		90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
 		90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */; };
-		ECAFC0A61D8BAC1500B1E36D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECAFC0A51D8BAC1500B1E36D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +110,7 @@
 		901DF4841C8925EE0030E17C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		901DF48B1C8928400030E17C /* DraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
 		90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymochiKeyboardViewController.swift; sourceTree = "<group>"; };
+		9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90564CC51CA3A35700A16866 /* NumericOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericOperations.swift; sourceTree = "<group>"; };
 		905E43EB1C9A07F8009520D9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9065D1981CA3045100F47855 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		DCA1EC1FE5F2464F85F03F49 /* Pods-KeymochiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDECC99E09785093AEFDCD59 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECAFC0A51D8BAC1500B1E36D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,7 +369,7 @@
 				90D53AA21C834AFA002D1B94 /* Assets.xcassets */,
 				90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */,
 				90D53AA71C834AFA002D1B94 /* Info.plist */,
-				ECAFC0A51D8BAC1500B1E36D /* GoogleService-Info.plist */,
+				9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */,
 				9065D1981CA3045100F47855 /* keys.plist */,
 				906744211CB7FA9700DABC18 /* Settings.bundle */,
 			);
@@ -570,8 +570,8 @@
 				90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */,
 				906744221CB7FA9700DABC18 /* Settings.bundle in Resources */,
 				90D53AA31C834AFA002D1B94 /* Assets.xcassets in Resources */,
-				ECAFC0A61D8BAC1500B1E36D /* GoogleService-Info.plist in Resources */,
 				90D53AA11C834AFA002D1B94 /* Main.storyboard in Resources */,
+				9044406B1D90715B00FCE1C4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
