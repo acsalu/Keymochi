@@ -91,7 +91,7 @@ class DataChunkViewController: UITableViewController {
 //                    self.ref2 = self.ref.child("users").child(uid as String).child("\(emotion)").childByAutoId()
                     self.ref2 = self.ref.child("users").child(uid as String).childByAutoId()
                     
-                    self.ref2.updateChildValues(["Emotion": "\(emotion)"], withCompletionBlock: {
+                    self.ref2.updateChildValues(["Emotion": emotion.description], withCompletionBlock: {
                         (error, ref) in
                         if (error != nil) {
                             print("emotion could not be saved")
