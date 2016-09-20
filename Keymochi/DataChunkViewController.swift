@@ -88,7 +88,30 @@ class DataChunkViewController: UITableViewController {
                     emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
                     print(emotion)
                     
-                    self.ref2 = self.ref.child("users").child(uid as String).child("\(emotion)").childByAutoId()
+//                    self.ref2 = self.ref.child("users").child(uid as String).child("\(emotion)").childByAutoId()
+                    self.ref2 = self.ref.child("users").child(uid as String).childByAutoId()
+                    
+                    self.ref2.updateChildValues(["Emotion": "\(emotion)"], withCompletionBlock: {
+                        (error, ref) in
+                        if (error != nil) {
+                            print("emotion could not be saved")
+                            
+                        } else {
+                            print("emotion saved successfully!")
+                        }
+                    })
+                    
+                    self.ref2.updateChildValues(["user": uid], withCompletionBlock: {
+                        (error, ref) in
+                        if (error != nil) {
+                            print("uid could not be saved")
+                            
+                        } else {
+                            print("uid saved successfully!")
+                        }
+                    })
+                    
+                    
                     if let totalNumberOfDeletions = dataChunk.totalNumberOfDeletions {
                         self.ref2.updateChildValues(["totalNumDel": totalNumberOfDeletions], withCompletionBlock: {
                             (error, ref) in
@@ -99,10 +122,10 @@ class DataChunkViewController: UITableViewController {
                                 print("totalNumDel saved successfully!")
                             }
                         })
-                    }
                 
-                    
-                    
+                  
+                    }
+            
                     if let interTapDistances = dataChunk.interTapDistances {
                         self.ref2.updateChildValues(["interTapDist": interTapDistances], withCompletionBlock: {
                             (error, ref) in
