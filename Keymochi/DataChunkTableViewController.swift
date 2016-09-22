@@ -78,10 +78,10 @@ extension DataChunkTableViewController: UITableViewDataSource {
         
         let emotionLabel      = cell.viewWithTag(100) as! UILabel
         let updatedAtLabel    = cell.viewWithTag(101) as! UILabel
-        let parseIdLabel      = cell.viewWithTag(102) as! UILabel
+        let firebaseKeyLabel  = cell.viewWithTag(102) as! UILabel
         
         emotionLabel.text = dataChunk.emotion?.description ?? "(unlabeld)"
-        parseIdLabel.text = dataChunk.parseId ?? "(unpushed)"
+        firebaseKeyLabel.text = dataChunk.firebaseKey ?? "(unpushed)"
         updatedAtLabel.text = dataChunk.createdAt.inRegion(Region.defaultRegion).description
         
         return cell

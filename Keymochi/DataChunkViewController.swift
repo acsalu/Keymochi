@@ -6,35 +6,25 @@
 //  Copyright © 2016 Cornell Tech. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import Parse
+
 import RealmSwift
 import Firebase
-//import FirebaseDatabase
-//import FirebaseStorage
 import FirebaseAnalytics
 import FirebaseDatabase
 
 class DataChunkViewController: UITableViewController {
     
-    var realm: Realm!
     var dataChunk: DataChunk!
     var emotionSegmentedControl: UISegmentedControl!
-    var ref: FIRDatabaseReference!
     var uid: String!
-    var ref2: FIRDatabaseReference!
     
     @IBOutlet weak var emotionContainer: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.ref = FIRDatabase.database().reference()
-        
-        
-//        var ref = Firebase(url: "https://docs-examples.firebaseio.com/web/saving-data/fireblog")
-//        self.ref = "https://keymochi-82adb.firebaseio.com/"
 
         // Do any additional setup after loading the view.
         let segmentedControlWidth = UIScreen.main.bounds.width - 30
@@ -58,216 +48,102 @@ class DataChunkViewController: UITableViewController {
         DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion)
     }
     
+    func alertSetupUserId() {
+        let alert = UIAlertController.init(title: "Error", message: "Please set your userId by going to Settings --> Keymochi --> And Enter a Value in the UserID field", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func uploadDataChunk(_ sender: AnyObject) {
-//        if let userId = UserDefaults.standard.object(forKey: "userid_preference"){
-        self.uid = UserDefaults.standard.object(forKey: "userid_preference") as! String!
-        if (uid).isEmpty {
-            let alert = UIAlertController.init(title: "Error", message: "Please set your userId by going to Settings --> Keymochi --> And Enter a Value in the UserID field", preferredStyle: .alert)
+        
+        guard let uid = UserDefaults.standard.object(forKey: "userid_preference") as? String else {
+            alertSetupUserId()
+            return
+        }
+        
+        guard !uid.isEmpty else {
+            alertSetupUserId()
+            return
+        }
+        
+        guard emotionSegmentedControl.selectedSegmentIndex != -1  else {
+            let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .alert)
             alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
-
-           
-        } else{
-//        if let userId = UserDefaults.standard.object(forKey: "userid_preference") {
-                print(uid)
-//                self.uid = userId as! String as NSString!
-                var emotion: Emotion!
-            let titleFailure = "Error"
-            let messageFailure = "There was a problem uploading the Data, please try again!"
-            let titleSuccess = "Success"
-            let messageSuccess = "The data has been uploaded successfully"
-            let alertSuccess = UIAlertController.init(title: titleSuccess, message: messageSuccess, preferredStyle: .alert)
-            let alertFailure = UIAlertController.init(title: titleFailure, message: messageFailure, preferredStyle: .alert)
-            alertFailure.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-            alertSuccess.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-            
-            
-            
-                if emotionSegmentedControl.selectedSegmentIndex != -1 {
-                    emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
-                    print(emotion)
-                    
-//                    self.ref2 = self.ref.child("users").child(uid as String).child("\(emotion)").childByAutoId()
-                    self.ref2 = self.ref.child("users").child(uid as String).childByAutoId()
-                    
-                    self.ref2.updateChildValues(["Emotion": emotion.description], withCompletionBlock: {
-                        (error, ref) in
-                        if (error != nil) {
-                            print("emotion could not be saved")
-                            
-                        } else {
-                            print("emotion saved successfully!")
-                        }
-                    })
-                    
-                    self.ref2.updateChildValues(["user": uid], withCompletionBlock: {
-                        (error, ref) in
-                        if (error != nil) {
-                            print("uid could not be saved")
-                            
-                        } else {
-                            print("uid saved successfully!")
-                        }
-                    })
-                    
-                    
-                    if let totalNumberOfDeletions = dataChunk.totalNumberOfDeletions {
-                        self.ref2.updateChildValues(["totalNumDel": totalNumberOfDeletions], withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("totalNumDelcould not be saved.")
-                                
-                            } else {
-                                print("totalNumDel saved successfully!")
-                            }
-                        })
-                
-                  
+        }
+        
+        
+        
+        let emotion = Emotion.all[emotionSegmentedControl.selectedSegmentIndex]
+        
+        var childValues = [String: Any]()
+        childValues["emotion"] = emotion.description
+        childValues["user"] = uid
+        
+        guard let totalNumberOfDeletions = dataChunk.totalNumberOfDeletions,
+                let interTapDistances = dataChunk.interTapDistances,
+                let tapDurations = dataChunk.tapDurations,
+                let accelerationMagnitudes = dataChunk.accelerationMagnitudes,
+                let gyroMagnitudes = dataChunk.gyroMagnitudes,
+                let appVersion = dataChunk.appVersion,
+                let symbolCounts = dataChunk.symbolCounts else {
+            return
+        }
+        
+        childValues["totalNumDel"] = NSNumber(value: totalNumberOfDeletions)
+        childValues["interTapDist"] = NSArray(array: interTapDistances.map { NSNumber(value: $0) })
+        childValues["tapDur"] = NSArray(array: tapDurations.map { NSNumber(value: $0) })
+        childValues["accelMag"] = NSArray(array: accelerationMagnitudes.map { NSNumber(value: $0) })
+        childValues["gyroMag"] = NSArray(array: gyroMagnitudes.map { NSNumber(value: $0) })
+        childValues["appVer"] = NSString(string: appVersion)
+        
+        var puncuationCount = 0
+        for (symbol, count) in symbolCounts {
+            for scalar in symbol.unicodeScalars {
+                let value = scalar.value
+                if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) {
+                    childValues["symbol_\(symbol)"] = NSNumber(value: count)
+                } else {
+                    puncuationCount += count
+                    var key: String!
+                    switch symbol {
+                    case " ":
+                        key = "symbol_space"
+                    case "!":
+                        key = "symbol_exclamation_mark"
+                    case ".":
+                        key = "symbol_period"
+                    case "?":
+                        key = "symbol_question_mark"
+                    default:
+                        continue
                     }
-            
-                    if let interTapDistances = dataChunk.interTapDistances {
-                        self.ref2.updateChildValues(["interTapDist": interTapDistances], withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("interTapDist could not be saved.")
-                            } else {
-                                print("interTapDist saved successfully!")
-                            }
-                        })
-
-                    }
-                    
-                    if let tapDurations = dataChunk.tapDurations {
-                        self.ref2.updateChildValues(["tapDur": tapDurations],  withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("tapDur could not be saved.")
-                            } else {
-                                print("tapDur saved successfully!")
-                            }
-                        })
-                    }
-                    
-                    if let accelerationMagnitudes = dataChunk.accelerationMagnitudes {
-                        self.ref2.updateChildValues(["accelMag": accelerationMagnitudes],  withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("accelMag could not be saved.")
-                            } else {
-                                print("accelMag saved successfully!")
-                            }
-                        })
-                    }
-                    
-                    if let gyroMagnitudes = dataChunk.gyroMagnitudes {
-                        self.ref2.updateChildValues(["gyroMag": gyroMagnitudes],  withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("gyroMag could not be saved.")
-                            } else {
-                                print("gyroMag saved successfully!")
-                            }
-                        })
-                    }
-                    
-                    if let appVersion = dataChunk.appVersion {
-                        self.ref2.updateChildValues(["appVer": appVersion], withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("appVercould not be saved.")
-                                
-                                self.present(alertFailure, animated: true, completion: nil)
-                            } else {
-                                print("appVer saved successfully!")
-                                self.present(alertSuccess, animated: true, completion: nil)
-                            }
-                        })
-
-                    }
-                    
-                    
-                    if let symbolCounts = dataChunk.symbolCounts {
-                        var puncuationCount = 0
-                        for (symbol, count) in symbolCounts {
-                            for scalar in symbol.unicodeScalars {
-                                let value = scalar.value
-                                if (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) {
-                                    self.ref2.updateChildValues(["symbol": count],  withCompletionBlock: {
-                                        (error, ref) in
-                                        if (error != nil) {
-                                            print("symbol could not be saved.")
-                                        } else {
-                                            print("symbol saved successfully!")
-                                        }
-                                    })
-                                } else {
-                                    puncuationCount += count
-                                    switch symbol {
-                                    case " ":
-                                        self.ref2.updateChildValues([ "symbol_space": count],  withCompletionBlock: {
-                                            (error, ref) in
-                                            if (error != nil) {
-                                                print("symbol_space could not be saved.")
-                                            } else {
-                                                print("symbol_space saved successfully!")
-                                            }
-                                        })
-                                    case "!":
-                                        self.ref2.updateChildValues(["symbol_exclamation_mark": count],  withCompletionBlock: {
-                                            (error, ref) in
-                                            if (error != nil) {
-                                                print("symbol_exclamation_mark could not be saved.")
-                                            } else {
-                                                print("symbol_exclamation_mark saved successfully!")
-                                            }
-                                        })
-                                    case ".":
-                                        self.ref2.updateChildValues([ "symbol_period": count],  withCompletionBlock: {
-                                            (error, ref) in
-                                            if (error != nil) {
-                                                print("symbol_period could not be saved.")
-                                            } else {
-                                                print("symbol_period saved successfully!")
-                                            }
-                                        })
-                                    case "?":
-                                        self.ref2.updateChildValues(["symbol_question_mark": count],  withCompletionBlock: {
-                                            (error, ref) in
-                                            if (error != nil) {
-                                                print("symbol_question_mark could not be saved.")
-                                            } else {
-                                                print("symbol_question_mark saved successfully!")
-                                            }
-                                        })
-                                    default:
-                                        continue
-                                    }
-                                }
-                            }
-                        }
-                        self.ref2.updateChildValues(["symbol_punctuation": puncuationCount],  withCompletionBlock: {
-                            (error, ref) in
-                            if (error != nil) {
-                                print("symbol_punctuation could not be saved.")
-                            } else {
-                                print("symbol_punctuation saved successfully!")
-                            }
-                        })
-                    }
-                }
-                
-                
-                else {
-                    print(emotion)
-                    let alert = UIAlertController.init(title: "Error", message: "Please label the emotion for this data chunk.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    return
+                    childValues[key] = NSNumber(value: count)
                 }
             }
-//        }
+            childValues["symbol_punctuation"] = NSNumber(value: puncuationCount)
+        }
         
+        var databaseReference: FIRDatabaseReference!
+        if let key = dataChunk.firebaseKey {
+            let id = key.components(separatedBy: "/").last!
+            databaseReference = FIRDatabase.database().reference().child("users").child(uid).child(id)
+        } else {
+            databaseReference = FIRDatabase.database().reference().child("users").child(uid).childByAutoId()
+        }
+        
+        databaseReference.updateChildValues(childValues) { (error, refernce) in
+            if error == nil {
+                try! DataManager.sharedInatance.realm.write { self.dataChunk.firebaseKey = refernce.url }
+            }
+            
+            let title = error == nil ? "Success" : "Error"
+            let message = error == nil ? "The data has been uploaded successfully" : "There was a problem uploading the Data, please try again!"
+            let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
 
     

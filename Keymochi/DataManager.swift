@@ -21,7 +21,7 @@ class DataManager {
         realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!
         var realmConfig = Realm.Configuration()
         realmConfig.fileURL = URL(fileURLWithPath: realmPath)
-        realmConfig.schemaVersion = 2
+        realmConfig.schemaVersion = 3
         realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
             if oldSchemaVersion < 1 {
                 migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
@@ -37,6 +37,11 @@ class DataManager {
                     if emotionDescription as! String == Emotion.Neutral.description {
                         newObject!["emotionDescription"] = nil
                     }
+                })
+            }
+            if oldSchemaVersion < 3 {
+                migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
+                    newObject!["firebaseKey"] = nil
                 })
             }
             
