@@ -9,7 +9,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import Parse
 import RealmSwift
 import Firebase
 import FirebaseDatabase
@@ -24,22 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         
-        let keysDictionary = NSDictionary.init(contentsOfFile: Bundle.main.path(forResource: "keys", ofType: "plist")!)
-        let applicationId = keysDictionary!["parseApplicationId"] as! String
-        let clientKey = keysDictionary!["parseClientKey"] as! String
-        
-        Parse.initialize(
-            with: ParseClientConfiguration {
-                $0.applicationId = applicationId
-                $0.clientKey = clientKey
-            }
-        )
-        
         let directoryURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.groupIdentifier)
         let realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!
         var realmConfig = Realm.Configuration()
         realmConfig.fileURL = URL.init(string: realmPath)
-        realmConfig.schemaVersion = 2
+        realmConfig.schemaVersion = 3
         realmConfig.migrationBlock = { (migration, oldSchemaVersion) in
             if oldSchemaVersion < 1 {
                 migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
@@ -56,6 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if emotionDescription as! String == Emotion.Neutral.description {
                         newObject!["emotionDescription"] = nil
                     }
+                })
+            }
+            
+            if oldSchemaVersion < 3 {
+                migration.enumerateObjects(ofType: DataChunk.className(), { (oldObject, newObject) in
+                    newObject!["firebaseKey"] = nil
                 })
             }
         }
