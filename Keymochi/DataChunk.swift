@@ -19,6 +19,7 @@ class DataChunk: Object {
     dynamic var realmId: String = UUID().uuidString
     dynamic var createdAt: Date = Date()
     dynamic var parseId: String?
+    dynamic var firebaseKey: String?
     dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     override class func primaryKey() -> String? {
