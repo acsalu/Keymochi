@@ -1,0 +1,25 @@
+{
+  "name": "PAM",
+  "version": "0.0.12",
+  "summary": "A protable implementation of Photographic Affect Meter (PAM)",
+  "homepage": "https://github.com/Keymochi/PAM",
+  "license": {
+    "type": "MIT"
+  },
+  "authors": {
+    "Huai-Che Lu": "hc.acsalu@gmail.com"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source": {
+    "git": "https://github.com/Keymochi/PAM.git",
+    "tag": "0.0.12"
+  },
+  "source_files": "PAM/*.swift",
+  "ios": {
+    "resource_bundles": {
+      "ResourceBundle": "PAM/Images/**/*.jpg"
+    }
+  }
+}
