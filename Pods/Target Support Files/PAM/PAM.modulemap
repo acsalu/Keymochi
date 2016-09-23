@@ -1,0 +1,6 @@
+framework module PAM {
+  umbrella header "PAM-umbrella.h"
+
+  export *
+  module * { export * }
+}

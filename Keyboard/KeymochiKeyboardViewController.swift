@@ -9,8 +9,9 @@
 import UIKit
 import CoreMotion
 
+import PAM
+
 class KeymochiKeyboardViewController: KeyboardViewController {
-    
     
     var motionManager: CMMotionManager!
     
@@ -19,12 +20,15 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var currentWord: String = ""
 	var lastWord: String = ""
-	
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-	
-    override func viewDidLoad() {
+    
+    var hasAssessedEmotion = false
+    var timer: Timer!
+    var assessmentSheet: PAMAssessmentSheet!
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         symbolKeyEventMap = [String: SymbolKeyEvent]()
@@ -51,6 +55,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         }
 		
 		self.autoCorrectionSelector.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("will disappear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -119,6 +127,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	}
 	
     override func symbolKeyDown(_ sender: KeyboardKey) {
+        resetTimerIfNeeded()
         guard let key = self.layout?.keyForView(key: sender)?.outputForCase(self.shiftState.uppercase()) else {
             return
         }
@@ -130,6 +139,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     override func backspaceDown(_ sender: KeyboardKey) {
+        resetTimerIfNeeded()
         let keyEvent = BackspaceKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         backspaceKeyEvent = keyEvent
@@ -154,6 +164,22 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	override func createBanner() -> ExtraView? {
 		return AutoCorrectionSelector(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
 	}
+
+    func resetTimerIfNeeded() {
+        if !hasAssessedEmotion {
+            if let timer = timer {
+                timer.invalidate()
+            }
+            timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(promptAssessmentSheet(timer:)), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func promptAssessmentSheet(timer: Timer) {
+        assessmentSheet = PAMAssessmentSheet(frame: self.view.bounds, option: .intermediate)
+        assessmentSheet.backgroundColor = UIColor.yellow
+        assessmentSheet.delegate = self
+        view.addSubview(assessmentSheet)
+    }
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -163,4 +189,13 @@ extension KeymochiKeyboardViewController: AutoCorrectionSelectorDelegate {
 		currentWord = ""
 		self.autoCorrectionSelector.updateButtonArray(words: [])
 	}
+}
+
+// MARK: - PAMAssessmentSheetDelegate Methods
+extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
+    public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: PAM.Emotion) {
+        print(emotion)
+        assessmentSheet.removeFromSuperview()
+        hasAssessedEmotion = true
+    }
 }
