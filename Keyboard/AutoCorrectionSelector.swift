@@ -22,7 +22,7 @@ class AutoCorrectionSelector: ExtraView {
 		super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
 		
 		for i in 0 ..< 3 {
-			let button = UIButton(frame: CGRect(x: 100 * i, y:0, width: 100, height: 50))
+			let button = UIButton(frame: CGRect(x: 100 * i, y:-5, width: 100, height: 50))
 			self.buttons.insert(button, at: i)
 			self.addSubview(self.buttons[i])
 			self.buttons[i].addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
