@@ -560,7 +560,7 @@ class KeyboardViewController: UIInputViewController {
         numberOfDeletions = 0
         
         self.deleteBackwordIfPossible()
-        self.setCapsIfNeeded()
+        _ = self.setCapsIfNeeded()
         
         // trigger for subsequent deletes
         self.backspaceDelayTimer = Timer.scheduledTimer(timeInterval: backspaceDelay - backspaceRepeat, target: self, selector: #selector(backspaceDelayCallback), userInfo: nil, repeats: false)
@@ -579,17 +579,13 @@ class KeyboardViewController: UIInputViewController {
         self.playKeySound()
         
         self.deleteBackwordIfPossible()
-        self.setCapsIfNeeded()
+        _ = self.setCapsIfNeeded()
     }
     
     func deleteBackwordIfPossible() {
-        
-        if let context = self.textDocumentProxy.documentContextBeforeInput {
-            print(context)
+        if self.textDocumentProxy.documentContextBeforeInput != nil {
             numberOfDeletions = numberOfDeletions + 1
             self.textDocumentProxy.deleteBackward()
-        } else {
-            print("nil context")
         }
     }
     
@@ -841,9 +837,9 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+        DispatchQueue.global(qos: .default).async {
             AudioServicesPlaySystemSound(1104)
-        })
+        }
     }
     
     //////////////////////////////////////

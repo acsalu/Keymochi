@@ -170,7 +170,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
             if let timer = timer {
                 timer.invalidate()
             }
-            timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(promptAssessmentSheet(timer:)), userInfo: nil, repeats: false)
+            timer = Timer.scheduledTimer(timeInterval: 1.2, target: self, selector: #selector(promptAssessmentSheet(timer:)), userInfo: nil, repeats: false)
         }
     }
     
