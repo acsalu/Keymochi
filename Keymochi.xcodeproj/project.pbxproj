@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1945C70F39EC1A852AA3B3DD /* Pods_KeymochiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */; };
-		351847821D94B5BE005AE8C4 /* Catboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5441D1C84F16F0038C7FE /* Catboard.swift */; };
-		351847831D94B5C2005AE8C4 /* CatboardBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */; };
 		351847851D94CF59005AE8C4 /* AutoCorrectionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */; };
 		428AA8A58E7A5BA2385DBD19 /* Pods_KeymochiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C65EEBFFD094BC9AB6E1E6 /* Pods_KeymochiUITests.framework */; };
 		6D2C3CBFF4FD38083AD5D89F /* Pods_Keymochi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5955C6428FFE844132D72E /* Pods_Keymochi.framework */; };
@@ -826,8 +824,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				351847831D94B5C2005AE8C4 /* CatboardBanner.swift in Sources */,
-				351847821D94B5BE005AE8C4 /* Catboard.swift in Sources */,
 				90734CB51D84BED9008F402A /* KeymochiKeyboardViewController.swift in Sources */,
 				9074C1391CC7D4D100837E99 /* DataManager.swift in Sources */,
 				90D4E06A1C9B9E0900402191 /* Emotion.swift in Sources */,
@@ -932,7 +928,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -973,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
