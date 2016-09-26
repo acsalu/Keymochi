@@ -79,14 +79,16 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         symbolKeyEvent.upTime = CACurrentMediaTime()
         DataManager.sharedInatance.addKeyEvent(symbolKeyEvent)
 		
+		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
+			currentWord = word
+		}
         if key == " " {
-			let words : [String] = (textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "))!
 			if lastWord == "" {
-				lastWord = words.last!
-			} else if lastWord != words.last! {
-				lastWord = words.last!
-				if let guesses = getSuggestedWords()?.gussess {
-					replaceWord(replacement: guesses[0])
+				lastWord = currentWord
+			} else if lastWord != currentWord {
+				lastWord = currentWord
+				if let firstGuess = getSuggestedWords()?.gussess.first {
+					replaceWord(replacement: firstGuess)
 				}
 			}
 			currentWord = ""
@@ -96,12 +98,14 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			currentWord += key
 			if let completions = getSuggestedWords()?.completions {
 				var partialGuesses: [String]
-				if completions.count < 3 {
-					partialGuesses = completions
+				if completions.count < 2 {
+					partialGuesses = ["\"" + currentWord + "\""] + completions
 				} else {
-					partialGuesses = Array(completions[0...2])
+					partialGuesses = ["\"" + currentWord + "\""] + Array(completions[0...1])
 				}
 				self.autoCorrectionSelector.updateButtonArray(words: partialGuesses)
+			} else {
+				self.autoCorrectionSelector.updateButtonArray(words: ["\"" + currentWord + "\""])
 			}
 		}
     }
@@ -143,8 +147,18 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         let keyEvent = BackspaceKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         backspaceKeyEvent = keyEvent
-		if currentWord.characters.count > 0 {
-			currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
+		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
+			currentWord = word
+			if currentWord != "" {
+				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
+				if currentWord == "" {
+					self.autoCorrectionSelector.updateButtonArray(words: [])
+				} else {
+					self.autoCorrectionSelector.updateButtonArray(words: ["\"" + currentWord + "\""])
+				}
+			} else {
+				self.autoCorrectionSelector.updateButtonArray(words: [])
+			}
 		}
 		
         super.backspaceDown(sender)
@@ -185,7 +199,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 // MARK: - AutoCorrectionSelectorDelegate Methods
 extension KeymochiKeyboardViewController: AutoCorrectionSelectorDelegate {
 	func autoCorrectionSelector(_: AutoCorrectionSelector, correctWithWord word: String) {
-		replaceWord(replacement: word)
+		var replacement = word
+		if replacement[replacement.startIndex] == "\"" {
+			replacement = replacement.replacingOccurrences(of: "\"", with: "")
+		}
+		replaceWord(replacement: replacement)
 		currentWord = ""
 		self.autoCorrectionSelector.updateButtonArray(words: [])
 	}
