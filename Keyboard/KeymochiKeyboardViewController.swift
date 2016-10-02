@@ -23,10 +23,17 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    
-    var hasAssessedEmotion = false
+	
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
+	var defaults: UserDefaults { return UserDefaults.standard }	
+	
+	let lastOpenThreshold: TimeInterval = 5.0
+	let keepUsingThreshold: TimeInterval = 10.0
+	
+	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
+	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
+	class var kLastOpenTime: String { return "KeyboardLastOpenTime" }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +62,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         }
 		
 		self.autoCorrectionSelector.delegate = self
+		if defaults.object(forKey: KeymochiKeyboardViewController.kHasAssessedEmotion) == nil {
+			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
+		}
+		if defaults.object(forKey: KeymochiKeyboardViewController.kKeepUsingTime) == nil {
+			defaults.set(0.0, forKey: KeymochiKeyboardViewController.kKeepUsingTime)
+		}
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -131,7 +144,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	}
 	
     override func symbolKeyDown(_ sender: KeyboardKey) {
-        resetTimerIfNeeded()
+        switchAssessmentState()
         guard let key = self.layout?.keyForView(key: sender)?.outputForCase(self.shiftState.uppercase()) else {
             return
         }
@@ -143,7 +156,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     override func backspaceDown(_ sender: KeyboardKey) {
-        resetTimerIfNeeded()
+        switchAssessmentState()
         let keyEvent = BackspaceKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         backspaceKeyEvent = keyEvent
@@ -179,16 +192,31 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		return AutoCorrectionSelector(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
 	}
 
-    func resetTimerIfNeeded() {
-        if !hasAssessedEmotion {
-            if let timer = timer {
-                timer.invalidate()
-            }
-            timer = Timer.scheduledTimer(timeInterval: 1.2, target: self, selector: #selector(promptAssessmentSheet(timer:)), userInfo: nil, repeats: false)
-        }
-    }
-    
-    func promptAssessmentSheet(timer: Timer) {
+    func switchAssessmentState() {
+		
+		if defaults.object(forKey: KeymochiKeyboardViewController.kLastOpenTime) == nil {
+			defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
+		}
+		
+		let hasAssessedEmotion = defaults.bool(forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
+		let lastOpenTimeInterval = -(defaults.object(forKey: KeymochiKeyboardViewController.kLastOpenTime) as! Date).timeIntervalSince(Date())
+		let keepUsingTime = defaults.double(forKey: KeymochiKeyboardViewController.kKeepUsingTime)
+		
+		if lastOpenTimeInterval < lastOpenThreshold {
+			defaults.set(keepUsingTime + lastOpenTimeInterval, forKey: KeymochiKeyboardViewController.kKeepUsingTime)
+		} else {
+			defaults.set(0.0, forKey: KeymochiKeyboardViewController.kKeepUsingTime)
+		}
+		
+		if hasAssessedEmotion && lastOpenTimeInterval > lastOpenThreshold {
+			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
+		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
+			promptAssessmentSheet()
+		}
+		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
+	}
+	
+	func promptAssessmentSheet() {
         assessmentSheet = PAMAssessmentSheet(frame: self.view.bounds, option: .intermediate)
         assessmentSheet.backgroundColor = UIColor.yellow
         assessmentSheet.delegate = self
@@ -214,6 +242,6 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: PAM.Emotion) {
         print(emotion)
         assessmentSheet.removeFromSuperview()
-        hasAssessedEmotion = true
+        defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
