@@ -17,6 +17,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
+    var phrase: NSArray = []
     
 	var currentWord: String = "" {
 		didSet {
@@ -44,6 +45,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         super.viewDidLoad()
         
         symbolKeyEventMap = [String: SymbolKeyEvent]()
+        print(symbolKeyEventMap)
         
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
@@ -97,6 +99,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+            print(currentWord)
 		}
         if key == " " {
 			if let firstGuess = getSuggestedWords()?.gussess.first {
@@ -129,6 +132,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		}
 		textDocumentProxy.insertText(replacement)
 	}
+    
+   
 	
 	private func updateAutoCorrectionSelector() {
 		if currentWord == "" {
@@ -165,6 +170,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+            print(currentWord)
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
@@ -218,6 +224,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assessmentSheet.delegate = self
         view.addSubview(assessmentSheet)
     }
+    
+    func getPhrase(phrase:String){
+        if let phrase = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
+        print(phrase)
+        }
+    }
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -240,3 +252,8 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
+
+//extension KeymochiKeyboardViewController: SentimentAnalysisDelegate{
+//  
+//
+//}
