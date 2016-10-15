@@ -10,11 +10,17 @@ import Foundation
 import UIKit
 
 protocol SentimentAnalysisDelegate {
-    func getPhraseKeyboard(_:PhraseKeyboard, printPhrase phrase: [String])
+    func getSentiment(_:SentimentKeyboard, getSentimentFor phrase: String)
 }
 
-class PhraseKeyboard: NSObject{
+class SentimentKeyboard: NSObject{
     var delegate: SentimentAnalysisDelegate?
+    let text: String = ""
+    
+//    var dataChunk: DataChunk!
+    var valence: Valence!
+    var sentiment = valence.returnValence(text)
+    
     
     func printPhrase(phrase: [String]){
         print (phrase)

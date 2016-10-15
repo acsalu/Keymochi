@@ -83,7 +83,7 @@ class Valence: Object {
 //        default: return "neutral"
 //        }
 //    }
-    func returnValnce(str: String) -> NSInteger {
+    func returnValence(str: String) -> NSInteger {
         let str1 = toLowercase(s: str)
         let str2 = removePunctuation(str: str1)
         let arrWords = words(str: str2)
@@ -91,6 +91,9 @@ class Valence: Object {
         let overallAnalysis = rateWords(ratingsArr: ratedWordsArr)
         return overallAnalysis
     }
+    
+    var valence : NSInteger = returnValence(str: String)
+    
 //    let rateString = removePunctuation >> toLowercase >> words >> rateWords >> basicWordRater >> ratingDescription
 }
 

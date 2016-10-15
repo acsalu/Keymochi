@@ -260,8 +260,8 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
 }
 
 //extension KeymochiKeyboardViewController: SentimentAnalysisDelegate{
-//    func getPhraseKeyboard(_:PhraseKeyboard, printPhrase phrase: [String]){
-//        phrase = getPhrase(phrase: <#T##String#>)
+//    func getSentiment(_: SentimentKeyboard, getSentimentFor phrase: String) {
+//        phrase = getPhrase
 //    }
-//    self.getPhraseKeyboard.printPhrase(phrase): [])
+//    self.printSentiment(phrase)
 //}
