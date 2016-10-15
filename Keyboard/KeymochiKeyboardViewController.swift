@@ -98,6 +98,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
             
         }
         super.viewDidDisappear(animated)
+        
+        print("keyboard hide")
+        print(textDocumentProxy.documentContextBeforeInput)
+        print(textDocumentProxy.documentContextAfterInput)
     }
     
     override func symbolKeyUp(_ sender: KeyboardKey) {
