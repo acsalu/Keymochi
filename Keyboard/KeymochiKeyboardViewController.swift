@@ -23,7 +23,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-	
+    
+    var emotion: Emotion?
+    var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
 	var defaults: UserDefaults { return UserDefaults.standard }	
@@ -76,7 +78,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
-        DataManager.sharedInatance.dumpCurrentData()
+        if hasAssessedEmotion {
+            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!)
+        }
         super.viewDidDisappear(animated)
     }
     
@@ -239,8 +243,8 @@ extension KeymochiKeyboardViewController: AutoCorrectionSelectorDelegate {
 
 // MARK: - PAMAssessmentSheetDelegate Methods
 extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
-    public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: PAM.Emotion) {
-        print(emotion)
+    public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: Emotion) {
+        self.emotion = emotion
         assessmentSheet.removeFromSuperview()
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
