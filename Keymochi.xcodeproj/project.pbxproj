@@ -61,6 +61,8 @@
 		90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
 		90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */; };
+		EC2CEA171DB167B00078939E /* SentimentAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA161DB167B00078939E /* SentimentAnalysis.swift */; };
+		EC2CEA191DB1DCE20078939E /* WordRater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA181DB1DCE20078939E /* WordRater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		DCA1EC1FE5F2464F85F03F49 /* Pods-KeymochiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDECC99E09785093AEFDCD59 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2CEA161DB167B00078939E /* SentimentAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalysis.swift; sourceTree = "<group>"; };
+		EC2CEA181DB1DCE20078939E /* WordRater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordRater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +269,7 @@
 		901DF48E1C8929480030E17C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC2CEA181DB1DCE20078939E /* WordRater.swift */,
 				9074C1371CC7D4D100837E99 /* DataManager.swift */,
 				90DC28CB1C9B93B30061455F /* DataChunk.swift */,
 				90D96C9A1C877EC6004508E1 /* KeyEvent.swift */,
@@ -325,6 +330,7 @@
 				90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */,
 				90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */,
 				351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */,
+				EC2CEA161DB167B00078939E /* SentimentAnalysis.swift */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -795,6 +801,7 @@
 			files = (
 				90D53A9E1C834AFA002D1B94 /* DataChunkTableViewController.swift in Sources */,
 				9074C1381CC7D4D100837E99 /* DataManager.swift in Sources */,
+				EC2CEA191DB1DCE20078939E /* WordRater.swift in Sources */,
 				90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */,
 				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,
 				90B139681C9A177F00C865F0 /* MotionData.swift in Sources */,
@@ -832,6 +839,7 @@
 				9074C1391CC7D4D100837E99 /* DataManager.swift in Sources */,
 				90D4E06B1C9B9E0900402191 /* DataChunk.swift in Sources */,
 				90B139691C9A1AFE00C865F0 /* MotionData.swift in Sources */,
+				EC2CEA171DB167B00078939E /* SentimentAnalysis.swift in Sources */,
 				901DF4861C89261D0030E17C /* Constants.swift in Sources */,
 				90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */,
 				90C544321C84F16F0038C7FE /* DefaultSettings.swift in Sources */,

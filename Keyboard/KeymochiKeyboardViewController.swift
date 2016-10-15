@@ -17,7 +17,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
-    var phrase: NSArray = []
+    var phraseGlobal: NSArray = []
     
 	var currentWord: String = "" {
 		didSet {
@@ -175,6 +175,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
 		}
+        if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+            print (sentence)
+        }
+
 		
         super.backspaceDown(sender)
     }
@@ -225,11 +229,13 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         view.addSubview(assessmentSheet)
     }
     
-    func getPhrase(phrase:String){
-        if let phrase = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
-        print(phrase)
-        }
-    }
+//    func getPhrase() -> [String]{
+//        phrase = []
+//        if let phrase = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
+//        print(phrase)
+//        return phrase
+//        }
+//    }
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -254,6 +260,8 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
 }
 
 //extension KeymochiKeyboardViewController: SentimentAnalysisDelegate{
-//  
-//
+//    func getPhraseKeyboard(_:PhraseKeyboard, printPhrase phrase: [String]){
+//        phrase = getPhrase(phrase: <#T##String#>)
+//    }
+//    self.getPhraseKeyboard.printPhrase(phrase): [])
 //}
