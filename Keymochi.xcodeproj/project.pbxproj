@@ -273,10 +273,7 @@
 		901DF48E1C8929480030E17C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EC2CEA181DB1DCE20078939E /* WordRater.swift */,
 				9074C1371CC7D4D100837E99 /* DataManager.swift */,
-				ECBF23831DB29CE7009DAF0C /* negative-words.txt */,
-				ECBF23841DB29CE7009DAF0C /* positive-words.txt */,
 				90D4E0681C9B9D6B00402191 /* Emotion.swift */,
 				90DC28CB1C9B93B30061455F /* DataChunk.swift */,
 				90D96C9A1C877EC6004508E1 /* KeyEvent.swift */,
@@ -288,6 +285,9 @@
 		901DF48F1C8929590030E17C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				EC2CEA181DB1DCE20078939E /* WordRater.swift */,
+				ECBF23831DB29CE7009DAF0C /* negative-words.txt */,
+				ECBF23841DB29CE7009DAF0C /* positive-words.txt */,
 				901DF4841C8925EE0030E17C /* Constants.swift */,
 				90564CC51CA3A35700A16866 /* NumericOperations.swift */,
 			);

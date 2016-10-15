@@ -48,38 +48,48 @@ class Valence: Object {
 
     }
 
-    typealias Rating = [Int]
+//    typealias Rating = [Int]
     //: Positive words are given a rating of **1**, negative **-1**, neutral **0**.
-    func basicWordRater(wordsArr: [String]) -> [Rating] {
-        let ratingsArr: NSMutableArray = []
+    func basicWordRater(wordsArr: [String]) -> [Int] {
+        var ratingsArr: [Int] = []
         for word in wordsArr as! [String ]{
-            if positiveWords.contains(word) { ratingsArr.add(1) }
-            if negativeWords.contains(word) { ratingsArr.add(-1) }
+            if positiveWords.contains(word) { ratingsArr.append(1) }
+            if negativeWords.contains(word) { ratingsArr.append(-1) }
             else{
-                ratingsArr.add(0)
+                ratingsArr.append(0)
             }
         }
         return ratingsArr
         
     }
     //: Apply the **ratingFunc** function to each word in the supplied **Array**, accumulating the result
-    func rateWords(ratingFunc:([String]) -> [Rating], words:[String]) -> Rating {
-        return words.reduce(0) { rating, word in rating + ratingFunc(word) }
+//    func rateWords(ratingFunc:([String]) -> [Rating], words:[String]) -> Rating {
+//        return words.reduce(0) { rating, word in rating + ratingFunc(word) }
+//    }
+    
+    func rateWords(ratingsArr: [Int]) -> NSInteger{
+        var sum: NSInteger = 0
+        for rating in ratingsArr {
+            sum = sum + Int(rating)
+        }
+        return sum
+        
     }
 
-    func ratingDescription(r:Rating) -> String {
-        switch r {
-        case Int.min..<0: return (1...abs(r)).reduce("") { str, _ in str + "negative" }
-        case 1..<Int.max: return (1...r).reduce("") { str, _ in str + "positive" }
-        default: return "neutral"
-        }
-    }
-    func returnValnce(str: String) -> String {
+//    func ratingDescription(r:Rating) -> String {
+//        switch r {
+//        case Int.min..<0: return (1...abs(r)).reduce("") { str, _ in str + "negative" }
+//        case 1..<Int.max: return (1...r).reduce("") { str, _ in str + "positive" }
+//        default: return "neutral"
+//        }
+//    }
+    func returnValnce(str: String) -> NSInteger {
         let str1 = toLowercase(s: str)
         let str2 = removePunctuation(str: str1)
         let arrWords = words(str: str2)
-        let ratedWords = rateWords(ratingFunc: basicWordRater(wordsArr: arrWords), words:arrWords)
-        let ratingDesc = ratingDescription(r: ratedWords)
+        let ratedWordsArr = basicWordRater(wordsArr: arrWords)
+        let overallAnalysis = rateWords(ratingsArr: ratedWordsArr)
+        return overallAnalysis
     }
 //    let rateString = removePunctuation >> toLowercase >> words >> rateWords >> basicWordRater >> ratingDescription
 }
