@@ -6,27 +6,27 @@
 //  Copyright © 2016 Cornell Tech. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
-protocol SentimentAnalysisDelegate {
-    func getSentiment(_:SentimentKeyboard, getSentimentFor phrase: String)
-}
-
-class SentimentKeyboard: NSObject{
-    var delegate: SentimentAnalysisDelegate?
-    let text: String = ""
-    
-//    var dataChunk: DataChunk!
-    var valence: Valence!
-    var sentiment = valence.returnValence(text)
-    
-    
-    func printPhrase(phrase: [String]){
-        print (phrase)
-    }
-
-}
+//import Foundation
+//import UIKit
+//
+//protocol SentimentAnalysisDelegate {
+//    func getSentiment(_:SentimentKeyboard, getSentimentFor phrase: String)
+//}
+//
+//class SentimentKeyboard: NSObject{
+//    var delegate: SentimentAnalysisDelegate?
+//    let text: String = ""
+//    
+////    var dataChunk: DataChunk!
+//    var valence: Valence()
+//    var sentiment = valence.returnValence(text)
+//    
+//    
+//    func printPhrase(phrase: [String]){
+//        print (phrase)
+//    }
+//
+//}
 
 //protocol AutoCorrectionSelectorDelegate {
 //    func autoCorrectionSelector(_:AutoCorrectionSelector, correctWithWord word: String)

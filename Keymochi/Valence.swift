@@ -21,10 +21,8 @@ public func stringFromFile(file:String) -> String? {
     catch { return .none }
 }
 
-class Valence: Object {
+class Valence{
     
-    
-
     let positiveWords: Set<String> = wordSetFromFile(file: "positive-words")
     let negativeWords: Set<String> = wordSetFromFile(file: "negative-words")
     //: Wrap the **lowercaseString** method in a function to allow function composition.
@@ -63,9 +61,7 @@ class Valence: Object {
         
     }
     //: Apply the **ratingFunc** function to each word in the supplied **Array**, accumulating the result
-//    func rateWords(ratingFunc:([String]) -> [Rating], words:[String]) -> Rating {
-//        return words.reduce(0) { rating, word in rating + ratingFunc(word) }
-//    }
+
     
     func rateWords(ratingsArr: [Int]) -> NSInteger{
         var sum: NSInteger = 0
@@ -76,13 +72,6 @@ class Valence: Object {
         
     }
 
-//    func ratingDescription(r:Rating) -> String {
-//        switch r {
-//        case Int.min..<0: return (1...abs(r)).reduce("") { str, _ in str + "negative" }
-//        case 1..<Int.max: return (1...r).reduce("") { str, _ in str + "positive" }
-//        default: return "neutral"
-//        }
-//    }
     func returnValence(str: String) -> NSInteger {
         let str1 = toLowercase(s: str)
         let str2 = removePunctuation(str: str1)
@@ -92,9 +81,7 @@ class Valence: Object {
         return overallAnalysis
     }
     
-    var valence : NSInteger = returnValence(str: String)
-    
-//    let rateString = removePunctuation >> toLowercase >> words >> rateWords >> basicWordRater >> ratingDescription
+
 }
 
 /*:

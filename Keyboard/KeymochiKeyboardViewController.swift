@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 
+
 import PAM
 
 class KeymochiKeyboardViewController: KeyboardViewController {
@@ -27,7 +28,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    
+    var valence: Valence?
     var emotion: Emotion?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
@@ -170,7 +171,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
-            print(currentWord)
+            print("currentWord: " + currentWord)
+            let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
@@ -218,6 +220,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
 			promptAssessmentSheet()
+            if let sentence = textDocumentProxy.documentContextBeforeInput{
+                print (sentence)
+                getSentiment(phrase: sentence)
+            }
+            
+
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
 	}
@@ -227,6 +235,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assessmentSheet.backgroundColor = UIColor.yellow
         assessmentSheet.delegate = self
         view.addSubview(assessmentSheet)
+    }
+    
+    func getSentiment (phrase: String){
+        let rating = valence.returnValence(phrase)
+        print("rating is: " + rating)
+        
     }
     
 //    func getPhrase() -> [String]{
