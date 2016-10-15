@@ -8,41 +8,80 @@
 
 import Foundation
 import RealmSwift
+
+public func wordSetFromFile(file:String) -> Set<String> {
+    let text = stringFromFile(file: file)!
+    let words = text.characters.split { $0 == "\n" }.map { String($0) }
+    return Set(words)
+}
+
+public func stringFromFile(file:String) -> String? {
+    let path = Bundle.main.path(forResource: file, ofType: "txt")
+    do { return try String(contentsOfFile: path!) }
+    catch { return .none }
+}
+
 class Valence: Object {
+    
+    
 
-let positiveWords: Set<String> = wordSetFromFile("positive-words")
-let negativeWords: Set<String> = wordSetFromFile("negative-words")
-//: Wrap the **lowercaseString** method in a function to allow function composition.
-func toLowercase(s:String) -> String {
-    return s.lowercaseString
-}
-//: **removePunctuation**, does what it says on the tin.
-func removePunctuation(str:String) -> String {
-    return str.componentsSeparatedByCharactersInSet(NSCharacterSet.punctuationCharacterSet()).joinWithSeparator("")
-}
-//: Split a **String** into words, filtering out empty strings
-func words(str:String) -> [String] {
-    return str.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).filter { !$0.isEmpty }
-}
-
-typealias Rating = Int
-//: Positive words are given a rating of **1**, negative **-1**, neutral **0**.
-func basicWordRater(word:String) -> Rating {
-    if positiveWords.contains(word) { return 1 }
-    if negativeWords.contains(word) { return -1 }
-    return 0
-}
-//: Apply the **ratingFunc** function to each word in the supplied **Array**, accumulating the result
-func rateWords(ratingFunc:String -> Rating, words:[String]) -> Rating {
-    return words.reduce(0) { rating, word in rating + ratingFunc(word) }
-}
-
-func ratingDescription(r:Rating) -> String {
-    switch r {
-    case Int.min..<0: return (1...abs(r)).reduce("") { str, _ in str + "😱" }
-    case 1..<Int.max: return (1...r).reduce("") { str, _ in str + "😀" }
-    default: return "😶"
+    let positiveWords: Set<String> = wordSetFromFile(file: "positive-words")
+    let negativeWords: Set<String> = wordSetFromFile(file: "negative-words")
+    //: Wrap the **lowercaseString** method in a function to allow function composition.
+    func toLowercase(s:String) -> String {
+        return s.lowercased()
     }
+    //: **removePunctuation**, does what it says on the tin.
+    func removePunctuation(str:String) -> String {
+//        return str.components(separatedBy:(NSCharacterSet.punctuationCharacterSet()).joinWithSeparator("")
+        return  str.components(separatedBy:CharacterSet.punctuationCharacters).joined(separator:"");
+//        let str2 = strArray.joined(separator:"");
+//        return str2
+//    
+    }
+    //: Split a **String** into words, filtering out empty strings
+    func words(str:String) -> [String] {
+//        return  str.components(separatedBy:
+//            CharacterSet.whitespaceAndNewlineCharacterSet())
+//            .filter{$0 != ""};
+        return str.components(separatedBy:CharacterSet.whitespacesAndNewlines).filter{$0 != ""};
+
+    }
+
+    typealias Rating = [Int]
+    //: Positive words are given a rating of **1**, negative **-1**, neutral **0**.
+    func basicWordRater(wordsArr: [String]) -> [Rating] {
+        let ratingsArr: NSMutableArray = []
+        for word in wordsArr as! [String ]{
+            if positiveWords.contains(word) { ratingsArr.add(1) }
+            if negativeWords.contains(word) { ratingsArr.add(-1) }
+            else{
+                ratingsArr.add(0)
+            }
+        }
+        return ratingsArr
+        
+    }
+    //: Apply the **ratingFunc** function to each word in the supplied **Array**, accumulating the result
+    func rateWords(ratingFunc:([String]) -> [Rating], words:[String]) -> Rating {
+        return words.reduce(0) { rating, word in rating + ratingFunc(word) }
+    }
+
+    func ratingDescription(r:Rating) -> String {
+        switch r {
+        case Int.min..<0: return (1...abs(r)).reduce("") { str, _ in str + "negative" }
+        case 1..<Int.max: return (1...r).reduce("") { str, _ in str + "positive" }
+        default: return "neutral"
+        }
+    }
+    func returnValnce(str: String) -> String {
+        let str1 = toLowercase(s: str)
+        let str2 = removePunctuation(str: str1)
+        let arrWords = words(str: str2)
+        let ratedWords = rateWords(ratingFunc: basicWordRater(wordsArr: arrWords), words:arrWords)
+        let ratingDesc = ratingDescription(r: ratedWords)
+    }
+//    let rateString = removePunctuation >> toLowercase >> words >> rateWords >> basicWordRater >> ratingDescription
 }
 
 /*:
@@ -56,9 +95,5 @@ func ratingDescription(r:Rating) -> String {
  Calculate a **Rating** for the **Array** by using **rateWords** with **basicWordRater** as an argument.
  Finally, convert the result into a descriptive emoji string using the **ratingDescription** function.
  */
-let rateString = removePunctuation
-    •> toLowercase
-    •> words
-    •> rateWords(basicWordRater)
-    •> ratingDescription
-}
+//let rateString = removePunctuation >> toLowercase >> words >> rateWords >> basicWordRater >> ratingDescription
+//}
