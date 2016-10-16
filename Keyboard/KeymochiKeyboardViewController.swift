@@ -18,8 +18,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
     
-    var currentWord: String = ""
-	var lastWord: String = ""
+	var currentWord: String = "" {
+		didSet {
+			updateAutoCorrectionSelector()
+		}
+	}
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
@@ -100,44 +103,28 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			currentWord = word
 		}
         if key == " " {
-			if lastWord == "" {
-				lastWord = currentWord
-			} else if lastWord != currentWord {
-				lastWord = currentWord
-				if let firstGuess = getSuggestedWords()?.gussess.first {
-					replaceWord(replacement: firstGuess)
-				}
+			if let firstGuess = getSuggestedWords()?.gussess.first {
+				replaceWord(replacement: firstGuess)
 			}
 			currentWord = ""
-			(self.bannerView as! AutoCorrectionSelector).updateButtonArray(words: [])
-			
         } else {
 			currentWord += key
-			if let completions = getSuggestedWords()?.completions {
-				var partialGuesses: [String]
-				if completions.count < 2 {
-					partialGuesses = ["\"" + currentWord + "\""] + completions
-				} else {
-					partialGuesses = ["\"" + currentWord + "\""] + Array(completions[0...1])
-				}
-				self.autoCorrectionSelector.updateButtonArray(words: partialGuesses)
-			} else {
-				self.autoCorrectionSelector.updateButtonArray(words: ["\"" + currentWord + "\""])
-			}
 		}
     }
 	
-	func getSuggestedWords() -> (completions: [String], gussess: [String])? {
+	private func getSuggestedWords() -> (completions: [String], gussess: [String])? {
 		let textChecker = UITextChecker()
 		let range = NSRange(location: 0, length: currentWord.characters.count)
+		let completions: [String] = textChecker.completions(forPartialWordRange: range, in: currentWord, language: "en_US")!
+		var guesses: [String]
 		let misspelledRange = textChecker.rangeOfMisspelledWord(
 			in: currentWord, range: range, startingAt: 0, wrap: false, language: "en_US")
 		if misspelledRange.location != NSNotFound {
-			let completions: [String] = textChecker.completions(forPartialWordRange: range, in: currentWord, language: "en_US")!
-			let guesses: [String] = textChecker.guesses(forWordRange: range, in: currentWord, language: "en_US")!
-			return (completions, guesses)
+			guesses = textChecker.guesses(forWordRange: range, in: currentWord, language: "en_US")!
+		} else {
+			guesses = [currentWord]
 		}
-		return nil
+		return (completions, guesses)
 	}
 	
 	func replaceWord(replacement: String){
@@ -145,6 +132,22 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			textDocumentProxy.deleteBackward()
 		}
 		textDocumentProxy.insertText(replacement)
+	}
+	
+	private func updateAutoCorrectionSelector() {
+		if currentWord == "" {
+			(self.bannerView as! AutoCorrectionSelector).updateButtonArray(words: [])
+		} else if let completions = getSuggestedWords()?.completions.filter({ $0 != currentWord }) {
+			var partialGuesses: [String]
+			if completions.count < 2 {
+				partialGuesses = ["\"" + currentWord + "\""] + completions
+			} else {
+				partialGuesses = ["\"" + currentWord + "\""] + Array(completions[0...1])
+			}
+			self.autoCorrectionSelector.updateButtonArray(words: partialGuesses)
+		} else {
+			self.autoCorrectionSelector.updateButtonArray(words: ["\"" + currentWord + "\""])
+		}
 	}
 	
     override func symbolKeyDown(_ sender: KeyboardKey) {
@@ -168,13 +171,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			currentWord = word
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
-				if currentWord == "" {
-					self.autoCorrectionSelector.updateButtonArray(words: [])
-				} else {
-					self.autoCorrectionSelector.updateButtonArray(words: ["\"" + currentWord + "\""])
-				}
-			} else {
-				self.autoCorrectionSelector.updateButtonArray(words: [])
 			}
 		}
 		
@@ -237,7 +233,6 @@ extension KeymochiKeyboardViewController: AutoCorrectionSelectorDelegate {
 		}
 		replaceWord(replacement: replacement)
 		currentWord = ""
-		self.autoCorrectionSelector.updateButtonArray(words: [])
 	}
 }
 
