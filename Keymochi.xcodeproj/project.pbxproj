@@ -61,8 +61,9 @@
 		90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
 		90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */; };
+		EC22FB0A1DB319DE001BE96F /* WordRater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA181DB1DCE20078939E /* WordRater.swift */; };
 		EC2CEA171DB167B00078939E /* SentimentAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA161DB167B00078939E /* SentimentAnalysis.swift */; };
-		EC2CEA191DB1DCE20078939E /* Valence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA181DB1DCE20078939E /* Valence.swift */; };
+		EC2CEA191DB1DCE20078939E /* WordRater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2CEA181DB1DCE20078939E /* WordRater.swift */; };
 		ECBF23851DB29CE7009DAF0C /* negative-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23831DB29CE7009DAF0C /* negative-words.txt */; };
 		ECBF23861DB29CE7009DAF0C /* positive-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23841DB29CE7009DAF0C /* positive-words.txt */; };
 /* End PBXBuildFile section */
@@ -179,7 +180,7 @@
 		DDECC99E09785093AEFDCD59 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2CEA161DB167B00078939E /* SentimentAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentAnalysis.swift; sourceTree = "<group>"; };
-		EC2CEA181DB1DCE20078939E /* Valence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Valence.swift; sourceTree = "<group>"; };
+		EC2CEA181DB1DCE20078939E /* WordRater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordRater.swift; sourceTree = "<group>"; };
 		ECBF23831DB29CE7009DAF0C /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "negative-words.txt"; path = "Assets.xcassets/negative-words.txt"; sourceTree = "<group>"; };
 		ECBF23841DB29CE7009DAF0C /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "positive-words.txt"; path = "Assets.xcassets/positive-words.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,7 +286,7 @@
 		901DF48F1C8929590030E17C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				EC2CEA181DB1DCE20078939E /* Valence.swift */,
+				EC2CEA181DB1DCE20078939E /* WordRater.swift */,
 				ECBF23831DB29CE7009DAF0C /* negative-words.txt */,
 				ECBF23841DB29CE7009DAF0C /* positive-words.txt */,
 				901DF4841C8925EE0030E17C /* Constants.swift */,
@@ -810,7 +811,7 @@
 			files = (
 				90D53A9E1C834AFA002D1B94 /* DataChunkTableViewController.swift in Sources */,
 				9074C1381CC7D4D100837E99 /* DataManager.swift in Sources */,
-				EC2CEA191DB1DCE20078939E /* Valence.swift in Sources */,
+				EC2CEA191DB1DCE20078939E /* WordRater.swift in Sources */,
 				90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */,
 				90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */,
 				90B139681C9A177F00C865F0 /* MotionData.swift in Sources */,
@@ -844,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC22FB0A1DB319DE001BE96F /* WordRater.swift in Sources */,
 				90734CB51D84BED9008F402A /* KeymochiKeyboardViewController.swift in Sources */,
 				9074C1391CC7D4D100837E99 /* DataManager.swift in Sources */,
 				90D4E06B1C9B9E0900402191 /* DataChunk.swift in Sources */,

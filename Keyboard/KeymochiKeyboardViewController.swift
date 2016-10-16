@@ -28,7 +28,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    var valence: Valence?
+    var wordRating: WordRater?
     var emotion: Emotion?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
@@ -238,8 +238,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     func getSentiment (phrase: String){
-        let rating = valence.returnValence(phrase)
-        print("rating is: " + rating)
+        let rating = wordRating?.returnValence(str: phrase)
+        print("rating is: " + String(describing: rating))
         
     }
     

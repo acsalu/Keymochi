@@ -21,7 +21,7 @@ public func stringFromFile(file:String) -> String? {
     catch { return .none }
 }
 
-class Valence{
+class WordRater{
     
     let positiveWords: Set<String> = wordSetFromFile(file: "positive-words")
     let negativeWords: Set<String> = wordSetFromFile(file: "negative-words")
