@@ -555,6 +555,7 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = YF87G52T96;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1025,6 +1026,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.keymochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1050,6 +1052,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.keymochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1150,6 +1153,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.keymochi.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1175,6 +1179,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.keymochi.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
