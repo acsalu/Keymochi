@@ -83,7 +83,7 @@ class DataManager {
         }
     }
     
-    func dumpCurrentData(withEmotion emotion: Emotion) {
+    func dumpCurrentData(withEmotion emotion: Emotion, withSentiment sentiment:Float) {
 //        func dumpCurrentData(withEmotion emotion: Emotion, sentiment: Float) {
         let totalKeyCount =
             _symbolKeyEventSequence.keyEvents.count + _backspaceKeyEventSequence.keyEvents.count
@@ -95,7 +95,7 @@ class DataManager {
             print("(\(KeyType.backspace)) \(_backspaceKeyEventSequence.keyEvents.count) key events")
             print("(\(SensorType.acceleration)) \(_accelerationDataSequence.motionDataPoints.count) data points")
             print("(\(SensorType.gyro)) \(_gyroDataSequence.motionDataPoints.count) data points")
-//            print("sentiment ", sentiment)
+            print("sentiment ", sentiment)
             
             let dataChunck = DataChunk(emotion: emotion)
 //            let dataChunck = DataChunk(emotion: emotion, sentiment:sentiment)
@@ -103,7 +103,8 @@ class DataManager {
             dataChunck.backspaceKeyEventSequence = _backspaceKeyEventSequence
             dataChunck.accelerationDataSequence = _accelerationDataSequence
             dataChunck.gyroDataSequence = _gyroDataSequence
-			
+            dataChunck.sentiment = sentiment
+            
             addDataChunk(dataChunck)
 			upload(dataChunck)
             

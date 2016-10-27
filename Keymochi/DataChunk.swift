@@ -23,6 +23,7 @@ class DataChunk: Object {
     dynamic var firebaseKey: String?
     dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     dynamic var emotionPosition: Int = 0
+    dynamic var sentiment: Float = 0.0
 //    dynamic var sentiment: Float = 0
     
     var emotion: Emotion {

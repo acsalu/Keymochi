@@ -39,7 +39,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	let lastOpenThreshold: TimeInterval = 5.0
 	let keepUsingThreshold: TimeInterval = 10.0
     
-    var sentiment = 0.50
+    var sentiment: Float = 0.50
 //    var wordRating = WordRater()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
@@ -89,7 +89,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         motionManager.stopDeviceMotionUpdates()
         if hasAssessedEmotion {
 //            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, sentiment: Float(sentiment))
-            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!)
+            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
 //            WordRater.sharedInstance.returnValence(str:sentence)
             
         }
@@ -232,7 +232,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			promptAssessmentSheet()
             if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
                 print ("sentence in switchAssesmentState is", sentence)
-                getSentiment(wordArr: sentence)
+                sentiment = getSentiment(wordArr: sentence)
             }
             
 
@@ -249,15 +249,14 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     func getSentiment (wordArr : [String]) -> Float {
 
-        print("in get sentiment")
         var sum: NSInteger = 0
         var ratingArr: [NSNumber] = []
         for unformString in wordArr {
             var newWord = unformString.lowercased()
-            print("newword, ", newWord)
 //            print("positiveWords, ", positiveWords)
-            if positiveWords.contains(newWord) { ratingArr.append(1) }
-            if negativeWords.contains(newWord) { ratingArr.append(-1) }
+            if positiveWords.contains(newWord) {
+                ratingArr.append(1)
+            } else if negativeWords.contains(newWord) { ratingArr.append(-1) }
             else{
                 ratingArr.append(0)
             }
@@ -265,10 +264,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         for rating in ratingArr {
             sum = sum + Int(rating)
         }
-        let rating = Float(sum / ratingArr.count)
+        let size = ratingArr.count
+        let sent_rating = Float(sum) / Float(size)
         
-        print("rating" , rating)
-        return rating
+        print("rating" , sent_rating)
+        return Float(sent_rating)
 
 
     }

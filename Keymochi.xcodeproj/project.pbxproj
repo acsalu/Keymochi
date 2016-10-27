@@ -181,7 +181,6 @@
 		E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC6A6B761DC17DE100661B26 /* WordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
-		EC6A6B781DC19AFD00661B26 /* WordSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordSentiment.swift; path = Keymochi/WordSentiment.swift; sourceTree = "<group>"; };
 		EC9BE1F51DC25735003C5E89 /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "negative-words.txt"; sourceTree = "<group>"; };
 		EC9BE1F71DC2573F003C5E89 /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "positive-words.txt"; sourceTree = "<group>"; };
 		ECBF23831DB29CE7009DAF0C /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "negative-words.txt"; path = "Assets.xcassets/negative-words.txt"; sourceTree = "<group>"; };
@@ -358,7 +357,6 @@
 		90D53A8F1C834AFA002D1B94 = {
 			isa = PBXGroup;
 			children = (
-				EC6A6B781DC19AFD00661B26 /* WordSentiment.swift */,
 				90D53A9A1C834AFA002D1B94 /* Keymochi */,
 				90D53AAF1C834AFA002D1B94 /* KeymochiTests */,
 				90D53ABA1C834AFA002D1B94 /* KeymochiUITests */,
