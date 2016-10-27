@@ -63,6 +63,8 @@
 		EC4E2B901DB560A100CBAE4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */; };
 		EC6A6B771DC17DE100661B26 /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A6B761DC17DE100661B26 /* WordManager.swift */; };
 		EC6A6B7A1DC1A31600661B26 /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A6B761DC17DE100661B26 /* WordManager.swift */; };
+		EC9BE1F61DC25735003C5E89 /* negative-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC9BE1F51DC25735003C5E89 /* negative-words.txt */; };
+		EC9BE1F81DC2573F003C5E89 /* positive-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC9BE1F71DC2573F003C5E89 /* positive-words.txt */; };
 		ECBF23851DB29CE7009DAF0C /* negative-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23831DB29CE7009DAF0C /* negative-words.txt */; };
 		ECBF23861DB29CE7009DAF0C /* positive-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23841DB29CE7009DAF0C /* positive-words.txt */; };
 /* End PBXBuildFile section */
@@ -180,6 +182,8 @@
 		EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC6A6B761DC17DE100661B26 /* WordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
 		EC6A6B781DC19AFD00661B26 /* WordSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordSentiment.swift; path = Keymochi/WordSentiment.swift; sourceTree = "<group>"; };
+		EC9BE1F51DC25735003C5E89 /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "negative-words.txt"; sourceTree = "<group>"; };
+		EC9BE1F71DC2573F003C5E89 /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "positive-words.txt"; sourceTree = "<group>"; };
 		ECBF23831DB29CE7009DAF0C /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "negative-words.txt"; path = "Assets.xcassets/negative-words.txt"; sourceTree = "<group>"; };
 		ECBF23841DB29CE7009DAF0C /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "positive-words.txt"; path = "Assets.xcassets/positive-words.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +339,8 @@
 			children = (
 				90C5441D1C84F16F0038C7FE /* Catboard.swift */,
 				90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */,
+				EC9BE1F71DC2573F003C5E89 /* positive-words.txt */,
+				EC9BE1F51DC25735003C5E89 /* negative-words.txt */,
 				90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */,
 				351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */,
 			);
@@ -614,9 +620,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9BE1F61DC25735003C5E89 /* negative-words.txt in Resources */,
 				90C544461C84F2BA0038C7FE /* Media.xcassets in Resources */,
 				90C5442E1C84F16F0038C7FE /* DefaultSettings.xib in Resources */,
 				351C94071DC8DB370040D938 /* GoogleService-Info.plist in Resources */,
+				EC9BE1F81DC2573F003C5E89 /* positive-words.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

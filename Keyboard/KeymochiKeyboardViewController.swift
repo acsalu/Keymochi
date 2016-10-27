@@ -248,15 +248,14 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     func getSentiment (wordArr : [String]) -> Float {
-        let wordManager = WordManager()
-        let positiveWords = wordManager.positiveWords
-        let negativeWords = wordManager.negativeWords
-//        let positiveWords = wordSetFromFile(file: "positive-words")
-//        let negativeWords = wordSetFromFile(file: "negative-words")
+
+        print("in get sentiment")
         var sum: NSInteger = 0
         var ratingArr: [NSNumber] = []
         for unformString in wordArr {
             var newWord = unformString.lowercased()
+            print("newword, ", newWord)
+//            print("positiveWords, ", positiveWords)
             if positiveWords.contains(newWord) { ratingArr.append(1) }
             if negativeWords.contains(newWord) { ratingArr.append(-1) }
             else{
@@ -266,17 +265,15 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         for rating in ratingArr {
             sum = sum + Int(rating)
         }
-        return Float(sum / ratingArr.count)
-    
+        let rating = Float(sum / ratingArr.count)
+        
+        print("rating" , rating)
+        return rating
+
+
     }
     
-//    func getPhrase() -> [String]{
-//        phrase = []
-//        if let phrase = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
-//        print(phrase)
-//        return phrase
-//        }
-//    }
+
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
