@@ -23,10 +23,15 @@ class DataChunk: Object {
     dynamic var firebaseKey: String?
     dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     dynamic var emotionPosition: Int = 0
+//    dynamic var sentiment: Float = 0
     
     var emotion: Emotion {
         return Emotion(position: Position(emotionPosition))!
     }
+    
+//    var sentiment: Sentiment{
+//        
+//    }
     
     override class func primaryKey() -> String? {
         return "realmId"
@@ -71,9 +76,17 @@ class DataChunk: Object {
     }
     
     convenience init(emotion: Emotion) {
+//    convenience init(emotion: Emotion, sentiment: Float) {
         self.init()
         self.emotionPosition = Int(emotion.position)
     }
+    
+//    convenience init(emotion: Emotion, sentiment: Sentiment) {
+//        self.init()
+//        self.emotionPosition = Int(emotion.position)
+//    }
+    
+
 }
 
 extension Array {

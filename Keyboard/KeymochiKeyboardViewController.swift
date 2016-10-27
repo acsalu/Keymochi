@@ -19,7 +19,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
     var phraseGlobal: NSArray = []
-    
+    var sentence: String = ""
+       
 	var currentWord: String = "" {
 		didSet {
 			updateAutoCorrectionSelector()
@@ -28,8 +29,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    var wordRating: WordRater?
     var emotion: Emotion?
+//    var sentiment: Float?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
@@ -37,6 +38,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	
 	let lastOpenThreshold: TimeInterval = 5.0
 	let keepUsingThreshold: TimeInterval = 10.0
+    
+    var sentiment = 0.50
+//    var wordRating = WordRater()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
 	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
@@ -50,6 +54,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
+        
+//        wordRating = WordRater()
+//        WordRater.sharedInstance.
         
         motionManager = CMMotionManager()
         let motionUpdateInterval: TimeInterval = 0.1
@@ -81,7 +88,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
         if hasAssessedEmotion {
+//            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, sentiment: Float(sentiment))
             DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!)
+//            WordRater.sharedInstance.returnValence(str:sentence)
+            
         }
         super.viewDidDisappear(animated)
     }
@@ -171,15 +181,15 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
-            print("currentWord: " + currentWord)
+//            print("currentWord: " + currentWord)
             let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
 		}
-        if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
-            print (sentence)
-        }
+//        if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+//            print ("sentence: " ,sentence)
+//        }
 
 		
         super.backspaceDown(sender)
@@ -220,9 +230,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
 			promptAssessmentSheet()
-            if let sentence = textDocumentProxy.documentContextBeforeInput{
-                print (sentence)
-                getSentiment(phrase: sentence)
+            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+                print ("sentence in switchAssesmentState is", sentence)
+                getSentiment(wordArr: sentence)
             }
             
 
@@ -237,10 +247,27 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         view.addSubview(assessmentSheet)
     }
     
-    func getSentiment (phrase: String){
-        let rating = wordRating?.returnValence(str: phrase)
-        print("rating is: " + String(describing: rating))
-        
+    func getSentiment (wordArr : [String]) -> Float {
+        let wordManager = WordManager()
+        let positiveWords = wordManager.positiveWords
+        let negativeWords = wordManager.negativeWords
+//        let positiveWords = wordSetFromFile(file: "positive-words")
+//        let negativeWords = wordSetFromFile(file: "negative-words")
+        var sum: NSInteger = 0
+        var ratingArr: [NSNumber] = []
+        for unformString in wordArr {
+            var newWord = unformString.lowercased()
+            if positiveWords.contains(newWord) { ratingArr.append(1) }
+            if negativeWords.contains(newWord) { ratingArr.append(-1) }
+            else{
+                ratingArr.append(0)
+            }
+        }
+        for rating in ratingArr {
+            sum = sum + Int(rating)
+        }
+        return Float(sum / ratingArr.count)
+    
     }
     
 //    func getPhrase() -> [String]{
