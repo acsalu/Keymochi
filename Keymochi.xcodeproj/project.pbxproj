@@ -510,6 +510,7 @@
 				TargetAttributes = {
 					90D53A971C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5LEMESW6GH;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -985,7 +986,7 @@
 				CODE_SIGN_ENTITLEMENTS = Keymochi/Keymochi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5LEMESW6GH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
@@ -1010,7 +1011,7 @@
 				CODE_SIGN_ENTITLEMENTS = Keymochi/Keymochi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5LEMESW6GH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
