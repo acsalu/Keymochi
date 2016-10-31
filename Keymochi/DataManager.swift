@@ -54,7 +54,7 @@ class DataManager {
         Realm.Configuration.defaultConfiguration = realmConfig
     }
     
-    fileprivate let realmQueue = DispatchQueue(label: "edu.cornell.tech.Keymochi.datamanager.realmQueue", attributes: [])
+    fileprivate let realmQueue = DispatchQueue(label: "com.keymochi.keymochi.datamanager.realmQueue", attributes: [])
     
     // MARK: - Key Events
     fileprivate var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
