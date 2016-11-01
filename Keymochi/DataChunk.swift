@@ -24,15 +24,10 @@ class DataChunk: Object {
     dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     dynamic var emotionPosition: Int = 0
     dynamic var sentiment: Float = 0.0
-//    dynamic var sentiment: Float = 0
     
     var emotion: Emotion {
         return Emotion(position: Position(emotionPosition))!
     }
-    
-//    var sentiment: Sentiment{
-//        
-//    }
     
     override class func primaryKey() -> String? {
         return "realmId"
@@ -167,6 +162,7 @@ extension DataChunk {
         dictionary["gyroMag"] = NSArray(array: gyroMagnitudes.map { NSNumber(value: $0) })
         dictionary["appVer"] = NSString(string: appVersion)
 		dictionary["createdAtSince1970"] = createdAt.timeIntervalSince1970
+		dictionary["sentiment"] = sentiment
         
         var puncuationCount = 0
         for (symbol, count) in symbolCounts {

@@ -98,7 +98,6 @@ class DataManager {
             print("sentiment ", sentiment)
             
             let dataChunck = DataChunk(emotion: emotion)
-//            let dataChunck = DataChunk(emotion: emotion, sentiment:sentiment)
             dataChunck.symbolKeyEventSequence = _symbolKeyEventSequence
             dataChunck.backspaceKeyEventSequence = _backspaceKeyEventSequence
             dataChunck.accelerationDataSequence = _accelerationDataSequence
