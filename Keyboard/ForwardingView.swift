@@ -8,6 +8,14 @@
 
 import UIKit
 
+typealias TouchTimestamp = (down: TimeInterval, up: TimeInterval)
+
+protocol FowardingViewDelegate {
+    func fowardingView(_:ForwardingView,
+                       didOutputTouchTimestamp touchTimestamp: TouchTimestamp,
+                       onView view: UIView)
+}
+
 class ForwardingView: UIView {
     
     var touchToView: [UITouch:UIView]
@@ -197,6 +205,17 @@ class ForwardingView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let view = self.touchToView[touch]
+            
+            let downTime = touchBeganTimeTable[touch]!
+            let upTime = CACurrentMediaTime()
+            touchBeganTimeTable.removeValue(forKey: touch)
+            
+            if let delegate = self.delegate {
+                let touchTimestamp = TouchTimestamp(downTime, upTime)
+                if let view = view {
+                    delegate.fowardingView(self, didOutputTouchTimestamp: touchTimestamp, onView: view)
+                }
+            }
             
             let touchPosition = touch.location(in: self)
             
