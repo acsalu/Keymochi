@@ -16,7 +16,6 @@
 		901DF4851C8925EE0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF4861C89261D0030E17C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF4841C8925EE0030E17C /* Constants.swift */; };
 		901DF48C1C8928400030E17C /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901DF48B1C8928400030E17C /* DraftViewController.swift */; };
-		9044406B1D90715B00FCE1C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */; };
 		904AE9C41DB2849600D0EE3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904AE9C31DB2849600D0EE3A /* SettingsViewController.swift */; };
 		90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90564CC51CA3A35700A16866 /* NumericOperations.swift */; };
 		906255B91CD44E55002EE58C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905E43EB1C9A07F8009520D9 /* CoreMotion.framework */; };
@@ -61,6 +60,13 @@
 		90D96C9C1C8781A2004508E1 /* KeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D96C9A1C877EC6004508E1 /* KeyEvent.swift */; };
 		90DC28CC1C9B93B30061455F /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC28CB1C9B93B30061455F /* DataChunk.swift */; };
 		90EE30481CB6F488001DB9ED /* DataChunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE30471CB6F488001DB9ED /* DataChunkViewController.swift */; };
+		EC4E2B901DB560A100CBAE4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */; };
+		EC6A6B771DC17DE100661B26 /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A6B761DC17DE100661B26 /* WordManager.swift */; };
+		EC6A6B7A1DC1A31600661B26 /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A6B761DC17DE100661B26 /* WordManager.swift */; };
+		EC9BE1F61DC25735003C5E89 /* negative-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC9BE1F51DC25735003C5E89 /* negative-words.txt */; };
+		EC9BE1F81DC2573F003C5E89 /* positive-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC9BE1F71DC2573F003C5E89 /* positive-words.txt */; };
+		ECBF23851DB29CE7009DAF0C /* negative-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23831DB29CE7009DAF0C /* negative-words.txt */; };
+		ECBF23861DB29CE7009DAF0C /* positive-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECBF23841DB29CE7009DAF0C /* positive-words.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +119,6 @@
 		901DF4841C8925EE0030E17C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		901DF48B1C8928400030E17C /* DraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
 		90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeymochiKeyboardViewController.swift; sourceTree = "<group>"; };
-		9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		904AE9C31DB2849600D0EE3A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		90564CC51CA3A35700A16866 /* NumericOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericOperations.swift; sourceTree = "<group>"; };
 		905E43EB1C9A07F8009520D9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -174,6 +179,12 @@
 		DCA1EC1FE5F2464F85F03F49 /* Pods-KeymochiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDECC99E09785093AEFDCD59 /* Pods-KeymochiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiTests/Pods-KeymochiTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC6A6B761DC17DE100661B26 /* WordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
+		EC9BE1F51DC25735003C5E89 /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "negative-words.txt"; sourceTree = "<group>"; };
+		EC9BE1F71DC2573F003C5E89 /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "positive-words.txt"; sourceTree = "<group>"; };
+		ECBF23831DB29CE7009DAF0C /* negative-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "negative-words.txt"; path = "Assets.xcassets/negative-words.txt"; sourceTree = "<group>"; };
+		ECBF23841DB29CE7009DAF0C /* positive-words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "positive-words.txt"; path = "Assets.xcassets/positive-words.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				9074C1371CC7D4D100837E99 /* DataManager.swift */,
+				90D4E0681C9B9D6B00402191 /* Emotion.swift */,
 				90DC28CB1C9B93B30061455F /* DataChunk.swift */,
 				90D96C9A1C877EC6004508E1 /* KeyEvent.swift */,
 				90B139671C9A177F00C865F0 /* MotionData.swift */,
@@ -276,6 +288,9 @@
 		901DF48F1C8929590030E17C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				EC6A6B761DC17DE100661B26 /* WordManager.swift */,
+				ECBF23831DB29CE7009DAF0C /* negative-words.txt */,
+				ECBF23841DB29CE7009DAF0C /* positive-words.txt */,
 				901DF4841C8925EE0030E17C /* Constants.swift */,
 				90564CC51CA3A35700A16866 /* NumericOperations.swift */,
 			);
@@ -323,6 +338,8 @@
 			children = (
 				90C5441D1C84F16F0038C7FE /* Catboard.swift */,
 				90C5441E1C84F16F0038C7FE /* CatboardBanner.swift */,
+				EC9BE1F71DC2573F003C5E89 /* positive-words.txt */,
+				EC9BE1F51DC25735003C5E89 /* negative-words.txt */,
 				90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */,
 				351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */,
 			);
@@ -373,7 +390,7 @@
 				90D53AA21C834AFA002D1B94 /* Assets.xcassets */,
 				90D53AA41C834AFA002D1B94 /* LaunchScreen.storyboard */,
 				90D53AA71C834AFA002D1B94 /* Info.plist */,
-				9044406A1D90715B00FCE1C4 /* GoogleService-Info.plist */,
+				EC4E2B8F1DB560A100CBAE4A /* GoogleService-Info.plist */,
 				9065D1981CA3045100F47855 /* keys.plist */,
 				906744211CB7FA9700DABC18 /* Settings.bundle */,
 			);
@@ -524,13 +541,13 @@
 					};
 					90D53AAB1C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 5LEMESW6GH;
+						DevelopmentTeam = YF87G52T96;
 						LastSwiftMigration = 0800;
 						TestTargetID = 90D53A971C834AFA002D1B94;
 					};
 					90D53AB61C834AFA002D1B94 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 5LEMESW6GH;
+						DevelopmentTeam = YF87G52T96;
 						LastSwiftMigration = 0800;
 						TestTargetID = 90D53A971C834AFA002D1B94;
 					};
@@ -573,11 +590,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9065D1991CA3045100F47855 /* keys.plist in Resources */,
+				EC4E2B901DB560A100CBAE4A /* GoogleService-Info.plist in Resources */,
 				90D53AA61C834AFA002D1B94 /* LaunchScreen.storyboard in Resources */,
 				906744221CB7FA9700DABC18 /* Settings.bundle in Resources */,
 				90D53AA31C834AFA002D1B94 /* Assets.xcassets in Resources */,
 				90D53AA11C834AFA002D1B94 /* Main.storyboard in Resources */,
-				9044406B1D90715B00FCE1C4 /* GoogleService-Info.plist in Resources */,
+				ECBF23851DB29CE7009DAF0C /* negative-words.txt in Resources */,
+				ECBF23861DB29CE7009DAF0C /* positive-words.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,9 +618,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9BE1F61DC25735003C5E89 /* negative-words.txt in Resources */,
 				90C544461C84F2BA0038C7FE /* Media.xcassets in Resources */,
 				90C5442E1C84F16F0038C7FE /* DefaultSettings.xib in Resources */,
 				351C94071DC8DB370040D938 /* GoogleService-Info.plist in Resources */,
+				EC9BE1F81DC2573F003C5E89 /* positive-words.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +824,7 @@
 				90D53A9C1C834AFA002D1B94 /* AppDelegate.swift in Sources */,
 				90564CC61CA3A35700A16866 /* NumericOperations.swift in Sources */,
 				90D96C9B1C877EC6004508E1 /* KeyEvent.swift in Sources */,
+				EC6A6B771DC17DE100661B26 /* WordManager.swift in Sources */,
 				901DF4851C8925EE0030E17C /* Constants.swift in Sources */,
 				904AE9C41DB2849600D0EE3A /* SettingsViewController.swift in Sources */,
 			);
@@ -828,6 +850,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6A6B7A1DC1A31600661B26 /* WordManager.swift in Sources */,
 				90734CB51D84BED9008F402A /* KeymochiKeyboardViewController.swift in Sources */,
 				9074C1391CC7D4D100837E99 /* DataManager.swift in Sources */,
 				90D4E06B1C9B9E0900402191 /* DataChunk.swift in Sources */,
@@ -1037,6 +1060,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = YF87G52T96;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
@@ -1057,6 +1081,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = YF87G52T96;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
@@ -1076,10 +1101,12 @@
 			baseConfigurationReference = 8C29724A0B51175E88566E65 /* Pods-KeymochiUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YF87G52T96;
 				INFOPLIST_FILE = KeymochiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.KeymochiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Keymochi;
 				USES_XCTRUNNER = YES;
@@ -1091,10 +1118,12 @@
 			baseConfigurationReference = 098057C248A258733AB4D64E /* Pods-KeymochiUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YF87G52T96;
 				INFOPLIST_FILE = KeymochiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keymochi.KeymochiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Keymochi;
 				USES_XCTRUNNER = YES;

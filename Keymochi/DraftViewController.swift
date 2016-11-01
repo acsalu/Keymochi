@@ -21,6 +21,11 @@ class DraftViewController: UIViewController {
         swipeDownRecognizer.direction = .down
         view.addGestureRecognizer(tapRecognizer)
         view.addGestureRecognizer(swipeDownRecognizer)
+//        var dataChunk: DataChunk!
+//        if let symbolSequence = dataChunk.symbolKeyEventSequence{
+//            print(symbolSequence)
+//        }
+//        
     }
     
     override func viewWillAppear(_ animated: Bool) {

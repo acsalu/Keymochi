@@ -59,3 +59,5 @@ class KeyEvent: Object {
         return String(format: "%.0f (%.2f - %.2f)", duration, downTime, upTime)
     }
 }
+
+

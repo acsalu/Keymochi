@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 
+
 import PAM
 
 class KeymochiKeyboardViewController: KeyboardViewController {
@@ -17,7 +18,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
-    
+    var phraseGlobal: NSArray = []
+    var sentence: String = ""
+       
 	var currentWord: String = "" {
 		didSet {
 			updateAutoCorrectionSelector()
@@ -26,8 +29,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    
     var emotion: Emotion?
+//    var sentiment: Float?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
@@ -35,6 +38,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	
 	let lastOpenThreshold: TimeInterval = 5.0
 	let keepUsingThreshold: TimeInterval = 10.0
+    
+    var sentiment: Float = 0.50
+//    var wordRating = WordRater()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
 	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
@@ -44,9 +50,13 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         super.viewDidLoad()
         
         symbolKeyEventMap = [String: SymbolKeyEvent]()
+        print(symbolKeyEventMap)
         
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
+        
+//        wordRating = WordRater()
+//        WordRater.sharedInstance.
         
         motionManager = CMMotionManager()
         let motionUpdateInterval: TimeInterval = 0.1
@@ -78,7 +88,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
         if hasAssessedEmotion {
-            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!)
+//            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, sentiment: Float(sentiment))
+            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
+//            WordRater.sharedInstance.returnValence(str:sentence)
+            
         }
         super.viewDidDisappear(animated)
     }
@@ -97,6 +110,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+            print(currentWord)
 		}
         if key == " " {
 			if let firstGuess = getSuggestedWords()?.gussess.first {
@@ -129,6 +143,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		}
 		textDocumentProxy.insertText(replacement)
 	}
+    
+   
 	
 	private func updateAutoCorrectionSelector() {
 		if currentWord == "" {
@@ -165,10 +181,16 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+//            print("currentWord: " + currentWord)
+            let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
 		}
+//        if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+//            print ("sentence: " ,sentence)
+//        }
+
 		
         super.backspaceDown(sender)
     }
@@ -208,6 +230,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
 			promptAssessmentSheet()
+            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+                print ("sentence in switchAssesmentState is", sentence)
+                sentiment = getSentiment(wordArr: sentence)
+            }
+            
+
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
 	}
@@ -218,6 +246,34 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assessmentSheet.delegate = self
         view.addSubview(assessmentSheet)
     }
+    
+    func getSentiment (wordArr : [String]) -> Float {
+
+        var sum: NSInteger = 0
+        var ratingArr: [NSNumber] = []
+        for unformString in wordArr {
+            var newWord = unformString.lowercased()
+//            print("positiveWords, ", positiveWords)
+            if positiveWords.contains(newWord) {
+                ratingArr.append(1)
+            } else if negativeWords.contains(newWord) { ratingArr.append(-1) }
+            else{
+                ratingArr.append(0)
+            }
+        }
+        for rating in ratingArr {
+            sum = sum + Int(rating)
+        }
+        let size = ratingArr.count
+        let sent_rating = Float(sum) / Float(size)
+        
+        print("rating" , sent_rating)
+        return Float(sent_rating)
+
+
+    }
+    
+
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -240,3 +296,10 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
+
+//extension KeymochiKeyboardViewController: SentimentAnalysisDelegate{
+//    func getSentiment(_: SentimentKeyboard, getSentimentFor phrase: String) {
+//        phrase = getPhrase
+//    }
+//    self.printSentiment(phrase)
+//}
