@@ -70,6 +70,11 @@ class DataChunkViewController: UITableViewController {
             bindData(dataChunk.gyroDataPoints?.map { $0.description } ?? [],
                      andTimestamps: dataChunk.gyroDataSequence?.timestamps ?? [],
                      withTitle: "Gyro")
+        case "ShowSentiment":
+            bindData(dataChunk.gyroDataPoints?.map { $0.description } ?? [],
+                     andTimestamps: dataChunk.gyroDataSequence?.timestamps ?? [],
+                     withTitle: "Gyro")
+            
         default:
             break
         } 

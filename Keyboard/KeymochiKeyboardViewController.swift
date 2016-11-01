@@ -222,6 +222,19 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assessmentSheet.delegate = self
         view.addSubview(assessmentSheet)
     }
+    
+    func  createOverlay(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        var overlay = self.view.bounds
+        let context = UIGraphicsGetCurrentContext()
+        let newView = UIBezierPath(rect: overlay)
+        print(newView.bounds)
+        let color = UIColor.blue
+        color.set()
+//        context?.setFillColor(color: blueColor())
+        context?.fill(rect: newView)
+        view.addSubview(newView)
+    }
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
