@@ -234,15 +234,22 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     func  createOverlay(){
         
 //        overlay = UIView()
+        let xOrigin = self.view.frame.midX
+        let yOrigin = self.view.frame.midY
+        let buttonWidth = self.view.frame.size.width/2.0
+        let buttonHeight = self.view.frame.size.height/4.0
         overlay.frame = self.view.bounds
-        overlay.backgroundColor = UIColor.blue
         
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        button.backgroundColor = UIColor.green
-        button.setTitle("Test Button", for: .normal)
+        overlay.backgroundColor = UIColor.darkGray
+//        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        let button = UIButton(frame: CGRect(x: xOrigin, y: yOrigin, width: buttonWidth, height: buttonHeight))
+        button.backgroundColor = Colors.mainColor
+//        button.backgroundColor = UIColor.cyan
+        button.setTitle("Click Me", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
+        button.center = CGPoint(x: view.frame.midX, y: view.frame.midY)
         overlay.addSubview(button)
+        
         view.addSubview(overlay)
     }
     
