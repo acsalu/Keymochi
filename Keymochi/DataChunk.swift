@@ -151,6 +151,7 @@ extension DataChunk {
         dictionary["accelMag"] = NSArray(array: accelerationMagnitudes.map { NSNumber(value: $0) })
         dictionary["gyroMag"] = NSArray(array: gyroMagnitudes.map { NSNumber(value: $0) })
         dictionary["appVer"] = NSString(string: appVersion)
+		dictionary["createdAtSince1970"] = createdAt.timeIntervalSince1970
         
         var puncuationCount = 0
         for (symbol, count) in symbolCounts {

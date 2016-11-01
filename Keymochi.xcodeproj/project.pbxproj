@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1945C70F39EC1A852AA3B3DD /* Pods_KeymochiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FE9C91090911DBE79F0689 /* Pods_KeymochiTests.framework */; };
 		351847851D94CF59005AE8C4 /* AutoCorrectionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */; };
+		351C94071DC8DB370040D938 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 351C94061DC8DB360040D938 /* GoogleService-Info.plist */; };
 		428AA8A58E7A5BA2385DBD19 /* Pods_KeymochiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C65EEBFFD094BC9AB6E1E6 /* Pods_KeymochiUITests.framework */; };
 		6D2C3CBFF4FD38083AD5D89F /* Pods_Keymochi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5955C6428FFE844132D72E /* Pods_Keymochi.framework */; };
 		8109409E8AA81FC30ECC61E8 /* Pods_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66D1EA3E8917451FFBE7998 /* Pods_Keyboard.framework */; };
@@ -106,6 +107,7 @@
 		0C5A2753386ABB46D759AF0F /* Pods-Keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-Keyboard/Pods-Keyboard.release.xcconfig"; sourceTree = "<group>"; };
 		21C65EEBFFD094BC9AB6E1E6 /* Pods_KeymochiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeymochiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		351847841D94CF59005AE8C4 /* AutoCorrectionSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCorrectionSelector.swift; sourceTree = "<group>"; };
+		351C94061DC8DB360040D938 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Keymochi/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3A5955C6428FFE844132D72E /* Pods_Keymochi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Keymochi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C29724A0B51175E88566E65 /* Pods-KeymochiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeymochiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeymochiUITests/Pods-KeymochiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		901DF4841C8925EE0030E17C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		90D53ACE1C834B4D002D1B94 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				351C94061DC8DB360040D938 /* GoogleService-Info.plist */,
 				90B7D0561C8524A600BF87C0 /* Keyboard.entitlements */,
 				90C544401C84F1A80038C7FE /* Controller */,
 				90C544411C84F1D50038C7FE /* Model */,
@@ -598,6 +601,7 @@
 			files = (
 				90C544461C84F2BA0038C7FE /* Media.xcassets in Resources */,
 				90C5442E1C84F16F0038C7FE /* DefaultSettings.xib in Resources */,
+				351C94071DC8DB370040D938 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

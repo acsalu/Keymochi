@@ -35,6 +35,7 @@ class DataManager {
     }
     
     init() {
+		FIRApp.configure()
         realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!
         var realmConfig = Realm.Configuration()
         realmConfig.fileURL = URL(fileURLWithPath: realmPath)
@@ -99,8 +100,9 @@ class DataManager {
             dataChunck.backspaceKeyEventSequence = _backspaceKeyEventSequence
             dataChunck.accelerationDataSequence = _accelerationDataSequence
             dataChunck.gyroDataSequence = _gyroDataSequence
-            
+			
             addDataChunk(dataChunck)
+			upload(dataChunck)
             
             reset()
         }
@@ -164,11 +166,12 @@ extension DataManager {
                 realm.add(dataPoint)
             }
         }
-        
+		
         try! realm.commitWrite()
     }
     
-    func upload(dataChunk: DataChunk) {
+    func upload(_ dataChunk: DataChunk) {
+		
         guard let sharedDefaults = UserDefaults(suiteName: Constants.groupIdentifier) else { return }
         guard let uid = sharedDefaults.object(forKey: "userid_preference") as? String else { return }
         guard !uid.isEmpty else { return }

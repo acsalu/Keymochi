@@ -21,7 +21,7 @@ class DataChunkViewController: UITableViewController {
     var uid: String!
     
     @IBOutlet weak var emotionContainer: UIView!
-    
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +32,10 @@ class DataChunkViewController: UITableViewController {
         alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+	
+
     @IBAction func uploadDataChunk(_ sender: AnyObject) {
-        DataManager.sharedInatance.upload(dataChunk: dataChunk)
+        DataManager.sharedInatance.upload(dataChunk)
     }
 
     

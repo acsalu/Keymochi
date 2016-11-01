@@ -75,10 +75,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		}
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("will disappear")
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
         if hasAssessedEmotion {
