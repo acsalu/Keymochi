@@ -17,6 +17,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
+    var overlay = UIView()
     
 	var currentWord: String = "" {
 		didSet {
@@ -211,7 +212,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		if hasAssessedEmotion && lastOpenTimeInterval > lastOpenThreshold {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
-			promptAssessmentSheet()
+            createOverlay()
+//			promptAssessmentSheet()
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
 	}
@@ -223,18 +225,27 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         view.addSubview(assessmentSheet)
     }
     
-    func  createOverlay(){
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        var overlay = self.view.bounds
-        let context = UIGraphicsGetCurrentContext()
-        let newView = UIBezierPath(rect: overlay)
-        print(newView.bounds)
-        let color = UIColor.blue
-        color.set()
-//        context?.setFillColor(color: blueColor())
-        context?.fill(rect: newView)
-        view.addSubview(newView)
+    func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        overlay.removeFromSuperview()
+        promptAssessmentSheet()
     }
+    
+    func  createOverlay(){
+        
+        overlay = UIView()
+        overlay.bounds = self.view.bounds
+        overlay.backgroundColor = UIColor.blue
+        
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        button.backgroundColor = UIColor.green
+        button.setTitle("Test Button", for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        overlay.addSubview(button)
+        self.view.addSubview(overlay)
+    }
+    
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -254,6 +265,7 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: Emotion) {
         self.emotion = emotion
         assessmentSheet.removeFromSuperview()
+        overlay.removeFromSuperview()
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
