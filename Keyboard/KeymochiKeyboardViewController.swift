@@ -233,8 +233,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     func  createOverlay(){
         
-        overlay = UIView()
-        overlay.bounds = self.view.bounds
+//        overlay = UIView()
+        overlay.frame = self.view.bounds
         overlay.backgroundColor = UIColor.blue
         
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
@@ -243,7 +243,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         overlay.addSubview(button)
-        self.view.addSubview(overlay)
+        view.addSubview(overlay)
     }
     
 }
@@ -265,7 +265,7 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: Emotion) {
         self.emotion = emotion
         assessmentSheet.removeFromSuperview()
-        overlay.removeFromSuperview()
+//        overlay.removeFromSuperview()
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
