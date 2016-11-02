@@ -234,22 +234,44 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     func  createOverlay(){
         
 //        overlay = UIView()
+        //get the x and y center
         let xOrigin = self.view.frame.midX
         let yOrigin = self.view.frame.midY
+        
+        //set the size of the button in rleation to the the overlay view.
         let buttonWidth = self.view.frame.size.width/2.0
         let buttonHeight = self.view.frame.size.height/4.0
-        overlay.frame = self.view.bounds
         
+        //set the size and color of the overlay view
+        overlay.frame = self.view.bounds
         overlay.backgroundColor = UIColor.darkGray
-//        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+        
+        //create button
         let button = UIButton(frame: CGRect(x: xOrigin, y: yOrigin, width: buttonWidth, height: buttonHeight))
         button.backgroundColor = Colors.mainColor
-//        button.backgroundColor = UIColor.cyan
-        button.setTitle("Click Me", for: .normal)
+        button.setTitle("Click to Proceed", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.center = CGPoint(x: view.frame.midX, y: view.frame.midY)
+       //label generation
+        
+        let label = UILabel(frame: CGRect(x: view.frame.midX, y: (view.frame.midY - buttonHeight), width: self.view.frame.size.width, height: 100))
+        let labelY = yOrigin - label.frame.height + 40
+        print ("labelY" , labelY)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.text = "On the next screen, select the photo that best captures how you feel right now"
+        label.numberOfLines = 4
+        label.font = UIFont.boldSystemFont(ofSize: 24.0)
+        
+        //label and button centering
+        label.center = CGPoint(x: view.frame.midX, y: labelY)
+        let buttonY = labelY + label.frame.height
+        print("buttonY", buttonY)
+        button.center = CGPoint(x: view.frame.midX, y: buttonY)
+        //add both label and button to the overlay view
+        overlay.addSubview(label)
         overlay.addSubview(button)
         
+        //add the overlay to the subview
         view.addSubview(overlay)
     }
     
