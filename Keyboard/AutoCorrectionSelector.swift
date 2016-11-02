@@ -24,7 +24,23 @@ class AutoCorrectionSelector: ExtraView {
 		for i in 0 ..< 3 {
 			let button = UIButton(frame: CGRect(x: 100 * i, y:-5, width: 100, height: 50))
 			self.buttons.insert(button, at: i)
-			self.addSubview(self.buttons[i])
+			
+			let stackView = UIStackView(arrangedSubviews: buttons)
+			stackView.axis = .horizontal
+			stackView.distribution = .fillEqually
+			stackView.alignment = .fill
+			stackView.spacing = 5
+			stackView.translatesAutoresizingMaskIntoConstraints = false
+			self.addSubview(stackView)
+			
+			let viewsDictionary = ["stackView":stackView]
+			let stackView_H = NSLayoutConstraint.constraints(
+				withVisualFormat: "H:|-20-[stackView]-20-|",  //horizontal constraint 20 points from left and right side
+				options: NSLayoutFormatOptions(rawValue: 0),
+				metrics: nil,
+				views: viewsDictionary)
+			self.addConstraints(stackView_H)
+			
 			self.buttons[i].addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
 		}
 	}
