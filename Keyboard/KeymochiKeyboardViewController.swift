@@ -89,6 +89,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         motionManager.stopDeviceMotionUpdates()
         if hasAssessedEmotion {
 //            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, sentiment: Float(sentiment))
+            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+                print ("sentence in view did disppear is", sentence)
+                sentiment = getSentiment(wordArr: sentence)
+            }
             DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
 //            WordRater.sharedInstance.returnValence(str:sentence)
             
@@ -230,11 +234,13 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
 			promptAssessmentSheet()
-            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
-                print ("sentence in switchAssesmentState is", sentence)
-                sentiment = getSentiment(wordArr: sentence)
-            }
-            
+            // Do this in view did disappear//            
+//            if let components = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+//                print ("sentence in switchAssesmentState is", components)
+//                let sentAfterPam = getSentiment(wordArr: components)
+//                print ("sentiment in has switch assessment state", sentAfterPam)
+//            }
+//            
 
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
@@ -253,7 +259,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         var ratingArr: [NSNumber] = []
         for unformString in wordArr {
             var newWord = unformString.lowercased()
-//            print("positiveWords, ", positiveWords)
             if positiveWords.contains(newWord) {
                 ratingArr.append(1)
             } else if negativeWords.contains(newWord) { ratingArr.append(-1) }
@@ -297,9 +302,3 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     }
 }
 
-//extension KeymochiKeyboardViewController: SentimentAnalysisDelegate{
-//    func getSentiment(_: SentimentKeyboard, getSentimentFor phrase: String) {
-//        phrase = getPhrase
-//    }
-//    self.printSentiment(phrase)
-//}
