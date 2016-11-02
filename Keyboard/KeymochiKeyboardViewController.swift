@@ -244,7 +244,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         
         //set the size and color of the overlay view
         overlay.frame = self.view.bounds
-        overlay.backgroundColor = UIColor.darkGray
+        overlay.backgroundColor = UIColor.black
         
         //create button
         let button = UIButton(frame: CGRect(x: xOrigin, y: yOrigin, width: buttonWidth, height: buttonHeight))
@@ -256,7 +256,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         let label = UILabel(frame: CGRect(x: view.frame.midX, y: (view.frame.midY - buttonHeight), width: self.view.frame.size.width, height: 100))
         let labelY = yOrigin - label.frame.height + 40
         print ("labelY" , labelY)
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .center
         label.text = "On the next screen, select the photo that best captures how you feel right now"
         label.numberOfLines = 4
