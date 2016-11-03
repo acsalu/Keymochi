@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 
+
 import PAM
 
 class KeymochiKeyboardViewController: KeyboardViewController {
@@ -19,6 +20,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
     var overlay = UIView()
     
+    var phraseGlobal: NSArray = []
+    var sentence: String = ""
+       
+
 	var currentWord: String = "" {
 		didSet {
 			updateAutoCorrectionSelector()
@@ -27,7 +32,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	var autoCorrectionSelector: AutoCorrectionSelector {
 		return self.bannerView as! AutoCorrectionSelector
 	}
-    
     var emotion: Emotion?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
@@ -36,6 +40,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	
 	let lastOpenThreshold: TimeInterval = 5.0
 	let keepUsingThreshold: TimeInterval = 10.0
+    
+    var sentiment: Float = 0.50
+    
+    var keys = [String]()
+    var touchTimestamps = [TouchTimestamp]()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
 	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
@@ -45,21 +54,19 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         super.viewDidLoad()
         
         symbolKeyEventMap = [String: SymbolKeyEvent]()
+        print(symbolKeyEventMap)
         
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
+        
+        self.forwardingView.delegate = self
         
         motionManager = CMMotionManager()
         let motionUpdateInterval: TimeInterval = 0.1
         motionManager.deviceMotionUpdateInterval = motionUpdateInterval
         motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (deviceMotioin, error) in
-            guard error == nil else {
-                debugPrint(error)
-                return
-            }
-            guard let deviceMotioin = deviceMotioin else {
-                return
-            }
+            guard error == nil else { return }
+            guard let deviceMotioin = deviceMotioin else { return }
             
             let accelerationDataPoint = MotionDataPoint(acceleration: deviceMotioin.userAcceleration, atTime: deviceMotioin.timestamp)
             let gyroDataPoint = MotionDataPoint(rotationRate: deviceMotioin.rotationRate, atTime: deviceMotioin.timestamp)
@@ -76,14 +83,37 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		}
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("will disappear")
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
+        
+        assert(keys.count == touchTimestamps.count)
+        print(keys.count)
         if hasAssessedEmotion {
-            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!)
+            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
+                print ("sentence in view did disppear is", sentence)
+                sentiment = getSentiment(wordArr: sentence)
+                for (key, touchTimestamp) in zip(keys, touchTimestamps) {
+                    let components = key.components(separatedBy: " ")
+                    var keyEvent: KeyEvent!
+                    switch components.count {
+                    case 1:
+                        keyEvent = SymbolKeyEvent()
+                        (keyEvent as! SymbolKeyEvent).key = key
+                        break
+                    case 2:
+                        keyEvent = BackspaceKeyEvent()
+                        (keyEvent as! BackspaceKeyEvent).numberOfDeletions = Int(components[1])!
+                    default:
+                        break
+                    }
+                    
+                    keyEvent.downTime = touchTimestamp.down
+                    keyEvent.upTime = touchTimestamp.up
+                    
+                    DataManager.sharedInatance.addKeyEvent(keyEvent)
+                }
+                DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
+            }
         }
         super.viewDidDisappear(animated)
     }
@@ -93,15 +123,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
             return
         }
         
-        guard let symbolKeyEvent = symbolKeyEventMap[key] else {
-            return
-        }
-        
-        symbolKeyEvent.upTime = CACurrentMediaTime()
-        DataManager.sharedInatance.addKeyEvent(symbolKeyEvent)
+        keys.append(key)
 		
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+            print(currentWord)
 		}
         if key == " " {
 			if let firstGuess = getSuggestedWords()?.gussess.first {
@@ -134,6 +160,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		}
 		textDocumentProxy.insertText(replacement)
 	}
+    
+   
 	
 	private func updateAutoCorrectionSelector() {
 		if currentWord == "" {
@@ -170,22 +198,18 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
+            let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
 		}
-		
         super.backspaceDown(sender)
     }
     
     override func backspaceUp(_ sender: KeyboardKey) {
-        if let backspaceKeyEvent = backspaceKeyEvent {
-            backspaceKeyEvent.upTime = CACurrentMediaTime()
-            backspaceKeyEvent.numberOfDeletions = numberOfDeletions
-            DataManager.sharedInatance.addKeyEvent(backspaceKeyEvent)
-            self.backspaceKeyEvent = nil
+        if let numberOfDeletions = numberOfDeletions {
+            keys.append("\\b \(numberOfDeletions)")
         }
-        
         super.backspaceUp(sender)
     }
 	
@@ -212,8 +236,18 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		if hasAssessedEmotion && lastOpenTimeInterval > lastOpenThreshold {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
+            
             createOverlay()
+
 //			promptAssessmentSheet()
+            // Do this in view did disappear//
+//            if let components = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+//                print ("sentence in switchAssesmentState is", components)
+//                let sentAfterPam = getSentiment(wordArr: components)
+//                print ("sentiment in has switch assessment state", sentAfterPam)
+//            }
+//            
+
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
 	}
@@ -225,6 +259,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         view.addSubview(assessmentSheet)
     }
     
+
     func buttonAction(sender: UIButton!) {
         print("Button tapped")
         overlay.removeFromSuperview()
@@ -275,6 +310,31 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         view.addSubview(overlay)
     }
     
+    func getSentiment (wordArr : [String]) -> Float {
+
+        var sum: NSInteger = 0
+        var ratingArr: [NSNumber] = []
+        for unformString in wordArr {
+            var newWord = unformString.lowercased()
+            if positiveWords.contains(newWord) {
+                ratingArr.append(1)
+            } else if negativeWords.contains(newWord) { ratingArr.append(-1) }
+            else{
+                ratingArr.append(0)
+            }
+        }
+        for rating in ratingArr {
+            sum = sum + Int(rating)
+        }
+        let size = ratingArr.count
+        let sent_rating = Float(sum) / Float(size)
+        
+        print("rating" , sent_rating)
+        return Float(sent_rating)
+
+
+    }
+    
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -296,5 +356,18 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
         assessmentSheet.removeFromSuperview()
 //        overlay.removeFromSuperview()
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
+    }
+}
+
+// MARK: - FowardingViewDelegate Methods
+extension KeymochiKeyboardViewController: FowardingViewDelegate {
+    func fowardingView(_: ForwardingView,
+                       didOutputTouchTimestamp touchTimestamp: TouchTimestamp,
+                       onView view: UIView) {
+        guard let keyboardKey = view as? KeyboardKey else { return }
+        guard let key = layout!.keyForView(key: keyboardKey) else { return }
+        if key.hasOutput || key.type == .backspace {
+            touchTimestamps.append(touchTimestamp)
+        }
     }
 }

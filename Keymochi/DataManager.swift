@@ -35,6 +35,7 @@ class DataManager {
     }
     
     init() {
+		FIRApp.configure()
         realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!
         var realmConfig = Realm.Configuration()
         realmConfig.fileURL = URL(fileURLWithPath: realmPath)
@@ -54,19 +55,15 @@ class DataManager {
         Realm.Configuration.defaultConfiguration = realmConfig
     }
     
-    fileprivate let realmQueue = DispatchQueue(label: "com.keymochi.keymochi.datamanager.realmQueue", attributes: [])
-    
     // MARK: - Key Events
     fileprivate var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
     fileprivate var _backspaceKeyEventSequence: BackspaceKeyEventSequence = BackspaceKeyEventSequence()
     
     func addKeyEvent(_ keyEvent: KeyEvent) {
-        realmQueue.async {
-            if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
-                self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
-            } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
-                self._backspaceKeyEventSequence.keyEvents.append(backspaceKeyEvent)
-            }
+        if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
+            self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
+        } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
+            self._backspaceKeyEventSequence.keyEvents.append(backspaceKeyEvent)
         }
     }
     
@@ -82,7 +79,8 @@ class DataManager {
         }
     }
     
-    func dumpCurrentData(withEmotion emotion: Emotion) {
+    func dumpCurrentData(withEmotion emotion: Emotion, withSentiment sentiment:Float) {
+//        func dumpCurrentData(withEmotion emotion: Emotion, sentiment: Float) {
         let totalKeyCount =
             _symbolKeyEventSequence.keyEvents.count + _backspaceKeyEventSequence.keyEvents.count
         
@@ -93,14 +91,17 @@ class DataManager {
             print("(\(KeyType.backspace)) \(_backspaceKeyEventSequence.keyEvents.count) key events")
             print("(\(SensorType.acceleration)) \(_accelerationDataSequence.motionDataPoints.count) data points")
             print("(\(SensorType.gyro)) \(_gyroDataSequence.motionDataPoints.count) data points")
+            print("sentiment ", sentiment)
             
             let dataChunck = DataChunk(emotion: emotion)
             dataChunck.symbolKeyEventSequence = _symbolKeyEventSequence
             dataChunck.backspaceKeyEventSequence = _backspaceKeyEventSequence
             dataChunck.accelerationDataSequence = _accelerationDataSequence
             dataChunck.gyroDataSequence = _gyroDataSequence
+            dataChunck.sentiment = sentiment
             
             addDataChunk(dataChunck)
+			upload(dataChunck)
             
             reset()
         }
@@ -164,11 +165,12 @@ extension DataManager {
                 realm.add(dataPoint)
             }
         }
-        
+		
         try! realm.commitWrite()
     }
     
-    func upload(dataChunk: DataChunk) {
+    func upload(_ dataChunk: DataChunk) {
+		
         guard let sharedDefaults = UserDefaults(suiteName: Constants.groupIdentifier) else { return }
         guard let uid = sharedDefaults.object(forKey: "userid_preference") as? String else { return }
         guard !uid.isEmpty else { return }

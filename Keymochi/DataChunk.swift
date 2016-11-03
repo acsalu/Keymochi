@@ -23,6 +23,7 @@ class DataChunk: Object {
     dynamic var firebaseKey: String?
     dynamic var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     dynamic var emotionPosition: Int = 0
+    dynamic var sentiment: Float = 0.0
     
     var emotion: Emotion {
         return Emotion(position: Position(emotionPosition))!
@@ -35,6 +36,7 @@ class DataChunk: Object {
     override var description: String {
         let symbolKeyEventCount =
             (symbolKeyEventSequence != nil) ? symbolKeyEventSequence!.keyEvents.count : -1
+            print(symbolKeyEventSequence)
         let accelerationDataPointCount =
             (accelerationDataSequence != nil) ? accelerationDataSequence!.motionDataPoints.count : -1
         let gyroDataPointCount =
@@ -70,9 +72,17 @@ class DataChunk: Object {
     }
     
     convenience init(emotion: Emotion) {
+//    convenience init(emotion: Emotion, sentiment: Float) {
         self.init()
         self.emotionPosition = Int(emotion.position)
     }
+    
+//    convenience init(emotion: Emotion, sentiment: Sentiment) {
+//        self.init()
+//        self.emotionPosition = Int(emotion.position)
+//    }
+    
+
 }
 
 extension Array {
@@ -151,6 +161,8 @@ extension DataChunk {
         dictionary["accelMag"] = NSArray(array: accelerationMagnitudes.map { NSNumber(value: $0) })
         dictionary["gyroMag"] = NSArray(array: gyroMagnitudes.map { NSNumber(value: $0) })
         dictionary["appVer"] = NSString(string: appVersion)
+		dictionary["createdAtSince1970"] = createdAt.timeIntervalSince1970
+		dictionary["sentiment"] = sentiment
         
         var puncuationCount = 0
         for (symbol, count) in symbolCounts {

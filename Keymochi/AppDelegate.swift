@@ -44,14 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         Realm.Configuration.defaultConfiguration = realmConfig
-        FIRApp.configure()
-        
+		
         return true
     }
     
     override init() {
         super.init()
-        FIRApp.configure()
         // not really needed unless you really need it FIRDatabase.database().persistenceEnabled = true
     }
     
