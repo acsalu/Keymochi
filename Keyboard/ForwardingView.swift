@@ -19,6 +19,8 @@ protocol FowardingViewDelegate {
 class ForwardingView: UIView {
     
     var touchToView: [UITouch:UIView]
+    var touchBeganTimeTable = [UITouch:Double]()
+    var delegate: FowardingViewDelegate?
     
     override init(frame: CGRect) {
         self.touchToView = [:]
@@ -160,6 +162,8 @@ class ForwardingView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            touchBeganTimeTable[touch] = CACurrentMediaTime()
+            
             let position = touch.location(in: self)
             let view = findNearestView(position)
             

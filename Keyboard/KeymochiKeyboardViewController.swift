@@ -30,7 +30,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		return self.bannerView as! AutoCorrectionSelector
 	}
     var emotion: Emotion?
-//    var sentiment: Float?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
@@ -40,7 +39,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	let keepUsingThreshold: TimeInterval = 10.0
     
     var sentiment: Float = 0.50
-//    var wordRating = WordRater()
+    
+    var keys = [String]()
+    var touchTimestamps = [TouchTimestamp]()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
 	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
@@ -55,8 +56,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
         
-//        wordRating = WordRater()
-//        WordRater.sharedInstance.
+        self.forwardingView.delegate = self
         
         motionManager = CMMotionManager()
         let motionUpdateInterval: TimeInterval = 0.1
@@ -84,6 +84,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         motionManager.stopDeviceMotionUpdates()
         
         assert(keys.count == touchTimestamps.count)
+        print(keys.count)
         if hasAssessedEmotion {
             if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
                 print ("sentence in view did disppear is", sentence)
