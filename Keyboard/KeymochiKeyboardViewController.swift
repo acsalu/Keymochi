@@ -89,23 +89,21 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assert(keys.count == touchTimestamps.count)
         print(keys.count)
         if hasAssessedEmotion {
-            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
+			if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: CharacterSet(charactersIn: " \n")) {
                 print ("sentence in view did disppear is", sentence)
                 sentiment = getSentiment(wordArr: sentence)
                 for (key, touchTimestamp) in zip(keys, touchTimestamps) {
-                    let components = key.components(separatedBy: " ")
+					
                     var keyEvent: KeyEvent!
-                    switch components.count {
-                    case 1:
-                        keyEvent = SymbolKeyEvent()
-                        (keyEvent as! SymbolKeyEvent).key = key
-                        break
-                    case 2:
-                        keyEvent = BackspaceKeyEvent()
-                        (keyEvent as! BackspaceKeyEvent).numberOfDeletions = Int(components[1])!
-                    default:
-                        break
-                    }
+					
+					if key.characters.count == 1 {
+						keyEvent = SymbolKeyEvent()
+						(keyEvent as! SymbolKeyEvent).key = key
+					} else {
+						let components = key.components(separatedBy: " ")
+						keyEvent = BackspaceKeyEvent()
+						(keyEvent as! BackspaceKeyEvent).numberOfDeletions = Int(components[1])!
+					}
                     
                     keyEvent.downTime = touchTimestamp.down
                     keyEvent.upTime = touchTimestamp.up
@@ -125,11 +123,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         
         keys.append(key)
 		
-		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
+		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: CharacterSet(charactersIn: " \n")).last! {
 			currentWord = word
-            print(currentWord)
 		}
-        if key == " " {
+        if key == " " || key == "\n" {
 			if let firstGuess = getSuggestedWords()?.gussess.first {
 				replaceWord(replacement: firstGuess)
 			}
@@ -140,6 +137,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
 	
 	private func getSuggestedWords() -> (completions: [String], gussess: [String])? {
+		print(currentWord)
+		if currentWord == "" {
+			return ([], [])
+		}
 		let textChecker = UITextChecker()
 		let range = NSRange(location: 0, length: currentWord.characters.count)
 		let completions: [String] = textChecker.completions(forPartialWordRange: range, in: currentWord, language: "en_US")!
@@ -165,8 +166,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	
 	private func updateAutoCorrectionSelector() {
 		if currentWord == "" {
-			(self.bannerView as! AutoCorrectionSelector).updateButtonArray(words: [])
-		} else if let completions = getSuggestedWords()?.completions.filter({ $0 != currentWord }) {
+			self.autoCorrectionSelector.updateButtonArray(words: [])
+		}
+		else if let completions = getSuggestedWords()?.completions.filter({ $0 != currentWord }) {
 			var partialGuesses: [String]
 			if completions.count < 2 {
 				partialGuesses = ["\"" + currentWord + "\""] + completions
@@ -196,9 +198,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         let keyEvent = BackspaceKeyEvent()
         keyEvent.downTime = CACurrentMediaTime()
         backspaceKeyEvent = keyEvent
-		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
+		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: CharacterSet(charactersIn: " \n")).last! {
 			currentWord = word
-            let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
@@ -238,16 +239,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
             
             createOverlay()
-
-//			promptAssessmentSheet()
-            // Do this in view did disappear//
-//            if let components = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
-//                print ("sentence in switchAssesmentState is", components)
-//                let sentAfterPam = getSentiment(wordArr: components)
-//                print ("sentiment in has switch assessment state", sentAfterPam)
-//            }
-//            
-
+			
 		}
 		defaults.set(Date(), forKey: KeymochiKeyboardViewController.kLastOpenTime)
 	}
