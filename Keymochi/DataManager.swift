@@ -55,19 +55,15 @@ class DataManager {
         Realm.Configuration.defaultConfiguration = realmConfig
     }
     
-    fileprivate let realmQueue = DispatchQueue(label: "com.keymochi.keymochi.datamanager.realmQueue", attributes: [])
-    
     // MARK: - Key Events
     fileprivate var _symbolKeyEventSequence: SymbolKeyEventSequence = SymbolKeyEventSequence()
     fileprivate var _backspaceKeyEventSequence: BackspaceKeyEventSequence = BackspaceKeyEventSequence()
     
     func addKeyEvent(_ keyEvent: KeyEvent) {
-        realmQueue.async {
-            if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
-                self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
-            } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
-                self._backspaceKeyEventSequence.keyEvents.append(backspaceKeyEvent)
-            }
+        if let symbolKeyEvent = keyEvent as? SymbolKeyEvent {
+            self._symbolKeyEventSequence.keyEvents.append(symbolKeyEvent)
+        } else if let backspaceKeyEvent = keyEvent as? BackspaceKeyEvent {
+            self._backspaceKeyEventSequence.keyEvents.append(backspaceKeyEvent)
         }
     }
     

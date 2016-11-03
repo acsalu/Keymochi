@@ -8,9 +8,19 @@
 
 import UIKit
 
+typealias TouchTimestamp = (down: TimeInterval, up: TimeInterval)
+
+protocol FowardingViewDelegate {
+    func fowardingView(_:ForwardingView,
+                       didOutputTouchTimestamp touchTimestamp: TouchTimestamp,
+                       onView view: UIView)
+}
+
 class ForwardingView: UIView {
     
     var touchToView: [UITouch:UIView]
+    var touchBeganTimeTable = [UITouch:Double]()
+    var delegate: FowardingViewDelegate?
     
     override init(frame: CGRect) {
         self.touchToView = [:]
@@ -152,6 +162,8 @@ class ForwardingView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            touchBeganTimeTable[touch] = CACurrentMediaTime()
+            
             let position = touch.location(in: self)
             let view = findNearestView(position)
             
@@ -181,6 +193,7 @@ class ForwardingView: UIView {
                 let viewChangedOwnership = self.ownView(touch, viewToOwn: newView)
                 
                 if !viewChangedOwnership {
+                    self.handleControl(oldView, controlEvent: .touchDragOutside)
                     self.handleControl(newView, controlEvent: .touchDragEnter)
                 }
                 else {
@@ -196,6 +209,17 @@ class ForwardingView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let view = self.touchToView[touch]
+            
+            let downTime = touchBeganTimeTable[touch]!
+            let upTime = CACurrentMediaTime()
+            touchBeganTimeTable.removeValue(forKey: touch)
+            
+            if let delegate = self.delegate {
+                let touchTimestamp = TouchTimestamp(downTime, upTime)
+                if let view = view {
+                    delegate.fowardingView(self, didOutputTouchTimestamp: touchTimestamp, onView: view)
+                }
+            }
             
             let touchPosition = touch.location(in: self)
             

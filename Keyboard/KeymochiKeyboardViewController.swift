@@ -30,7 +30,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		return self.bannerView as! AutoCorrectionSelector
 	}
     var emotion: Emotion?
-//    var sentiment: Float?
     var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
@@ -40,7 +39,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 	let keepUsingThreshold: TimeInterval = 10.0
     
     var sentiment: Float = 0.50
-//    var wordRating = WordRater()
+    
+    var keys = [String]()
+    var touchTimestamps = [TouchTimestamp]()
 	
 	class var kHasAssessedEmotion: String { return "KeyboardHasAssessedEmotion" }
 	class var kKeepUsingTime: String { return "KeyboardKeepUsingTime" }
@@ -55,20 +56,14 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         // Make sure the container is empty.
         DataManager.sharedInatance.reset()
         
-//        wordRating = WordRater()
-//        WordRater.sharedInstance.
+        self.forwardingView.delegate = self
         
         motionManager = CMMotionManager()
         let motionUpdateInterval: TimeInterval = 0.1
         motionManager.deviceMotionUpdateInterval = motionUpdateInterval
         motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (deviceMotioin, error) in
-            guard error == nil else {
-                debugPrint(error)
-                return
-            }
-            guard let deviceMotioin = deviceMotioin else {
-                return
-            }
+            guard error == nil else { return }
+            guard let deviceMotioin = deviceMotioin else { return }
             
             let accelerationDataPoint = MotionDataPoint(acceleration: deviceMotioin.userAcceleration, atTime: deviceMotioin.timestamp)
             let gyroDataPoint = MotionDataPoint(rotationRate: deviceMotioin.rotationRate, atTime: deviceMotioin.timestamp)
@@ -87,15 +82,35 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         motionManager.stopDeviceMotionUpdates()
+        
+        assert(keys.count == touchTimestamps.count)
+        print(keys.count)
         if hasAssessedEmotion {
-//            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, sentiment: Float(sentiment))
-            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
+            if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ") {
                 print ("sentence in view did disppear is", sentence)
                 sentiment = getSentiment(wordArr: sentence)
+                for (key, touchTimestamp) in zip(keys, touchTimestamps) {
+                    let components = key.components(separatedBy: " ")
+                    var keyEvent: KeyEvent!
+                    switch components.count {
+                    case 1:
+                        keyEvent = SymbolKeyEvent()
+                        (keyEvent as! SymbolKeyEvent).key = key
+                        break
+                    case 2:
+                        keyEvent = BackspaceKeyEvent()
+                        (keyEvent as! BackspaceKeyEvent).numberOfDeletions = Int(components[1])!
+                    default:
+                        break
+                    }
+                    
+                    keyEvent.downTime = touchTimestamp.down
+                    keyEvent.upTime = touchTimestamp.up
+                    
+                    DataManager.sharedInatance.addKeyEvent(keyEvent)
+                }
+                DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
             }
-            DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
-//            WordRater.sharedInstance.returnValence(str:sentence)
-            
         }
         super.viewDidDisappear(animated)
     }
@@ -105,12 +120,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
             return
         }
         
-        guard let symbolKeyEvent = symbolKeyEventMap[key] else {
-            return
-        }
-        
-        symbolKeyEvent.upTime = CACurrentMediaTime()
-        DataManager.sharedInatance.addKeyEvent(symbolKeyEvent)
+        keys.append(key)
 		
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
@@ -185,28 +195,18 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         backspaceKeyEvent = keyEvent
 		if let word = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ").last! {
 			currentWord = word
-//            print("currentWord: " + currentWord)
             let words  = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " ")
 			if currentWord != "" {
 				currentWord.remove(at: currentWord.index(before: currentWord.endIndex))
 			}
 		}
-//        if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
-//            print ("sentence: " ,sentence)
-//        }
-
-		
         super.backspaceDown(sender)
     }
     
     override func backspaceUp(_ sender: KeyboardKey) {
-        if let backspaceKeyEvent = backspaceKeyEvent {
-            backspaceKeyEvent.upTime = CACurrentMediaTime()
-            backspaceKeyEvent.numberOfDeletions = numberOfDeletions
-            DataManager.sharedInatance.addKeyEvent(backspaceKeyEvent)
-            self.backspaceKeyEvent = nil
+        if let numberOfDeletions = numberOfDeletions {
+            keys.append("\\b \(numberOfDeletions)")
         }
-        
         super.backspaceUp(sender)
     }
 	
@@ -302,3 +302,15 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     }
 }
 
+// MARK: - FowardingViewDelegate Methods
+extension KeymochiKeyboardViewController: FowardingViewDelegate {
+    func fowardingView(_: ForwardingView,
+                       didOutputTouchTimestamp touchTimestamp: TouchTimestamp,
+                       onView view: UIView) {
+        guard let keyboardKey = view as? KeyboardKey else { return }
+        guard let key = layout!.keyForView(key: keyboardKey) else { return }
+        if key.hasOutput || key.type == .backspace {
+            touchTimestamps.append(touchTimestamp)
+        }
+    }
+}
