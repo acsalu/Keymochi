@@ -18,9 +18,12 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     
     var backspaceKeyEvent: BackspaceKeyEvent?
     var symbolKeyEventMap: [String: SymbolKeyEvent]!
+    var overlay = UIView()
+    
     var phraseGlobal: NSArray = []
     var sentence: String = ""
        
+
 	var currentWord: String = "" {
 		didSet {
 			updateAutoCorrectionSelector()
@@ -233,8 +236,11 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		if hasAssessedEmotion && lastOpenTimeInterval > lastOpenThreshold {
 			defaults.set(false, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
 		} else if !hasAssessedEmotion && keepUsingTime > keepUsingThreshold {
-			promptAssessmentSheet()
-            // Do this in view did disappear//            
+            
+            createOverlay()
+
+//			promptAssessmentSheet()
+            // Do this in view did disappear//
 //            if let components = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: " "){
 //                print ("sentence in switchAssesmentState is", components)
 //                let sentAfterPam = getSentiment(wordArr: components)
@@ -251,6 +257,57 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         assessmentSheet.backgroundColor = UIColor.yellow
         assessmentSheet.delegate = self
         view.addSubview(assessmentSheet)
+    }
+    
+
+    func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        overlay.removeFromSuperview()
+        promptAssessmentSheet()
+    }
+    
+    func  createOverlay(){
+        
+//        overlay = UIView()
+        //get the x and y center
+        let xOrigin = self.view.frame.midX
+        let yOrigin = self.view.frame.midY
+        
+        //set the size of the button in rleation to the the overlay view.
+        let buttonWidth = self.view.frame.size.width/2.0
+        let buttonHeight = self.view.frame.size.height/4.0
+        
+        //set the size and color of the overlay view
+        overlay.frame = self.view.bounds
+        overlay.backgroundColor = UIColor.black
+        
+        //create button
+        let button = UIButton(frame: CGRect(x: xOrigin, y: yOrigin, width: buttonWidth, height: buttonHeight))
+        button.backgroundColor = Colors.mainColor
+        button.setTitle("Click to Proceed", for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+       //label generation
+        
+        let label = UILabel(frame: CGRect(x: view.frame.midX, y: (view.frame.midY - buttonHeight), width: self.view.frame.size.width, height: 100))
+        let labelY = yOrigin - label.frame.height + 40
+        print ("labelY" , labelY)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "On the next screen, select the photo that best captures how you feel right now"
+        label.numberOfLines = 4
+        label.font = UIFont.boldSystemFont(ofSize: 24.0)
+        
+        //label and button centering
+        label.center = CGPoint(x: view.frame.midX, y: labelY)
+        let buttonY = labelY + label.frame.height
+        print("buttonY", buttonY)
+        button.center = CGPoint(x: view.frame.midX, y: buttonY)
+        //add both label and button to the overlay view
+        overlay.addSubview(label)
+        overlay.addSubview(button)
+        
+        //add the overlay to the subview
+        view.addSubview(overlay)
     }
     
     func getSentiment (wordArr : [String]) -> Float {
@@ -278,7 +335,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 
     }
     
-
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
@@ -298,6 +354,7 @@ extension KeymochiKeyboardViewController: PAMAssessmentSheetDelegate {
     public func assessmentSheet(_: PAMAssessmentSheet, didSelectEmotion emotion: Emotion) {
         self.emotion = emotion
         assessmentSheet.removeFromSuperview()
+//        overlay.removeFromSuperview()
         defaults.set(true, forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
     }
 }
