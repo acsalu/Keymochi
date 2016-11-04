@@ -2,8 +2,10 @@ language: objective-c
 osx_image: xcode8
 xcode_workspace: Keymochi.xcworkspace
 xcode_scheme: KeymochiTests
-
 before_install:
-    - brew update && brew install git-crypt
-    - openssl aes-256-cbc -K $encrypted_fd1124c3ecb8_key -iv $encrypted_fd1124c3ecb8_iv -in git-crypt.key.enc -out git-crypt.key -d
-    - git-crypt unlock git-crypt.key
+- brew update && brew install git-crypt
+- echo $git_crypt_secret | gpg --passphrase-fd 0 git-crypt.key.gpg
+- git-crypt unlock git-crypt.key
+env:
+  global:
+    secure: mXBLTHq9jpU7M/329LegVJAemzu02ulf2ih+ODWjmq8Wm0ExJnRijDuCjWS6BFciimTKTXrrN1mLMqLKd2Ma+PkDS1zgpav83ocfoLcuDV314Z9dIAwWrNC6fKAXrRSQMUTYTsHkaEpDRcIu3seNJRMEHqIuIk8mh4TGrd/7O7WmOw1Hw4/HCVKisIeuVFAwfCjY+Io2CABqsuJLmO3WXh1N/zBPgx/YjbcwqHPaV4QQU7EPs0oDr3i6rwuipqFUVFxw4pHY+QjcmeaMPriSGe1GzXoJ9ZJLmfFe+s2Ikau0ldjuUCFK8b3p4oKZxlnqrZGwYbiPvOVk3nbCPWsHr9RsAENPW78rB28mI3IFLQPwxixPdzshaToT06E2dhw9y0ADShb8VjLiorwfv3bQw4in72owDPueP1Ki97kkQ1nAx6Po/7B3qTCtzRI3HiZjs5k8G/50960qIGgr1G9urvfLBR1FC2qIOMUVbVn1ORKa2sFhGAy2185AvuoXakWvS9PbUHVTQvYwDScngoy+ZqTaSvw6k9fhUCNmQ5f8xGZ0uh/1NAiQ28OFTXwYvYxDZGSb/SCiWn0OTb8h7hji+kFy0dV6xcBcUeaqXBlRZoNJLWyIllE6f9t1D8QdQTenRtIFgR/wGQawJJ3vHqEb82pioq4PDwSv/aHRAVlki1w=
