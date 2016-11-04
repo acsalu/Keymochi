@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode8
+xcode_workspace: Keymochi.xcworkspace
+xcode_scheme: KeymochiTests
+
+before_install:
+    - brew update && brew install git-crypt
+    - openssl aes-256-cbc -K $encrypted_fd1124c3ecb8_key -iv $encrypted_fd1124c3ecb8_iv -in git-crypt.key.enc -out git-crypt.key -d
+    - git-crypt unlock git-crypt.key
