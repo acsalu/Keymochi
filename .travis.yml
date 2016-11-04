@@ -3,8 +3,8 @@ osx_image: xcode8
 xcode_workspace: Keymochi.xcworkspace
 xcode_scheme: KeymochiTests
 before_install:
-- brew update && brew install git-crypt
-- echo $git_crypt_secret | gpg --passphrase-fd 0 git-crypt.key.gpg
+- brew update && brew install git-crypt gpg2
+- echo $git_crypt_secret | gpg2 --passphrase-fd 0 git-crypt.key.gpg
 - git-crypt unlock git-crypt.key
 env:
   global:
