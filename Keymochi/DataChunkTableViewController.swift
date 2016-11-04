@@ -84,7 +84,7 @@ extension DataChunkTableViewController: UITableViewDataSource {
         
         emotionLabel.text = dataChunk.emotion.tag
         firebaseKeyLabel.text = dataChunk.firebaseKey ?? "(unpushed)"
-        updatedAtLabel.text = dataChunk.createdAt.inRegion(Region.defaultRegion).description
+        updatedAtLabel.text = dataChunk.createdAt.inRegion(region: Region.Local()).description
         
         return cell
     }
