@@ -29,7 +29,7 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
   - Nimble (5.1.1)
-  - PAM (0.0.14)
+  - PAM (0.0.15)
   - Quick (0.10.0)
   - Realm (2.0.3):
     - Realm/Headers (= 2.0.3)
@@ -60,7 +60,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PAM:
-    :commit: b87960ae7b78a10a56875894f358776404c29c14
+    :commit: 5700c2b94dc4e1b99e10eb1ed5c0539d782c0e25
     :git: https://github.com/Keymochi/PAM.git
 
 SPEC CHECKSUMS:
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
-  PAM: 014d5fcd9c1083d5a91b9fb6a3159f6d1e8255b4
+  PAM: 39ed55b8d1b397950258bee4772f9ea1ea051fab
   Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
   Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
   RealmSwift: 5afb451f65b682242f272dbb52d5c6f6e343c980

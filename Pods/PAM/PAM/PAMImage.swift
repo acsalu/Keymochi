@@ -9,7 +9,7 @@
 import Foundation
 
 private enum Constant {
-    static let bundleName = "Frameworks/PAM.framework/ResourceBundle.bundle"
+    static let bundleName = "ResourceBundle.bundle"
     static let imageExtension = "jpg"
 }
 
@@ -30,7 +30,9 @@ open class PAMImage {
     open static func loadImage(forEmotion emotion: Emotion, atIndex index: Int) -> UIImage {
         let emotionIndex = emotion.position
         let imagePath = Constant.bundleName.appending("/\(emotionIndex)_\(index)")
-        let url = Bundle.main.url(forResource: imagePath, withExtension: Constant.imageExtension)
+        let bundle = Bundle(identifier: "org.cocoapods.PAM")!
+        let url = bundle.url(forResource: imagePath, withExtension: Constant.imageExtension)
+
         let imageData = try! Data(contentsOf: url!)
         
         return UIImage(data: imageData)!

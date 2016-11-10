@@ -24,6 +24,7 @@
 		90734CB51D84BED9008F402A /* KeymochiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90410E1D1CBF26DE0066F635 /* KeymochiKeyboardViewController.swift */; };
 		9074C1381CC7D4D100837E99 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074C1371CC7D4D100837E99 /* DataManager.swift */; };
 		9074C1391CC7D4D100837E99 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074C1371CC7D4D100837E99 /* DataManager.swift */; };
+		909E7F031DD4DCED0082D6BE /* PAM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909E7F021DD4DCED0082D6BE /* PAM.framework */; };
 		90A6E8DF1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */; };
 		90B139681C9A177F00C865F0 /* MotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B139671C9A177F00C865F0 /* MotionData.swift */; };
 		90B139691C9A1AFE00C865F0 /* MotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B139671C9A177F00C865F0 /* MotionData.swift */; };
@@ -127,6 +128,7 @@
 		906744211CB7FA9700DABC18 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		90734CB31D84BDFB008F402A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9074C1371CC7D4D100837E99 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		909E7F021DD4DCED0082D6BE /* PAM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PAM.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Keymochi-gfafhzapdcktdigwfeevdqfsxawx/Build/Products/Debug-iphonesimulator/PAM/PAM.framework"; sourceTree = "<group>"; };
 		90A6E8DE1CB89E340093A2FF /* DataChunkDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunkDetailsTableViewController.swift; sourceTree = "<group>"; };
 		90B139671C9A177F00C865F0 /* MotionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionData.swift; sourceTree = "<group>"; };
 		90B7D0551C85248800BF87C0 /* Keymochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Keymochi.entitlements; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909E7F031DD4DCED0082D6BE /* PAM.framework in Frameworks */,
 				90734CB41D84BDFB008F402A /* AudioToolbox.framework in Frameworks */,
 				906255B91CD44E55002EE58C /* CoreMotion.framework in Frameworks */,
 				8C19428F7EEAF1421A80F192 /* Pods_Keyboard.framework in Frameworks */,
@@ -230,6 +233,7 @@
 		525C5A4A19F0BED20AEAEB5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				909E7F021DD4DCED0082D6BE /* PAM.framework */,
 				90734CB31D84BDFB008F402A /* AudioToolbox.framework */,
 				905E43EB1C9A07F8009520D9 /* CoreMotion.framework */,
 				90C544511C84F3360038C7FE /* RealmSwift.framework */,
@@ -523,6 +527,9 @@
 		90D53A901C834AFA002D1B94 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Cornell Tech";
