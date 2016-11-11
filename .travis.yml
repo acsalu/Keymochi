@@ -4,21 +4,23 @@ xcode_workspace: Keymochi.xcworkspace
 xcode_scheme: Keymochi
 xcode_sdk: iphonesimulator10.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_fd1124c3ecb8_key -iv $encrypted_fd1124c3ecb8_iv -in git-crypt.key.enc -out git-crypt.key -d
+- openssl aes-256-cbc -K $encrypted_fd1124c3ecb8_key -iv $encrypted_fd1124c3ecb8_iv
+  -in git-crypt.key.enc -out git-crypt.key -d
 - brew update && brew install git-crypt
 - git-crypt unlock git-crypt.key
-
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
-
+before_script:
+- ./scripts/travis/add-key.sh
 script:
-- xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} clean build test
-
+- xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} clean build test | xcpretty
+after_script:
+- ./scripts/travis/remove-key.sh
 env:
   global:
   - WORKSPACE="Keymochi.xcworkspace"
   - SCHEME="Keymochi"
   - SDK="iphonesimulator10.0"
   - DESTINATION="platform='iOS Simulator',OS=10.0,name='iPhone 7'"
-
+  - secure: rJABn7fiLMWF1GoAaE0VScZGTp6pshIGXUo0iOYyLko1LW6lhDYHMclP4rQ7t3d7cLAjrxJefbBX6M3ZoDmZOOMyhGv+xEQU8aMlFRg0SsY88WD/A8xXRWv6NY/XJ6vRHZXBjujz+dBtDP1re07OPaej4PhP0NhWCKys7X9JxBjBUo+Un05RAakJFgon8/02YwczVRq4dpBSgX00gb5efZwSsl3LUlbm47vMelKDibeMrcp9JqMMNjAMyYPjAqMCXWkRRfLvZCrKETkcB1f31AUSaXfls7zBM55bjqnaJsgHPZAw1/7CLtHPT/q2gyCxqsizmtjmBtSC3y1UVT6ZJSmot5y++BVNhRAyyWcfcuiihxne3GcSPWuigACVYpwx+C+nSi3vWvBmpqRC+f/D9hgHezqPURV5Y7yDFN8UHm2lOcXLYBhVeG5/nmL5OINOKsOIaJzgXL/88hJ/EMHxaQ2uDH7EXY3kDJ1Y5QBaSDBSbw4L3G7sHlejuQ2yEHm+iGaRjKmV6wdvOy1nR2ryqezlxaYrCNmJ/LE9pe8FbZ5xoTAhgJSPS5iEmK6/P3S/JpTzZizA/l6Qt1+FFyj1TP4Y6leXGW+2JKv/VDdcY7yNTWuJt30wTifiCYpvOguncjgh60h1GfW7M1TIKxJAf0wte1Svs69MmHR+jVH1NWE=
