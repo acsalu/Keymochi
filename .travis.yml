@@ -12,11 +12,11 @@ install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 before_script:
-- sudo ./scripts/travis/add-key.sh
+- sudo sh ./scripts/travis/add-key.sh
 script:
 - xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} clean build test | xcpretty
 after_script:
-- sudo ./scripts/travis/remove-key.sh
+- sudo sh ./scripts/travis/remove-key.sh
 env:
   global:
   - WORKSPACE="Keymochi.xcworkspace"
