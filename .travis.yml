@@ -13,8 +13,7 @@ install:
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 
 script:
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination ${DESTINATION} dONLY_ACTIVE_ARCH=NO clean build | xcpretty -f `xcpretty-travis-formatter` || true
-- set -o pipefail && xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -sdk ${SDK} -destination ${DESTINATION} dONLY_ACTIVE_ARCH=NO test | xcpretty -f `xcpretty-travis-formatter`
+- xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} clean build test
 
 env:
   global:
