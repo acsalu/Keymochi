@@ -9,9 +9,7 @@ before_install:
 - brew update && brew install git-crypt
 - git-crypt unlock git-crypt.key
 install:
-- sudo gem install fastlane --verbose
-- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-- gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
+- sudo gem install fastlane --quiet
 before_script:
 - sudo sh ./scripts/travis/add-key.sh
 script:

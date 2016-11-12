@@ -7,7 +7,7 @@
 # All lines starting with a # are ignored when running `fastlane`
 
 # If you want to automatically update fastlane if a new version is available:
-# update_fastlane
+update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
@@ -35,8 +35,36 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
-    increment_build_number
-    gym(scheme: "Keymochi") # Build your app - more options available
+    
+    ENV["SIGH_APP_IDENTIFIER"] = "com.keymochi.keymochi.keyboard"
+    sigh(
+      adhoc: true,
+      username: "hc.acsalu@gmail.com",
+      team_id: "FN63DK6AQV",
+      provisioning_name: "Keymochi Keyboad Ad Hoc",
+      cert_id: "YF87G52T96"
+    )
+
+    ENV["SIGH_APP_IDENTIFIER"] = "com.keymochi.keymochi"
+    sigh(
+      adhoc: true,
+      username: "hc.acsalu@gmail.com",
+      team_id: "FN63DK6AQV",
+      provisioning_name: "Keymochi Ad Hoc",
+      cert_id: "YF87G52T96"
+    )
+    
+    increment_build_number(
+      build_number: number_of_commits
+    )
+
+    gym(
+      scheme: "Keymochi",
+      configuration: "Ad Hoc",
+      include_symbols: true,
+      include_bitcode: true,
+      clean: true
+    ) # Build your app - more options available
     pilot
 
     # sh "your_script.sh"
