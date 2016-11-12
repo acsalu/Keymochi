@@ -16,10 +16,12 @@ target 'Keymochi' do
 end
 
 target 'KeymochiTests' do
+    inherit! :search_paths
     pod 'Realm'
     pod 'RealmSwift'
     pod 'Quick'
     pod 'Nimble'
+    pod 'Firebase'
 end
 
 target 'KeymochiUITests' do
