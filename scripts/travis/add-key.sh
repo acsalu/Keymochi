@@ -14,4 +14,4 @@ security list-keychains -s ios-build.keychain
 
 echo "Add Provisioning Profiles"
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-cp ./scripts/travis/profile/* ~/Library/MobileDevice/Provisioning\ Profiles/
+cp ./scripts/travis/profiles/* ~/Library/MobileDevice/Provisioning\ Profiles/
