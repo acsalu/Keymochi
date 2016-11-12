@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='KeymochiTests.xctest' tests='1' failures='0'>
+  <testsuite name='KeymochiTests.DataManagerSpec' tests='1' failures='0'>
+    <testcase classname='KeymochiTests.DataManagerSpec' name='DataManager__Add_a_data_chunk_to_the_Realm' time='0.245'/>
+  </testsuite>
+</testsuites>

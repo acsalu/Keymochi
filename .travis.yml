@@ -9,12 +9,17 @@ before_install:
 - brew update && brew install git-crypt
 - git-crypt unlock git-crypt.key
 install:
+- sudo gem install fastlane --verbose
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
 before_script:
 - sudo sh ./scripts/travis/add-key.sh
 script:
-- xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 7' clean build test | xcpretty && exit ${PIPESTATUS[0]}
+- xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -destination 'platform=iOS
+  Simulator,OS=10.0,name=iPhone 7' clean build test | xcpretty && exit ${PIPESTATUS[0]}
+after_success:
+- fastlane beta
+
 after_script:
 - sudo sh ./scripts/travis/remove-key.sh
 env:
@@ -23,3 +28,5 @@ env:
   - SCHEME="Keymochi"
   - SDK="iphonesimulator10.0"
   - secure: rJABn7fiLMWF1GoAaE0VScZGTp6pshIGXUo0iOYyLko1LW6lhDYHMclP4rQ7t3d7cLAjrxJefbBX6M3ZoDmZOOMyhGv+xEQU8aMlFRg0SsY88WD/A8xXRWv6NY/XJ6vRHZXBjujz+dBtDP1re07OPaej4PhP0NhWCKys7X9JxBjBUo+Un05RAakJFgon8/02YwczVRq4dpBSgX00gb5efZwSsl3LUlbm47vMelKDibeMrcp9JqMMNjAMyYPjAqMCXWkRRfLvZCrKETkcB1f31AUSaXfls7zBM55bjqnaJsgHPZAw1/7CLtHPT/q2gyCxqsizmtjmBtSC3y1UVT6ZJSmot5y++BVNhRAyyWcfcuiihxne3GcSPWuigACVYpwx+C+nSi3vWvBmpqRC+f/D9hgHezqPURV5Y7yDFN8UHm2lOcXLYBhVeG5/nmL5OINOKsOIaJzgXL/88hJ/EMHxaQ2uDH7EXY3kDJ1Y5QBaSDBSbw4L3G7sHlejuQ2yEHm+iGaRjKmV6wdvOy1nR2ryqezlxaYrCNmJ/LE9pe8FbZ5xoTAhgJSPS5iEmK6/P3S/JpTzZizA/l6Qt1+FFyj1TP4Y6leXGW+2JKv/VDdcY7yNTWuJt30wTifiCYpvOguncjgh60h1GfW7M1TIKxJAf0wte1Svs69MmHR+jVH1NWE=
+  - secure: HwmG8JnbPeQLgiXuqFpeq76wQeebnySkEzTDOuGYQJlosHU9hcnWLKLA8zOeNx0oMNEVtqsBdX/CXB0moxlyrRPImCsu89UoMmrly0T7pphdcEGVjDNTvg+mjGR++FnA0BF1VGwsK4ebUvezCjyJ2KFx394T76m3Jz44apXSgjJEys+Yq7Mo+qrJEKq7wFs+esBhk0SxlOHydJ/3LyfGD6iU3FLNsOu+IYKWeonitMFQRj0ph/Nw26L+H+YXh3TrW/WGav236ibhEepysUyjF8Lj/seP+XQ6bNecNYsxartXtBsgfd2vO/t+Oh22vMf9zSW9Ask5+64sraYO2NHytbOFBmIJA+31QD14NiyziRASmljTHCLtrdR+PkoQjE6Us9thseAbTJ5altlbrKt9gZWjdbkh1sIOzC90cq+ssfd3e2l9zsekv3U5yHnzGcPSmz3J/QQ2KLzYNzC38znpBJoqAy6PP+4d5s0Ut/0+IAfeZWdQFSB+Jq/UGXyceZMPJiAMyQMiNkas5Cup8yGCqXbIBkuYktH1SCx0nrE/ZNettoAvMWgUABF9wOPWFs1abmlwsvfOzAjsEqQ+padilKxLBiUdTrgVgx/XemtsCYws+WYHx0QIlzPp84eow4tgDFCzyA4Qs4OkBwYy5e359qPQnsYWX4E41AGSQgwk3tg=
+  - secure: NlfRU5Ve+MUstz/h3Yiy8R9ro5HfSpj8P/yWdKo3kj8vhyVgXpQD5rSPa1wLO+iaNwZ2dRXNn6wQvpjMkOTJHIPQb3v+4n9NkD79lahzlaQ1PMLXH+aAsvqWh91e3iiH6SpFkHe91AloFD9n4VSmMG4MwIV3yrB7mdM12NQdpAnsEeSMai/TraTf0Q1caSj1sBJrhR0gSZlSTPg/EPZbqPwFQffz97z0eKZUH4Uf3Sw2Hn0Tw5u1PXzAXihokWh7sy/OK6nHgoGHEeRCWvGXk5p5LkIKPjQkwU7RG7PsRfJ2f957dtzaxvKdxgA/YSlqQ2TtUZnZJHL9qTabsqXlcklIBMWAqJVoGuQ6P1EzdavwSsg8xh9LW7eAZQLI216pEHJuCPpdaWcJ19jYEIgUOB0z7EVQCr5cel9Q4AuH/kajDgkMydKr91fh7GzMdEJ4yn97nN+B05RGq0kupMV9VrEEbQjOmjF2EKpMPC+W7hzf7TiaaK0iVcDMRJ0kuWAb8fL0Bu54jalI+v/JbumXj8ny8Fs0nBbc+ucyVr8KCBO+61imJM7JuLxGdCEWdXUNs0EOWD7qk6kaA5yio506wemx7cRmdx3age0bKZC99vP1SepmlSBl7QGbEehBSXs8CZHHhOlZmrOjx8ST5kDSsG5xGUWiZVcnmyymY3/i2T4=
