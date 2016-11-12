@@ -20,7 +20,7 @@ class DataManagerSpec: QuickSpec {
                 var config = Realm.Configuration()
                 config.inMemoryIdentifier = "data-manager-spec"
                 testRealm = try! Realm(configuration: config)
-                DataManager.sharedInatance.setRealm(testRealm)
+                DataManager.sharedInatance.realm = testRealm
             }
             
             afterEach {
@@ -30,35 +30,16 @@ class DataManagerSpec: QuickSpec {
             }
             
             it("Add a data chunk to the Realm") {
-                expect(testRealm.objects(DataChunk).count).to(equal(0))
+                expect(testRealm.objects(DataChunk.self).count).to(equal(0))
                 
                 let dataChunk = DataChunk()
                 
                 DataManager.sharedInatance.addDataChunk(dataChunk)
-                expect(testRealm.objects(DataChunk).count).to(equal(1))
+                expect(testRealm.objects(DataChunk.self).count).to(equal(1))
                 
-                let quriedDataChunk = testRealm.objectForPrimaryKey(DataChunk.self, key: dataChunk.realmId)
+                let quriedDataChunk = testRealm.object(ofType: DataChunk.self, forPrimaryKey: dataChunk.realmId as AnyObject)
                 expect(quriedDataChunk).notTo(beNil())
             }
-            
-            it("Update a data chunk in the Realm") {
-                
-                let dataChunk = DataChunk()
-                
-                expect(dataChunk.emotion).to(beNil())
-                expect(dataChunk.parseId).to(beNil())
-                
-                let emotion = Emotion.Neutral
-                let parseId = "axcb12k"
-                
-                DataManager.sharedInatance.addDataChunk(dataChunk)
-                DataManager.sharedInatance.updateDataChunk(dataChunk, withEmotion: emotion, andParseId: parseId)
-                let quriedDataChunk = testRealm.objectForPrimaryKey(DataChunk.self, key: dataChunk.realmId)
-                expect(quriedDataChunk?.emotion).to(equal(emotion))
-                expect(quriedDataChunk?.parseId).to(equal(parseId))
-                
-            }
-            
         }
     }
 }
