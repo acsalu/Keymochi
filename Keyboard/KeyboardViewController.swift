@@ -251,6 +251,7 @@ class KeyboardViewController: UIInputViewController {
             aBanner.isHidden = true
             self.view.insertSubview(aBanner, belowSubview: self.forwardingView)
             self.bannerView = aBanner
+			self.view.backgroundColor = UIColor(hexString: "#25B5DB", alpha: 0.6);
         }
     }
     
