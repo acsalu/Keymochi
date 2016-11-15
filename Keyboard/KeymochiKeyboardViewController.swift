@@ -33,7 +33,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 		return self.bannerView as! AutoCorrectionSelector
 	}
     var emotion: Emotion?
-    var hasAssessedEmotion: Bool { return emotion != nil }
     var timer: Timer!
     var assessmentSheet: PAMAssessmentSheet!
 	var defaults: UserDefaults { return UserDefaults.standard }	
@@ -88,6 +87,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         
         assert(keys.count == touchTimestamps.count)
         print(keys.count)
+		let hasAssessedEmotion = defaults.bool(forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
         if hasAssessedEmotion {
 			if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: CharacterSet(charactersIn: " \n")) {
                 print ("sentence in view did disppear is", sentence)
