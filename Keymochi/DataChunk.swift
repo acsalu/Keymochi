@@ -36,7 +36,6 @@ class DataChunk: Object {
     override var description: String {
         let symbolKeyEventCount =
             (symbolKeyEventSequence != nil) ? symbolKeyEventSequence!.keyEvents.count : -1
-            print(symbolKeyEventSequence)
         let accelerationDataPointCount =
             (accelerationDataSequence != nil) ? accelerationDataSequence!.motionDataPoints.count : -1
         let gyroDataPointCount =

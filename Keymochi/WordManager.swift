@@ -41,7 +41,7 @@ class WordManager  {
         var sum: NSInteger = 0
         var ratingArr: [NSNumber] = []
         for unformString in wordArr {
-        var newWord = unformString.lowercased()
+        let newWord = unformString.lowercased()
         if positiveWords.contains(newWord) { ratingArr.append(1) }
         if negativeWords.contains(newWord) { ratingArr.append(-1) }
         else{
