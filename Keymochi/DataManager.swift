@@ -179,7 +179,7 @@ extension DataManager {
         data["user"] = uid
         
         var databaseReference: FIRDatabaseReference!
-        databaseReference = FIRDatabase.database().reference().child("users").child(uid).childByAutoId()
+        databaseReference = FIRDatabase.database().reference().child("users").child("in-the-wild").child(uid).childByAutoId()
         
         databaseReference.updateChildValues(data) { (error, refernce) in
             if error == nil {
