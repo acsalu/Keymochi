@@ -113,6 +113,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
                 DataManager.sharedInatance.dumpCurrentData(withEmotion: emotion!, withSentiment: sentiment)
             }
         }
+		defaults.set(0.0, forKey: KeymochiKeyboardViewController.kKeepUsingTime)
+		
         super.viewDidDisappear(animated)
     }
     
@@ -259,6 +261,8 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     func  createOverlay(){
+		
+		print("createOverlay")
         
 //        overlay = UIView()
         //get the x and y center
