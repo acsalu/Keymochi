@@ -10,8 +10,6 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
-import Crashlytics
-import Fabric
 import Firebase
 import FirebaseDatabase
 import FirebaseMessaging
@@ -25,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         FIRApp.configure()
+        
         if #available(iOS 10.0, *) {
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -43,11 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
+        
     }
     
     @nonobjc func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Fabric.with([Crashlytics.self])
         
         let directoryURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.groupIdentifier)
         let realmPath = (directoryURL?.appendingPathComponent("db.realm").path)!

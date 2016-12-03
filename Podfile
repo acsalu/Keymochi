@@ -5,11 +5,9 @@ use_frameworks!
 target 'Keymochi' do
     pod 'Realm'
     pod 'RealmSwift'
-    pod 'Fabric'
-    pod 'Crashlytics'
     pod 'SwiftHEXColors'
     pod 'Firebase'
-    pod 'Firebase/Core’
+    pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'SwiftDate'
@@ -37,13 +35,6 @@ target 'Keyboard' do
     pod 'Firebase'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
+    pod 'Firebase/Messaging'
     pod 'PAM', git: 'https://github.com/Keymochi/PAM.git', branch: 'master'
-end
-
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.0'
-        end
-    end
 end
