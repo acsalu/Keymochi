@@ -52,6 +52,7 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        print(textDocumentProxy.keyboardType.debugDescription)
         symbolKeyEventMap = [String: SymbolKeyEvent]()
         print(symbolKeyEventMap)
         
@@ -331,6 +332,9 @@ class KeymochiKeyboardViewController: KeyboardViewController {
 
     }
     
+    override func textDidChange(_ textInput: UITextInput?) {
+        print("TextDidChange: \(textDocumentProxy.keyboardType?.rawValue) \(textDocumentProxy.returnKeyType?.rawValue)")
+    }
 }
 
 // MARK: - AutoCorrectionSelectorDelegate Methods
