@@ -28,18 +28,6 @@ class DataManagerSpec: QuickSpec {
                 testRealm.deleteAll()
                 try! testRealm.commitWrite()
             }
-            
-            it("Add a data chunk to the Realm") {
-                expect(testRealm.objects(DataChunk.self).count).to(equal(0))
-                
-                let dataChunk = DataChunk()
-                
-                DataManager.sharedInatance.addDataChunk(dataChunk)
-                expect(testRealm.objects(DataChunk.self).count).to(equal(1))
-                
-                let quriedDataChunk = testRealm.object(ofType: DataChunk.self, forPrimaryKey: dataChunk.realmId as AnyObject)
-                expect(quriedDataChunk).notTo(beNil())
-            }
         }
     }
 }
