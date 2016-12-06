@@ -341,6 +341,6 @@ extension KeymochiKeyboardViewController {
     }
     
     private func getSentimentScore(_ word: String) -> Float {
-        return positiveWords.contains(word) ? 1.0 : (negativeWords.contains(word) ? -1.0 : 0.0)
+        return WordManager.positiveWords.contains(word) ? 1.0 : (WordManager.negativeWords.contains(word) ? -1.0 : 0.0)
     }
 }
