@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -70,7 +70,7 @@
       <RemoteRunnable
          runnableDebuggingMode = "1"
          BundleIdentifier = "com.keymochi.keymochi"
-         RemotePath = "/Users/acsalu/Library/Developer/CoreSimulator/Devices/348BD97D-CF7D-4643-B71B-25ECCF4F24CD/data/Containers/Bundle/Application/30C8C69A-7C63-44F8-B19B-CDA1E8037FAA/Keymochi.app">
+         RemotePath = "/Users/acsalu/Library/Developer/CoreSimulator/Devices/BF719968-E22E-408F-B920-2D30E875CE42/data/Containers/Bundle/Application/9866D80F-D334-4B3D-B829-C8BF945B76BF/Keymochi.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
