@@ -5,6 +5,7 @@
 //  Created by Alexei Baboulevitch on 7/10/14.
 //  Copyright (c) 2014 Alexei Baboulevitch ("Archagon"). All rights reserved.
 //
+import UIKit
 
 func defaultKeyboard() -> Keyboard {
     let defaultKeyboard = Keyboard()
@@ -54,6 +55,7 @@ func defaultKeyboard() -> Keyboard {
     returnKey.uppercaseKeyCap = "return"
     returnKey.uppercaseOutput = "\n"
     returnKey.lowercaseOutput = "\n"
+    defaultKeyboard.returnKey = returnKey
     defaultKeyboard.addKey(returnKey, row: 3, page: 0)
     
     for key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] {

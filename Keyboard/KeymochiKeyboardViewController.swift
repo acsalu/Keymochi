@@ -52,7 +52,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        print(textDocumentProxy.keyboardType.debugDescription)
         symbolKeyEventMap = [String: SymbolKeyEvent]()
         print(symbolKeyEventMap)
         
@@ -87,12 +86,10 @@ class KeymochiKeyboardViewController: KeyboardViewController {
         motionManager.stopDeviceMotionUpdates()
         
         assert(keys.count == touchTimestamps.count)
-        print(keys.count)
 		let hasAssessedEmotion = defaults.bool(forKey: KeymochiKeyboardViewController.kHasAssessedEmotion)
         if hasAssessedEmotion {
 			if let sentence = textDocumentProxy.documentContextBeforeInput?.components(separatedBy: CharacterSet(charactersIn: " \n")) {
-                print ("sentence in view did disppear is", sentence)
-                sentiment = getSentiment(wordArr: sentence)
+                sentiment = getSentiment(words: sentence)
                 for (key, touchTimestamp) in zip(keys, touchTimestamps) {
 					
                     var keyEvent: KeyEvent!
@@ -140,7 +137,6 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
 	
 	private func getSuggestedWords() -> (completions: [String], gussess: [String])? {
-		print(currentWord)
 		if currentWord == "" {
 			return ([], [])
 		}
@@ -262,78 +258,40 @@ class KeymochiKeyboardViewController: KeyboardViewController {
     }
     
     func  createOverlay(){
-		
-		print("createOverlay")
         
-//        overlay = UIView()
-        //get the x and y center
-        let xOrigin = self.view.frame.midX
-        let yOrigin = self.view.frame.midY
-        
-        //set the size of the button in rleation to the the overlay view.
-        let buttonWidth = self.view.frame.size.width/2.0
-        let buttonHeight = self.view.frame.size.height/4.0
-        
-        //set the size and color of the overlay view
         overlay.frame = self.view.bounds
         overlay.backgroundColor = UIColor.black
         
-        //create button
-        let button = UIButton(frame: CGRect(x: xOrigin, y: yOrigin, width: buttonWidth, height: buttonHeight))
+        // create button
+        let originX = self.view.frame.midX
+        let originY = self.view.frame.midY
+        let buttonWidth = self.view.frame.size.width / 2.0
+        let buttonHeight = self.view.frame.size.height / 4.0
+        
+        let button = UIButton(frame: CGRect(x: originX, y: originY, width: buttonWidth, height: buttonHeight))
         button.backgroundColor = Colors.mainColor
         button.setTitle("Click to Proceed", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-       //label generation
-        
-        let label = UILabel(frame: CGRect(x: view.frame.midX, y: (view.frame.midY - buttonHeight), width: self.view.frame.size.width, height: 100))
-        let labelY = yOrigin - label.frame.height + 40
-        print ("labelY" , labelY)
+       
+        // label generation
+        let label = UILabel(frame: CGRect(x: originX, y: (originY - buttonHeight), width: self.view.frame.size.width, height: 100))
+        let labelY = originY - label.frame.height + 40
         label.textColor = .white
         label.textAlignment = .center
         label.text = "On the next screen, select the photo that best captures how you feel right now"
         label.numberOfLines = 4
         label.font = UIFont.boldSystemFont(ofSize: 24.0)
         
-        //label and button centering
+        // label and button centering
         label.center = CGPoint(x: view.frame.midX, y: labelY)
         let buttonY = labelY + label.frame.height
-        print("buttonY", buttonY)
         button.center = CGPoint(x: view.frame.midX, y: buttonY)
-        //add both label and button to the overlay view
+        // add both label and button to the overlay view
         overlay.addSubview(label)
         overlay.addSubview(button)
         
-        //add the overlay to the subview
+        // add the overlay to the subview
         view.addSubview(overlay)
-    }
-    
-    func getSentiment (wordArr : [String]) -> Float {
-
-        var sum: NSInteger = 0
-        var ratingArr: [NSNumber] = []
-        for unformString in wordArr {
-            let newWord = unformString.lowercased()
-            if positiveWords.contains(newWord) {
-                ratingArr.append(1)
-            } else if negativeWords.contains(newWord) { ratingArr.append(-1) }
-            else{
-                ratingArr.append(0)
-            }
-        }
-        for rating in ratingArr {
-            sum = sum + Int(rating)
-        }
-        let size = ratingArr.count
-        let sent_rating = Float(sum) / Float(size)
-        
-        print("rating" , sent_rating)
-        return Float(sent_rating)
-
-
-    }
-    
-    override func textDidChange(_ textInput: UITextInput?) {
-        print("TextDidChange: \(textDocumentProxy.keyboardType?.rawValue) \(textDocumentProxy.returnKeyType?.rawValue)")
     }
 }
 
@@ -369,5 +327,20 @@ extension KeymochiKeyboardViewController: FowardingViewDelegate {
         if key.hasOutput || key.type == .backspace {
             touchTimestamps.append(touchTimestamp)
         }
+    }
+}
+
+// MARK: - Sentiment Analysis
+extension KeymochiKeyboardViewController {
+    func getSentiment(words : [String]) -> Float {
+        guard !words.isEmpty else { return 0.0 }
+        return words
+            .map { $0.lowercased() }
+            .map { self.getSentimentScore($0) }
+            .reduce(0.0, +) / Float(words.count)
+    }
+    
+    private func getSentimentScore(_ word: String) -> Float {
+        return positiveWords.contains(word) ? 1.0 : (negativeWords.contains(word) ? -1.0 : 0.0)
     }
 }

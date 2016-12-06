@@ -43,6 +43,8 @@ class Keyboard {
         
         self.pages[page].addKey(key, row: row)
     }
+    
+    var returnKey: Key?
 }
 
 class Page {

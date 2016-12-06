@@ -416,6 +416,18 @@ class KeyboardViewController: UIInputViewController {
     
     // TODO: this is currently not working as intended; only called when selection changed -- iOS bug
     override func textDidChange(_ textInput: UITextInput?) {
+        if let returnKeyType = textDocumentProxy.returnKeyType, let returnKey = self.keyboard.returnKey {
+            switch returnKeyType {
+            case .next:
+                returnKey.uppercaseKeyCap = "next"
+            case .done:
+                returnKey.uppercaseKeyCap = "done"
+            case .send:
+                returnKey.uppercaseKeyCap = "send"
+            default:
+                returnKey.uppercaseKeyCap = "return"
+            }
+        }
         self.contextChanged()
     }
     
@@ -852,7 +864,12 @@ class KeyboardViewController: UIInputViewController {
     class var globalColors: GlobalColors.Type { get { return GlobalColors.self }}
     
     func keyPressed(_ key: Key) {
+//        if let returnKey = keyboard.returnKey && key == returnKey {
+//            
+//        }
+        
         let keyText = key.outputForCase(self.shiftState.uppercase())
+        print(keyText)
         self.textDocumentProxy.insertText(keyText)
     }
     
